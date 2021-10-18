@@ -26,9 +26,9 @@ insert into Cliente(email,senha,cpf,nome,telefone,sexo,nascimento,papel) values 
 insert into Cliente(email,senha,cpf,nome,telefone,sexo,nascimento,papel) values ('admin','admin','cpf_admin',
 'admin01','12345678','M','1997-08-20','ADMIN');
 
-insert into Loja(email,senha,cnpj,nome,descricao) values ('loja1@gmail.com','loja1','111.111.111/0001-11','loja1','primeira loja');
-insert into Loja(email,senha,cnpj,nome,descricao) values ('loja2@gmail.com','loja2','222.222.222/0001-11','loja2','segunda loja');
-insert into Loja(email,senha,cnpj,nome,descricao) values ('loja3@gmail.com','loja3','333.333.333/0001-11','loja3','terceira loja');
+insert into Loja(email,senha,cnpj,nome,descricao) values ('loja1@gmail.com','loja1','11.111.111/0001-11','loja1','primeira loja');
+insert into Loja(email,senha,cnpj,nome,descricao) values ('loja2@gmail.com','loja2','22.222.222/0001-11','loja2','segunda loja');
+insert into Loja(email,senha,cnpj,nome,descricao) values ('loja3@gmail.com','loja3','33.333.333/0001-11','loja3','terceira loja');
 
 insert into Veiculo(placa,modelo,chassi,ano,quilometragem,descricao,valor,id_loja) 
 values ('AAA0-7473', 'Corsa','1A1A1111111111111',2005,120000, 'Corsa 2005 turbinado',20000,1);
