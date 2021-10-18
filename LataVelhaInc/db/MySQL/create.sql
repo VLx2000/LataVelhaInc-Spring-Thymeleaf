@@ -6,7 +6,7 @@ use Aluguel_Veiculos;
 create table Cliente(id bigint not null auto_increment,email varchar(30) not null, senha varchar(50) not null, cpf varchar(20) not null, nome varchar (50) not null,
 telefone varchar(20) not null, sexo varchar(10) not null, nascimento varchar(10) not null, papel varchar(10) not null, primary key(id));
 
-create table Loja(id bigint not null auto_increment, email varchar(30) not null, senha varchar(50) not null, cnpj varchar(20), nome varchar (50) not null, 
+create table Loja(id bigint not null auto_increment, email varchar(30) not null, senha varchar(50) not null, cnpj varchar(18), nome varchar (50) not null, 
 descricao varchar(120),primary key(id));
 
 create table Veiculo(id bigint not null auto_increment, placa varchar(20) not null, modelo varchar(20) not null,
