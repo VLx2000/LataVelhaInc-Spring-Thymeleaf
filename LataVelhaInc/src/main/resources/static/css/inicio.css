@@ -1,0 +1,119 @@
+/*CARDS DOS CARROS*/
+#carros {
+	margin: auto;
+	width: 70%;
+	margin-top: 100px;
+}
+
+.box {
+	border: 20px solid rgba(255, 255, 255, 0);
+	position: relative;
+	cursor: pointer;
+}
+
+.card {
+	width: 100%;
+	background-color:rgb(250, 250, 250);
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.205);
+    transition: all 0.2s ease;
+	position: relative;
+}
+
+.card:hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+}
+
+.dadosCarro {
+	padding: 20px;
+	list-style: none;
+}
+
+.oferta {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: red;
+	text-align: end;
+}
+
+.modelo {
+	font-size: 1.1em;
+	font-weight: 900;
+	text-align: end;
+}
+
+.container {
+	overflow: hidden;
+	height: 250px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+/* recomendado uso de imagens 16:9*/
+.container > img {
+	padding: 0;
+	height: 250px;
+	width: 444px;
+	position:relative;
+	margin-left: 50%;
+	left: -222px;
+}
+
+/*FILTRO DE CARROS*/
+#filtro, #numero, #legendaN {
+	background-color:rgba(250, 250, 250, 0.603);
+	border-radius: 2px;
+	border-color: rgba(0, 0, 0, 0);
+	height: 40px;
+	font-size: 1.1em;
+	padding: 10px;
+}
+
+#numero, #legendaN {
+	float: right;
+	color: #757575;
+}
+
+#divFiltro {
+	margin: 20px;
+	position: relative;
+}
+
+/*DESIGN RESPONSIVO DA PAGINA INICIAL*/
+@media (min-width: 1301px) {
+    .box {
+        float: left;
+        width: 25%;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1300px) {
+    .box {
+        float: left;
+        width: 33.33%;
+    }
+	#carros {
+		width: 80%;
+	}
+}
+
+@media (min-width: 500px) and (max-width: 900px) {
+    .box{
+		float: left;
+        width: 50%;
+    }
+	#carros {
+		width: 95%;
+	}
+}
+
+@media (max-width: 499px) {
+    .box{
+		clear: both;
+        width: 100%;
+    }
+	#carros {
+		width: 95%;
+	}
+}

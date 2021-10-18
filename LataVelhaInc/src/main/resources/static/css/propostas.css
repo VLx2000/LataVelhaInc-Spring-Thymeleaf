@@ -1,0 +1,34 @@
+.propostas {
+    background-color: #e6e6e6
+}
+
+.acao {
+    background-color: rgb(230, 230, 230);
+    border-color: rgb(230, 230, 230);
+}
+
+#aceitar {
+    color: green;
+}
+
+#negar {
+    color: red;
+}
+
+#aceitar, #negar {
+    background-color: rgb(43, 43, 43);
+    border-radius: 16px;
+    padding: 10px;
+}
+
+#mensagem {
+    padding: 10px;
+}
+
+.box_mensagem {
+    border: none;
+}
+
+td {
+    width: 140px;
+}

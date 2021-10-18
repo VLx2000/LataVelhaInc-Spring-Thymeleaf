@@ -1,0 +1,163 @@
+.carro {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 80px;
+    width: 65%;
+    height: fit-content;
+    background-color:#fafafa;
+    border-radius: 10px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.205);
+}
+
+.fotos {
+    padding: 30px;
+    padding-bottom: 100px;
+    float: left;
+    width: 630px;
+    height: 460px;
+    overflow: hidden;
+}
+
+.info {
+    margin: 30px;
+    height: 300px;
+}
+
+.dadosCarro {
+    text-align: end;
+    margin-top: 30px;
+    font-size: 1.1em;
+    list-style-type: none;
+}
+
+.dadosCarro > li {
+    padding-right: 30px;
+}
+
+.descricao {
+    padding: 120px;
+    clear: both;
+    font-size: 1.1em;
+}
+
+#preco {
+    padding-top: 30px;
+    font-size: 2em;
+    color: red;
+}
+
+.nomeModelo {
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+input {
+    margin-bottom: 50px;
+    padding: 14px;
+    border-radius: 16px;
+    font-size: 1.1em;
+    border-color: rgba(255, 255, 255, 0);
+}
+
+#pvalor, #pparcelas {
+    width: 150px;
+    background-color: #e6e6e6;
+}
+
+li img {
+    width: 600px;
+    height: 400px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.205);
+}
+
+#comprar {
+    background-color: greenyellow;
+    color: green;
+    cursor: pointer;
+    width: 100%;
+}
+
+.propostas {
+    background-color: #e6e6e6;
+    border-radius: 16px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.226);
+}
+
+#proposta {
+    background-color: orange;
+    cursor: pointer;
+}
+
+#proposta, #comprar {
+    transition: all 0.1s ease;
+}
+
+#proposta:hover {
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01);
+}
+
+#comprar:hover {
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01);
+}
+
+td, th {
+    width: 200px;
+    border: none;
+}
+
+#botao_cancelar {
+    background-color: #2b2b2b;
+    border-bottom-right-radius: 16px;
+    border-top-left-radius: 16px;
+}
+
+#form_proposta {
+    margin-top: 150px;
+    text-align: center;
+}
+
+@media (min-width: 901px) and (max-width: 1400px) {
+	.carro {
+		width: 75%;
+	}
+    .descricao {
+        clear: both;
+    }
+    .info {
+        width: 100%;
+        height: fit-content;
+        clear: both;
+        margin: 0;
+    }
+    .fotos {
+        clear: both;
+    }
+    .dadosCarro {
+        text-align: center;
+    }
+}
+
+@media (max-width: 900px) {
+	.carro {
+		width: 95%;
+	}
+    .descricao {
+        clear: both;
+    }
+    .info {
+        width: 100%;
+        height: fit-content;
+        clear: both;
+        margin: 0;
+    }
+    .fotos {
+        clear: both;
+    }
+    .dadosCarro {
+        text-align: center;
+    }
+}

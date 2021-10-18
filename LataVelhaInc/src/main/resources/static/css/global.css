@@ -1,0 +1,247 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+	margin: 0;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	background-color: rgb(230, 230, 230);
+	font-size: 16px;
+}
+
+table {
+	border-collapse: collapse;
+	margin: auto;
+	margin-top: 50px;
+	text-align: center;
+}
+
+th, td {
+    border: 2px solid black;
+    padding: 8px 15px ;
+}
+
+
+a {
+	display: block;
+	color: rgb(182, 182, 182);
+	text-decoration: none;
+}
+
+/*TOPBAR E LOGO*/
+#titulo {
+	font-size: 1.6em;
+	font-weight: bold;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	color: red;
+}
+
+.topbar {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: rgb(43, 43, 43);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.24);
+	z-index: 4;
+	overflow: visible;
+}
+
+#admin, #corporativo {
+	font-size: 0.8em;
+	color: whitesmoke;
+}
+
+.linkTopoEsquerda {
+	float: left;
+	padding: 14px 16px;
+}
+
+.linkTopoDireita {
+	float: right;
+	text-align: center;
+	list-style-type: none;
+}
+
+.linkTopoDireita:hover {
+	background-color: rgba(175, 0, 0, 0.349);
+}
+
+.linkTopoDireita a {
+	padding: 20px 16px;
+}
+
+.linkTopoDireita:hover a {
+	color: whitesmoke;
+}
+
+.nomeTopoDireita {
+	float: right;
+	text-align: center;
+	padding: 20px 16px;
+	list-style-type: none;
+	position: relative;
+}
+
+.nomeTopoDireita > span {
+	color: rgb(182, 182, 182);
+}
+
+.dropdown  {
+	display: none;
+	position: absolute;
+	top: 58px;
+	right: 0;
+	background-color: rgb(43, 43, 43);
+}
+
+.nomeTopoDireita:hover .dropdown {
+	display: block;
+}
+
+.nomeTopoDireita:hover, .dropdown:hover {
+	background-color: rgba(175, 0, 0, 0.349);
+}
+
+.dropdown:hover {
+	background-color: #591c1c;
+}
+
+.dropdown li {
+	width: 100%;
+	float: right;
+	list-style-type: none;
+}
+
+.dropdown li a {
+	padding: 20px 16px;
+}
+
+.dropdown li:hover a, .nomeTopoDireita:hover span {
+	color: whitesmoke;
+}
+
+/*CRUD DE ADMIN*/
+#crudLinks {
+	background-color: rgb(43, 43, 43);
+	margin: auto;
+	color: bisque;
+	border: 2px solid rgb(32, 32, 32);
+	border-radius: 20px;
+	text-align: center;
+	width: 600px;
+	height: fit-content;
+	margin-top: 200px;
+}
+
+.crud {
+	padding: 80px;
+	font-size: 3em;
+}
+
+#crud1 a:hover  {
+	color: whitesmoke;
+}
+
+#crud2 a:hover  {
+	color: whitesmoke;
+}
+
+.label {
+	text-align: center;
+	padding: 20px;
+	margin-top: 50px;
+}
+
+.adiciona {
+	padding: 20px;
+}
+
+.adiciona a, td a {
+	display: block;
+	color: rgb(255, 0, 0);
+}
+
+/*PARTE DA PAGINA DE LOGIN*/
+.bodyLogin {
+	margin: auto auto;
+}
+
+.tituloLogin {
+	font-size: 35px;
+	font-weight: bold;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	color: red;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+
+.boxLogin {
+	display:flex;
+	background: #c2c0c0;
+	justify-content: center;
+	align-items: center;
+	width: 400px;
+	height: 450px;
+    position: relative;
+    margin: 0 auto 0 auto;
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.camposLogin {
+	width:300px;
+	display: block;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 10px 6px;	
+	margin-bottom: 40px;
+}
+
+.botaoLogin {
+	width:300px;
+	border: 2px solid black;
+	border-radius: 30px;
+	background: black;
+	color: white;
+	cursor: pointer;
+	padding: 15px 0;
+	font-size: 18px;
+	font-weight: bold;
+	transition: 0.5s all;
+}
+
+.botaoLogin:active {
+	background: red;
+}
+
+/* PARTE DA PAGINA DE ERROS*/
+#erro {
+	justify-content: center;
+	display: flex;
+	margin-top: 50px;
+}
+
+#erro ul {
+	color: red;
+    list-style-type: none;
+    margin: 50px;
+    background-color: #591c1c;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 1.2em;
+}
+
+#voltar {
+	background-color: rgb(43, 43, 43);
+	border-radius: 16px;
+	padding: 10px;
+	width: fit-content;
+}
