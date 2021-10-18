@@ -4,6 +4,9 @@
 ### Dependências ###
 
 
+### Configuração Spring ###
+![initializr](spring-initializr.png)
+
 ### Antes de executar ###
 
 
