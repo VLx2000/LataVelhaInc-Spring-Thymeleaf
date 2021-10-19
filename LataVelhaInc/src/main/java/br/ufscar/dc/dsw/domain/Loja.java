@@ -42,14 +42,6 @@ public class Loja extends AbstractEntity<Long>{
 	@Size(min = 1, max = 120 )
 	@Column(nullable = false, unique = true, length = 120)
 	private String descricao;
-	
-	public Loja(String email, String senha, String CNPJ, String nome, String descricao) {
-		this.email = email;
-		this.senha = senha;
-		this.CNPJ = CNPJ;
-		this.nome = nome;
-		this.descricao = descricao;
-	}
 
 	public String getEmail() {
 		return email;
