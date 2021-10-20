@@ -42,8 +42,8 @@
                     <ul class="dadosCarro">
                         <li class="modelo" th:text="${veiculo.modelo}"></li>
                         <li th:text="${veiculo.loja.nome}"></li>
-                        <!--<li th:text="${veiculo.quilometragem}km"></li>
-                        <li class="oferta" th:text="R$${veiculo.preco}"></li>-->
+                        <li th:text="${veiculo.quilometragem + 'km'}"></li>
+                        <li class="oferta" th:text="${'R$' + veiculo.preco}"></li>
                     </ul>
                 </div>
             </section>

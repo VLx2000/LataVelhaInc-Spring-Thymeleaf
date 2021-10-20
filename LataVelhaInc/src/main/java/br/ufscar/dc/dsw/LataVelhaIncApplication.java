@@ -18,9 +18,10 @@ import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.domain.Veiculo;
 //import br.ufscar.dc.dsw.domain.Proposta;
 
-
 @SpringBootApplication
 public class LataVelhaIncApplication {
+
+	private static final int TAM = 13;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LataVelhaIncApplication.class, args);
@@ -87,41 +88,44 @@ public class LataVelhaIncApplication {
 			l3.setNome("Tesla saocarlense");
 			l3.setSenha(/*encoder.encode*/("123"));
 			l3.setEmail("loja3@gmail.com");
-			l3.setDescricao("Não vendemos elétricos nem foguetes");
+			l3.setDescricao("Não vendemos carros elétricos nem foguetes");
 			lojaDAO.save(l3);
+
+			Veiculo v[] = new Veiculo[TAM];
+
+			String placa[] = {"SADF-5645", "JRGB-6246", "ERBB-8768", "WGBW-3525", "YMRM-7457", "SFDC-2466", 
+								"MTMT-8568", "WERG-4677", "QAVE-2656", "ITRY-2555", "23QF-2245", "MYRM-6567", "RBWT-7473"};
+
+			String modelo[] = {"Corsa", "Fusca", "Uno", "Palio", "Monza", "Kombi", "Corolla", "Ka", "Focus", "F50", "R8", "RX-7", "Camaro"};
+
+			String chassi[] = {"edtfnbed", "etfgjnfn", "rtgndrtgfnrd", "dnbetrnert", "etrhjnetgj", "etgjneftgjn", "etjnjted", 
+								"agvedrhb", "mtrymy", "qawesdv", "hhbtnrb", "argbwsrb", "ntyretjn"};
+
+			Integer ano[] = {2005, 1997, 2007, 2006, 2001, 2000, 1988, 1987, 1999, 1999, 1996, 2007, 2006};
+
+			Integer quilometragem[] = {546762456, 7254727, 2457724, 25472475, 2547457, 2547457, 8586, 2575247, 856858, 1346164, 89598, 24575, 9856789};
+
+			String descricao[] = {"teste", "teste", "teste", "teste", "teste", "teste", "teste", "teste", "teste", "teste", "teste", "teste", "teste"};
 			
-			Veiculo v1 = new Veiculo();
-			v1.setPlaca("AAA0-5435");
-			v1.setModelo("Corsa");
-			v1.setChassi("1A1A1111111111111");
-			v1.setAno(1999);
-			v1.setQuilometragem(120000);
-			v1.setDescricao("Corsa 2005 turbinado");
-			v1.setPreco(BigDecimal.valueOf(5.999));
-			v1.setLoja(l1);
-			veiculoDAO.save(v1);
+			Double preco[] = {5999.99, 7999.99, 9999.99, 3999.99, 5999.99, 9999.99, 62999.99, 8999.99, 9999.99, 5999.99, 3999.99, 58999.99, 54999.99};
 
-			Veiculo v2 = new Veiculo();
-			v2.setPlaca("AAA0-7456");
-			v2.setModelo("Fusca");
-			v2.setChassi("1A1A1555555111111");
-			v2.setAno(1997);
-			v2.setQuilometragem(500000);
-			v2.setDescricao("Fusca 97 rebaixado");
-			v2.setPreco(BigDecimal.valueOf(3.999));
-			v2.setLoja(l2);
-			veiculoDAO.save(v2);
-
-			Veiculo v3 = new Veiculo();
-			v3.setPlaca("AAA0-1112");
-			v3.setModelo("Uno");
-			v3.setChassi("1A1A1112222222111");
-			v3.setAno(2007);
-			v3.setQuilometragem(220000);
-			v3.setDescricao("Uno Mile 2007");
-			v3.setPreco(BigDecimal.valueOf(7.999));
-			v3.setLoja(l3);
-			veiculoDAO.save(v3);			
+			for (int i = 0; i < TAM; i++){
+				v[i] = new Veiculo();
+				v[i].setPlaca(placa[i]);
+				v[i].setModelo(modelo[i]);
+				v[i].setChassi(chassi[i]);
+				v[i].setAno(ano[i]);
+				v[i].setDescricao(descricao[i]);
+				v[i].setQuilometragem(quilometragem[i]);
+				v[i].setPreco(BigDecimal.valueOf(preco[i]));
+				if (i % 3 == 0)
+					v[i].setLoja(l3);
+				else if (i % 2 == 0)
+					v[i].setLoja(l2);
+				else
+					v[i].setLoja(l1);
+				veiculoDAO.save(v[i]);
+			}			
 		};
 	}
 }
