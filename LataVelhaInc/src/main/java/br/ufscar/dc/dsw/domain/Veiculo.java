@@ -105,7 +105,7 @@ public class Veiculo extends AbstractEntity<Long>{
         return preco;
     }
 
-    public void setpreco(BigDecimal preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 

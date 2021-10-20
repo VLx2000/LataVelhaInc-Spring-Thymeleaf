@@ -29,8 +29,8 @@ public class Cliente extends AbstractEntity<Long>{
 	
 	@UniqueCPF (message = "{Unique.cliente.CPF}")
 	@NotBlank
-	@Size(min = 20, max = 20, message = "{Size.cliente.CPF}")
-	@Column(nullable = false, unique = true, length = 20)
+	@Size(min = 14, max = 14, message = "{Size.cliente.CPF}")
+	@Column(nullable = false, unique = true, length = 14)
 	private String CPF;
 	
 	@NotBlank
@@ -56,18 +56,10 @@ public class Cliente extends AbstractEntity<Long>{
 	@NotBlank
 	@Size(min = 1, max = 10 )
 	@Column(nullable = false, unique = true, length = 10)
-	private String papel;
-	
-	public Cliente(String email, String senha, String CPF, String nome, String telefone, String sexo, String data_nascimento, String papel) {
-		this.email = email;
-		this.senha = senha;
-		this.CPF = CPF;
-		this.nome = nome;
-		this.telefone = telefone;
-        this.sexo = sexo;
-        this.data_nascimento = data_nascimento;
-		this.papel = papel;
-	}
+	private String role;
+
+	@Column(nullable = false)
+    private boolean enabled;
 
 	public String getEmail() {
 		return email;
@@ -81,8 +73,8 @@ public class Cliente extends AbstractEntity<Long>{
 		return senha;
 	}
 
-	public void setSenha(String password) {
-		this.senha = password;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getNome() {
@@ -125,11 +117,19 @@ public class Cliente extends AbstractEntity<Long>{
 		this.data_nascimento = data_nascimento;
 	}
 
-	public String getPapel() {
-		return papel;
+	public String getRole() {
+		return role;
 	}
 
-	public void setPapel(String papel) {
-		this.papel = papel;
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+	
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }
