@@ -37,7 +37,7 @@
             <section class="box" onclick="location.href='/login'">
                 <div class="card">
                     <div class="container">
-                        <img src="images/1/1.jpg" alt="Carro">
+                        <img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">
                     </div>
                     <ul class="dadosCarro">
                         <li class="modelo" th:text="${veiculo.modelo}"></li>
