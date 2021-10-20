@@ -38,7 +38,7 @@ public class LataVelhaIncApplication {
 			c1.setEmail("admin@gmail.com");
 			c1.setTelefone("8678-2462");
 			c1.setSexo("F");
-			c1.setDataNascimento("13/03/95");
+			c1.setNascimento("13/03/95");
 			c1.setRole("ROLE_ADMIN");
 			c1.setEnabled(true);
 			clienteDAO.save(c1);
@@ -50,7 +50,7 @@ public class LataVelhaIncApplication {
 			c2.setEmail("cliente1@gmail.com");
 			c2.setTelefone("3566-6456");
 			c2.setSexo("M");
-			c2.setDataNascimento("23/08/01");
+			c2.setNascimento("23/08/01");
 			c2.setRole("ROLE_USER");
 			c2.setEnabled(true);
 			clienteDAO.save(c2);
@@ -63,7 +63,7 @@ public class LataVelhaIncApplication {
 			c3.setEmail("cliente2@gmail.com");
 			c3.setTelefone("7647-1354");
 			c3.setSexo("M");
-			c3.setDataNascimento("28/01/75");
+			c3.setNascimento("28/01/75");
 			c3.setRole("ROLE_USER");	
 			c3.setEnabled(true);
 			clienteDAO.save(c3);

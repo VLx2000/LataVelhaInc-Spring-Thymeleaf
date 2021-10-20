@@ -45,9 +45,9 @@ public class Cliente extends AbstractEntity<Long>{
 	private String sexo;
 	
 	@NotBlank
-	@Size(min = 8, max = 10 )
+	@Size(min = 4, max = 10 )
 	@Column(nullable = false, unique = false, length = 10)
-	private String data_nascimento;
+	private String nascimento;
 
 	@NotBlank
 	@Size(min = 1, max = 10 )
@@ -105,12 +105,12 @@ public class Cliente extends AbstractEntity<Long>{
 		this.sexo = sexo;
 	}
 
-    public String getDataNascimento() {
-		return data_nascimento;
+    public String getNascimento() {
+		return nascimento;
 	}
 
-	public void setDataNascimento(String data_nascimento) {
-		this.data_nascimento = data_nascimento;
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
 	}
 
 	public String getRole() {

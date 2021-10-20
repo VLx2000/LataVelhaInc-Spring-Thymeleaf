@@ -3,9 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>
-        <fmt:message key="page.title" />
-    </title>
+    <title th:text="#{page.title}"></title>
     <link rel="stylesheet" href="../css/global.css">
 </head>
 
@@ -13,15 +11,13 @@
     <div class="topbar">
         <ul>
             <li class="linkTopoEsquerda">
-                <a href="admin">
-                    <span id="titulo">
-                        <fmt:message key="topbar.title" />
-                    </span><span id="admin">admin</span>
+                <a href="/admin/">
+                    <span id="titulo" th:text="#{topbar.title}"></span>
+                    <span id="admin">admin</span>
                 </a>
             </li>
             <li class="linkTopoDireita">
-                <a href="logout">
-                    <fmt:message key="user.logout" />
+                <a href="/logout/" th:text="#{user.logout}">
                 </a>
             </li>
         </ul>

@@ -2,9 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>
-		<fmt:message key="store.title" />
-	</title>
+	<title th:text="#{customer.title}"></title>
 	<link rel="stylesheet" href="../css/lojas.css">
 	<link rel="stylesheet" href="../css/global.css">
 </head>
@@ -14,54 +12,36 @@
 	<div class="topbar">
 		<ul>
 			<li class="linkTopoEsquerda">
-				<a href="${pageContext.request.contextPath}/admin">
-					<span id="titulo">
-						<fmt:message key="topbar.title" />
-					</span><span id="admin">admin</span>
+				<a href="/admin/">
+					<span id="titulo" th:text="#{topbar.title}"></span>
+					<span id="admin">admin</span>
 				</a>
 			</li>
 			<li class="linkTopoDireita">
-				<a href="${pageContext.request.contextPath}/logout">
-					<fmt:message key="user.logout" />
-				</a>
+				<a href="logout/" th:text="#{user.logout}"></a>
 			</li>
 		</ul>
 	</div>
-	<div class="" align="center">
-		<h1 class="label">
-			<fmt:message key="store.welcome" />
-		</h1>
+	<div align="center">
+		<h1 class="label" th:text="#{customer.welcome}"></h1>
 	</div>
 
 	<div align="center">
-		<h3>
-			<fmt:message key="store.title" />
-		</h3>
-
+		<h3 th:text="#{customer.title}"></h3>
+		
 		<table>
 			<thead>
 				<tr>
-					<th>
-						<fmt:message key="store.id" />
-					</th>
-					<th>
-						<fmt:message key="store.name" />
-					</th>
-					<th>
-						<fmt:message key="store.email" />
-					</th>
-					<th>
-						<fmt:message key="store.password" />
-					</th>
-					<th>
-						<fmt:message key="store.cnpj" />
-					</th>
-					<th>
-						<fmt:message key="store.description" />
-					</th>
-					<th>
-						<fmt:message key="object.actions" />
-					</th>
+					<th th:text="#{customer.id}"></th>
+					<th th:text="#{customer.name}"></th>
+					<th th:text="#{customer.email}"></th>
+					<th th:text="#{customer.password}"></th>
+					<th th:text="#{customer.ssn}"></th>
+					<th th:text="#{customer.phone}"></th>
+					<th th:text="#{customer.gender}"></th>
+					<th th:text="#{customer.birth}"></th>
+					<th th:text="#{customer.paper}"></th>
+					<th th:text="#{object.actions}"></th>
 				</tr>
 			</thead>
 
@@ -75,23 +55,20 @@
 						<td th:text="${cliente.CPF}"></td>
 						<td th:text="${cliente.telefone}"></td>
 						<td th:text="${cliente.sexo}"></td>
-						<!--<td th:text="${cliente.data_nascimento}"></td>-->
+						<td th:text="${cliente.nascimento}"></td>
 						<td th:text="${cliente.role}"></td>
-						<td><a href="/<%= contextPath%>/admin/edicaoLoja?id=${loja.id}">
-								<fmt:message key="object.update" />
+						<td><a th:href="@{${'/admin/edicaoCliente?id=' + cliente.id}}" th:text="#{object.update}"></a>
+							&nbsp;&nbsp;&nbsp;&nbsp; 
+							<a th:href="@{${'/admin/remocaoCliente?id=' + cliente.id}}" th:text="#{object.delete}">
+							<!-- onclick="return confirm('th:text=@{#{confirm.message}}')-->
 							</a>
-							&nbsp;&nbsp;&nbsp;&nbsp; <a href="/<%= contextPath%>/admin/remocaoLoja?id=${loja.id}"
-								onclick="return confirm('<fmt:message key=" confirm.message" />');">
-							<fmt:message key="object.delete" /> </a>
 						</td>
 					</tr>
 				</div>
 			</tbody>
 		</table>
 		<div class="adiciona">
-			<a href="/<%=contextPath%>/admin/cadastroLoja">
-				<fmt:message key="store.add" />
-			</a>
+			<a href="/admin/cadastroCliente" th:text="#{customer.add}"></a>
 		</div>
 	</div>
 </body>

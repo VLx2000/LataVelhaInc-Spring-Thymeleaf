@@ -13,28 +13,21 @@
     <div class="topbar">
         <ul id="links">
             <li class="linkTopoEsquerda">
-                <a href="/">
-                    <span id="titulo">
-                        LataVelhaInc.
-                    </span>
-                </a>
+                <a href="/"><span id="titulo">LataVelhaInc.</span></a>
             </li>
             <li class="linkTopoDireita">
-                <a href="/admin/">
-                    Login
-                </a>
+                <a href="/admin/" th:text=#{user.login}></a>
             </li>
         </ul>
     </div>
     <section id="carros">
         <div id="divFiltro">
             <input type="text" name="Filtro" placeholder="filtrar..." id="filtro">
-            <span id="legendaN">
-                Veiculo(s)
-            </span><span id="numero">-</span>
+            <span id="legendaN" th:text=#{filter.count}></span>
+            <span id="numero">-</span>
         </div>
         <div th:each="veiculo: ${catalogo}">
-            <section class="box" onclick="location.href='/login'">
+            <section class="box" onclick="location.href='/login/'">
                 <div class="card">
                     <div class="container">
                         <img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">
