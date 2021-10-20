@@ -18,7 +18,7 @@ public class Veiculo extends AbstractEntity<Long>{
 
 	@NotBlank(message = "{NotBlank.veiculo.placa}")
 	@Size(max = 20)
-	@Column(nullable = false, length = 20)
+	@Column(nullable = false, unique = true, length = 20)
 	private String placa;
 	
 	@NotBlank(message = "{NotBlank.veiculo.modelo}")
@@ -28,7 +28,7 @@ public class Veiculo extends AbstractEntity<Long>{
 	
 	@NotBlank(message = "{NotBlank.veiculo.chassi}")
 	@Size(max = 17)
-	@Column(nullable = false, length = 17)
+	@Column(nullable = false, unique = true, length = 17)
     private String chassi;
 	
 	@NotNull(message = "{NotNull.veiculo.ano}")

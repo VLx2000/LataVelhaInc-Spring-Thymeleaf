@@ -1,16 +1,12 @@
 package br.ufscar.dc.dsw.domain;
 
-//import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import br.ufscar.dc.dsw.validation.UniqueCPF;
-
 
 @SuppressWarnings("serial")
 @Entity
@@ -19,12 +15,12 @@ public class Cliente extends AbstractEntity<Long>{
 	
 	@NotBlank(message = "{NotBlank.cliente.email}")
 	@Size(max = 30)
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, unique = true, length = 30)
 	private String email;
 	
 	@NotBlank(message = "{NotBlank.cliente.senha}")
 	@Size(max = 50)
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, unique = false, length = 50)
 	private String senha;
 	
 	@UniqueCPF (message = "{Unique.cliente.CPF}")
@@ -45,17 +41,17 @@ public class Cliente extends AbstractEntity<Long>{
 
     @NotBlank
 	@Size(min = 1, max = 10)
-	@Column(nullable = false, unique = true, length = 10)
+	@Column(nullable = false, unique = false, length = 10)
 	private String sexo;
 	
 	@NotBlank
 	@Size(min = 8, max = 10 )
-	@Column(nullable = false, unique = true, length = 10)
+	@Column(nullable = false, unique = false, length = 10)
 	private String data_nascimento;
 
 	@NotBlank
 	@Size(min = 1, max = 10 )
-	@Column(nullable = false, unique = true, length = 10)
+	@Column(nullable = false, unique = false, length = 10)
 	private String role;
 
 	@Column(nullable = false)

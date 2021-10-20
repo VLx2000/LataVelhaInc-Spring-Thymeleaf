@@ -56,17 +56,17 @@ public class LataVelhaIncApplication {
 			clienteDAO.save(c2);
 			
 			//SQL acha q todos os valores sao unicos!
-			/*Cliente c3 = new Cliente();
+			Cliente c3 = new Cliente();
 			c3.setNome("Michael Wazowski");
-			c3.setSenha(//encoder.encode("123"));
+			c3.setSenha(/*encoder.encode*/("123"));
 			c3.setCPF("367.318.380-04");
 			c3.setEmail("cliente2@gmail.com");
 			c3.setTelefone("7647-1354");
 			c3.setSexo("M");
 			c3.setDataNascimento("28/01/75");
-			c3.setRole("ROLE_USER2");	
+			c3.setRole("ROLE_USER");	
 			c3.setEnabled(true);
-			clienteDAO.save(c3);*/
+			clienteDAO.save(c3);
 			
 			Loja l1 = new Loja();
 			l1.setCNPJ("55.789.390/0008-99");

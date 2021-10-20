@@ -19,7 +19,7 @@ public class Loja extends AbstractEntity<Long>{
 	
 	@NotBlank(message = "{NotBlank.loja.email}")
 	@Size(max = 30)
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, unique = true, length = 30)
 	private String email;
 	
 	@NotBlank(message = "{NotBlank.loja.senha}")
@@ -40,7 +40,7 @@ public class Loja extends AbstractEntity<Long>{
 	
 	@NotBlank
 	@Size(min = 1, max = 120 )
-	@Column(nullable = false, unique = true, length = 120)
+	@Column(nullable = false, unique = false, length = 120)
 	private String descricao;
 
 	public String getEmail() {
