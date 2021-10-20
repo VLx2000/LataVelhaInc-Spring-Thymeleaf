@@ -33,23 +33,21 @@
                 Veiculo(s)
             </span><span id="numero">-</span>
         </div>
-        <c:forEach var="veiculo" items="${requestScope.catalogo}">
+        <div th:each="veiculo: ${catalogo}">
             <section class="box" onclick="location.href='/login'">
                 <div class="card">
                     <div class="container">
-                        <img src="imagens/${veiculo.id}/1.jpg" alt="Carro">
+                        <img src="images/1/1.jpg" alt="Carro">
                     </div>
                     <ul class="dadosCarro">
-                        <li class="modelo">${veiculo.modelo}</li>
-                        <li>
-                            <fmt:message key="store.entity" />: ${veiculo.loja.nome}
-                        </li>
-                        <li>${veiculo.quilometragem}km</li>
-                        <li class="oferta">R$${veiculo.valor}</li>
+                        <li class="modelo" th:text="${veiculo.modelo}"></li>
+                        <li th:text="${veiculo.loja.nome}"></li>
+                        <!--<li th:text="${veiculo.quilometragem}km"></li>
+                        <li class="oferta" th:text="R$${veiculo.preco}"></li>-->
                     </ul>
                 </div>
             </section>
-        </c:forEach>
+        </div>
     </section>
     <script src="js/filtro.js"></script>
 </body>
