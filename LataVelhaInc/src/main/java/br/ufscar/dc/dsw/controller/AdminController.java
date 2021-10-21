@@ -39,12 +39,12 @@ public class AdminController {
 	}
 
 	@GetMapping("/cadastrarCliente")
-	public String cadastroCliente(ModelMap model) {
+	public String cadastroCliente(Cliente cliente) {
 		return "admin/cadastroCliente";
 	}
 
-	@GetMapping("/editarCliente*")
-	public String preEdicaoCliente(@RequestParam Long id, ModelMap model) {
+	@GetMapping("/editarCliente{id}")
+	public String preEdicaoCliente(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("cliente", serviceCliente.buscarPorId(id));
 		return "admin/cadastroCliente";
 	}
@@ -55,7 +55,6 @@ public class AdminController {
 		if (result.hasErrors()) {
 			return "admin/cadastroCliente";
 		}
-
 		serviceCliente.salvar(cliente);
 		attr.addFlashAttribute("sucess", "cliente.edit.sucess");
 		return "redirect:/admin/listarClientes";
@@ -68,7 +67,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/salvarCliente")
-	public String salvar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
+	public String salvarCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
 
 		if (result.hasErrors()) {
 			return "admin/cadastroCliente";
@@ -84,9 +83,42 @@ public class AdminController {
 		return "admin/listaLojas";
 	}
 
+	@GetMapping("/cadastrarLoja")
+	public String cadastroLoja(Loja loja) {
+		return "admin/cadastroLoja";
+	}
+
+	@GetMapping("/editarLoja{id}")
+	public String preEdicaoLoja(@PathVariable("id") Long id, ModelMap model) {
+        model.addAttribute("loja", serviceLoja.buscarPorId(id));
+		return "admin/cadastroLoja";
+	}
+
+	@PostMapping("/editarLoja")
+	public String EdicaoLoja(@Valid Loja loja, ModelMap model, BindingResult result, RedirectAttributes attr) {
+		
+		if (result.hasErrors()) {
+			return "admin/cadastroLoja";
+		}
+		serviceLoja.salvar(loja);
+		attr.addFlashAttribute("sucess", "loja.edit.sucess");
+		return "redirect:/admin/listarLojas";
+	}
+
 	@GetMapping("/removerLoja")
 	public String remocaoLoja(ModelMap model, @RequestParam Long id) {
         serviceLoja.excluir(id);
+		return "redirect:/admin/listarLojas";
+	}
+
+	@PostMapping("/salvarLoja")
+	public String salvarLoja(@Valid Loja loja, BindingResult result, RedirectAttributes attr) {
+
+		if (result.hasErrors()) {
+			return "admin/cadastroLoja";
+		}
+		serviceLoja.salvar(loja);
+		attr.addFlashAttribute("sucess", "loja.create.sucess");
 		return "redirect:/admin/listarLojas";
 	}
 }

@@ -51,7 +51,7 @@
 						<td th:text="${loja.senha}"></td>
 						<td th:text="${loja.CNPJ}"></td>
 						<td th:text="${loja.descricao}"></td>
-						<td><a th:href="@{${'/admin/editarLoja?id=' + loja.id}}" th:text="#{object.update}"></a>
+						<td><a th:href="@{/admin/editarLoja{id} (id=${loja.id})}" th:text="#{object.update}"></a>
 							&nbsp;&nbsp;&nbsp;&nbsp; 
 							<a th:href="@{${'/admin/removerLoja?id=' + loja.id}}" th:text="#{object.delete}">
 							<!-- onclick="return confirm('th:text=@{#{confirm.message}}')-->
