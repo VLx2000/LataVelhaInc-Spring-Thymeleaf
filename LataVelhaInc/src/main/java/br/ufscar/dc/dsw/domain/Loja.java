@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import br.ufscar.dc.dsw.validation.UniqueCNPJ;
+//import br.ufscar.dc.dsw.validation.UniqueCNPJ;
 
 
 @SuppressWarnings("serial")
@@ -27,7 +27,7 @@ public class Loja extends AbstractEntity<Long>{
 	@Column(nullable = false, length = 50)
 	private String senha;
 	
-	@UniqueCNPJ (message = "{Unique.loja.CNPJ}")
+	//@UniqueCNPJ (message = "{Unique.loja.CNPJ}")
 	@NotBlank
 	@Size(min = 18, max = 18, message = "{Size.loja.CNPJ}")
 	@Column(nullable = false, unique = true, length = 60)

@@ -9,7 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import br.ufscar.dc.dsw.dao.ILojaDAO;
 import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.service.spec.ILojaService;
-
+import br.ufscar.dc.dsw.domain.Veiculo;
+import br.ufscar.dc.dsw.service.spec.IVeiculoService;
 
 @Service
 @Transactional(readOnly = false)
@@ -17,12 +18,19 @@ public class LojaService implements ILojaService{
 
 	@Autowired
 	ILojaDAO dao;
+
+	@Autowired
+	private IVeiculoService serviceVeiculo;
 	
 	public void salvar(Loja loja) {
 		dao.save(loja);
 	}
 
 	public void excluir(Long id) {
+		Loja loja = buscarPorId(id.longValue());
+		List<Veiculo> veiculos = serviceVeiculo.buscarTodosPorLoja(loja);
+		for (int i = 0; i < veiculos.size(); i++)
+			serviceVeiculo.excluir(veiculos.get(i).getId());
 		dao.deleteById(id);
 	}
 

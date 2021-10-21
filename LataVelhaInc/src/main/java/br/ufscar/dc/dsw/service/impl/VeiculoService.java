@@ -36,13 +36,9 @@ public class VeiculoService implements IVeiculoService{
 	public List<Veiculo> buscarTodos() {
 		return dao.findAll();
 	}
-	
+
 	@Transactional(readOnly = true)
-	public List<Veiculo> buscarPorLoja(Loja loja) {
+	public List<Veiculo> buscarTodosPorLoja(Loja loja) {
 		return dao.findAllByLoja(loja);
 	}
-	
-
-	
-
 }
