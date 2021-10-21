@@ -15,8 +15,23 @@
             <li class="linkTopoEsquerda">
                 <a href="/"><span id="titulo">LataVelhaInc.</span></a>
             </li>
-            <li class="linkTopoDireita">
+            <!--<li class="linkTopoDireita">
                 <a href="/admin/" th:text=#{user.login}></a>
+            </li>-->
+            <li class="linkTopoDireita">
+                <a href="/admin/">Teste admin</a>
+            </li>
+            <li class="linkTopoDireita">
+                <a href="/cliente/">Teste Cliente</a>
+            </li>
+            <li class="linkTopoDireita">
+                <a th:href="@{/loja/{id} (id=${1})}">Teste Loja 1</a>
+            </li>
+            <li class="linkTopoDireita">
+                <a th:href="@{/loja/{id} (id=${2})}">Teste Loja 2</a>
+            </li>
+            <li class="linkTopoDireita">
+                <a th:href="@{/loja/{id} (id=${3})}">Teste Loja 3</a>
             </li>
         </ul>
     </div>

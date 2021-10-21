@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 //import br.ufscar.dc.dsw.domain.Cliente;
 //import br.ufscar.dc.dsw.domain.Veiculo;
-import br.ufscar.dc.dsw.service.spec.IClienteService;
+//import br.ufscar.dc.dsw.service.spec.IClienteService;
 import br.ufscar.dc.dsw.service.spec.IVeiculoService;
 
 
 @Controller
 @RequestMapping("/cliente/*")
 public class ClienteController {
-
+/*
     @Autowired
 	private IClienteService service;
-    
+    */
     @Autowired
 	private IVeiculoService serviceVeiculo;
 	

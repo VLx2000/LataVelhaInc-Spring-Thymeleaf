@@ -25,10 +25,10 @@ public class LojaController {
 	private IVeiculoService serviceVeiculo;
 	
     
-    @GetMapping("/")
-	public String inicio( @PathVariable("id") Long id, ModelMap model) {
+    @GetMapping("/{id}")
+	public String inicio(@PathVariable("id") Long id, ModelMap model) {
     	Loja loja = service.buscarPorId(id);
-    	model.addAttribute("catalogo", serviceVeiculo.buscarPorLoja(loja));
+    	model.addAttribute("catalogo", serviceVeiculo.buscarTodosPorLoja(loja));
 		return "loja/inicio";
 	}
    
