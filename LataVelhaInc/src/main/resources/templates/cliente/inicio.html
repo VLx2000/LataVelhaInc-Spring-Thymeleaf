@@ -16,11 +16,11 @@
 	                <li class="nomeTopoDireita">
 	                    <span th:text=#{user.welcome}/></span>
 	                    <ul class="dropdown">
-	                        <li><a href="logout"><th:text=#{user.logout}/></a></li>
+	                        <li><a href="logout"><th:text=#{user.logout}></a></li>
 	                    </ul>
 	                </li>
 	                <li class="linkTopoDireita">
-	                    <a href="proposta/listarPropostasCliente" th:text=#{customer.bids}/></a>
+	                    <a th:href="@{/cliente/{id}/listaPropostas (id=${1})}" th:text=#{customer.bids}></a>
 	                </li>
 	            </ul>
 	        </div>

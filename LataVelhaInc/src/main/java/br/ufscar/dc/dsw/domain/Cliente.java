@@ -25,7 +25,7 @@ public class Cliente extends AbstractEntity<Long>{
 	
 	//@UniqueCPF (message = "{Unique.cliente.CPF}")
 	@NotBlank
-	@Size(min = 14, max = 14, message = "{Size.cliente.CPF}")
+	@Size(min = 11, max = 14, message = "{Size.cliente.CPF}")
 	@Column(nullable = false, unique = true, length = 14)
 	private String CPF;
 	
