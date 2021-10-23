@@ -41,8 +41,8 @@ public class Proposta extends AbstractEntity<Long>{
     private String estado;
 
 	@NotNull(message = "{NotNull.proposta.parcelamento")
-	@Size(max = 10)
-	@Column(nullable = false, length = 10)
+	@Size(max = 20)
+	@Column(nullable = false, length = 20)
     private String parcelamento;
 	
 	public void setCliente(Cliente cliente) {
@@ -69,8 +69,8 @@ public class Proposta extends AbstractEntity<Long>{
 		return this.veiculo;
 	}
 	
-	public void setValor(Loja loja) {
-		this.loja = loja;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 	
 	public BigDecimal getValor() {

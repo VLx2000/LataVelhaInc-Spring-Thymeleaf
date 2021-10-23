@@ -5,8 +5,8 @@
     <title>LataVelhaInc.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/inicio.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
                 <a href="/admin/">Teste admin</a>
             </li>
             <li class="linkTopoDireita">
-                 <a th:href="@{/cliente/{id} (id=${1})}">Teste Cliente 1</a>
+                <a th:href="@{/cliente/{id} (id=${1})}">Teste Cliente 1</a>
             </li>
             <li class="linkTopoDireita">
                 <a th:href="@{/loja/{id} (id=${1})}">Teste Loja 1</a>
@@ -42,22 +42,24 @@
             <span id="numero">-</span>
         </div>
         <div th:each="veiculo: ${catalogo}">
-            <section class="box" onclick="location.href='/login/'">
-                <div class="card">
-                    <div class="container">
-                        <img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">
+            <section class="box">
+                <a href="/login/" class="box-link">
+                    <div class="card">
+                        <div class="container">
+                            <img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">
+                        </div>
+                        <ul class="dadosCarro">
+                            <li class="modelo" th:text="${veiculo.modelo}"></li>
+                            <li th:text="${veiculo.loja.nome}"></li>
+                            <li th:text="${veiculo.quilometragem + 'km'}"></li>
+                            <li class="oferta" th:text="${'R$' + veiculo.preco}"></li>
+                        </ul>
                     </div>
-                    <ul class="dadosCarro">
-                        <li class="modelo" th:text="${veiculo.modelo}"></li>
-                        <li th:text="${veiculo.loja.nome}"></li>
-                        <li th:text="${veiculo.quilometragem + 'km'}"></li>
-                        <li class="oferta" th:text="${'R$' + veiculo.preco}"></li>
-                    </ul>
-                </div>
+                </a>
             </section>
         </div>
     </section>
-    <script src="js/filtro.js"></script>
+    <script src="/js/filtro.js"></script>
 </body>
 
 </html>

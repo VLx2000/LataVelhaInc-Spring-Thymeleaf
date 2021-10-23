@@ -11,12 +11,12 @@ import org.springframework.context.annotation.Bean;
 import br.ufscar.dc.dsw.dao.IClienteDAO;
 import br.ufscar.dc.dsw.dao.ILojaDAO;
 import br.ufscar.dc.dsw.dao.IVeiculoDAO;
-//import br.ufscar.dc.dsw.dao.IPropostaDAO;
+import br.ufscar.dc.dsw.dao.IPropostaDAO;
 
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.domain.Veiculo;
-//import br.ufscar.dc.dsw.domain.Proposta;
+import br.ufscar.dc.dsw.domain.Proposta;
 
 @SpringBootApplication
 public class LataVelhaIncApplication {
@@ -28,7 +28,7 @@ public class LataVelhaIncApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IClienteDAO clienteDAO, ILojaDAO lojaDAO, /*BCryptPasswordEncoder encoder,*/ IVeiculoDAO veiculoDAO) {
+	public CommandLineRunner demo(IClienteDAO clienteDAO, ILojaDAO lojaDAO, IVeiculoDAO veiculoDAO, IPropostaDAO propostaDAO /*,BCryptPasswordEncoder encoder*/) {
 		return (args) -> {
 			
 			Cliente c1 = new Cliente();
@@ -126,7 +126,37 @@ public class LataVelhaIncApplication {
 				else
 					v[i].setLoja(l1);
 				veiculoDAO.save(v[i]);
-			}			
+			}
+
+			Proposta p1 = new Proposta();
+			p1.setValor(BigDecimal.valueOf(4000));
+			p1.setParcelamento("12 vezes com juros");
+			p1.setData("20/09/21");
+			p1.setEstado("ABERTO");
+			p1.setLoja(l1);
+			p1.setCliente(c1);
+			p1.setVeiculo(v[1]);
+			propostaDAO.save(p1);
+
+			Proposta p2 = new Proposta();
+			p2.setValor(BigDecimal.valueOf(10000));
+			p2.setParcelamento("a vista");
+			p2.setData("23/10/21");
+			p2.setEstado("ACEITO");
+			p2.setLoja(l2);
+			p2.setCliente(c1);
+			p2.setVeiculo(v[2]);
+			propostaDAO.save(p1);
+
+			Proposta p3 = new Proposta();
+			p3.setValor(BigDecimal.valueOf(2000));
+			p3.setParcelamento("30 vezes sem juros");
+			p3.setData("30/05/21");
+			p3.setEstado("NEGADO");
+			p3.setLoja(l1);
+			p3.setCliente(c1);
+			p3.setVeiculo(v[1]);
+			propostaDAO.save(p3);
 		};
 	}
 }
