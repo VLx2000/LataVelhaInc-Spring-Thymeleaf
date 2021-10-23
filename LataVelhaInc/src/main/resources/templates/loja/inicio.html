@@ -30,7 +30,7 @@
 	</div>
 	<section id="carros">
 		<div id="divFiltro">
-			<input type="text" name="Filtro" placeholder="filtrar..." id="filtro">
+			<input type="text" name="Filtro" placeholder="filtrar..." id="filtro" onfocus="comecar()" onblur="parar()">
 			<span id="legendaN" th:text=#{filter.count}></span>
 			<span id="numero">-</span>
 		</div>

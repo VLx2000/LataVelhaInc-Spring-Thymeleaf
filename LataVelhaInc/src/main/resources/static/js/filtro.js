@@ -1,4 +1,4 @@
-setInterval(function filtro() {
+function filtro() {
     var filtrar = document.getElementById('filtro')
     var modelos = document.querySelectorAll('.modelo')
     var cards = document.querySelectorAll('.box')
@@ -19,4 +19,15 @@ setInterval(function filtro() {
         }
     }
     document.getElementById('numero').textContent = cont
-}, 100)
+    //console.log('to rodando!')
+}
+
+var timer
+
+function comecar(){
+    timer = setInterval(filtro,100)
+}
+
+function parar(){
+    clearInterval(timer)
+}
