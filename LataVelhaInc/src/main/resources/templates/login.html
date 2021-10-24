@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title th:text="#{page.title}"></title>
+        <link rel="stylesheet" href="css/global.css">
+    	<link rel="stylesheet" href="css/inicio.css">
+    </head>
+    <body>
+        <h1 class="tituloLogin">LataVelhaInc.</h1>
+        <div class="boxLogin">
+        	<form method="post" th:action="@{/login}">
+	        	<label class="labelLogin" th:text="#{user.login}"></label>:
+			       	<input class="camposLogin" type="text" name="login">
+        		
+	        	<label th:text="#{user.password}"></label>:
+	        		<input class="camposLogin" type="password" name="senha" />
+				
+	        	<input class="botaoLogin" type="submit" name="bOK" th:value="#{user.login}">
+	        </form>
+        </div>
+    </body>
+</html>

@@ -9,25 +9,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-//import br.ufscar.dc.dsw.validation.UniqueCNPJ;
+import br.ufscar.dc.dsw.validation.UniqueCNPJ;
 
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Loja")
-public class Loja extends AbstractEntity<Long>{
+public class Loja extends Usuario{
 	
-	@NotBlank(message = "{NotBlank.loja.email}")
-	@Size(max = 30)
-	@Column(nullable = false, unique = true, length = 30)
-	private String email;
-	
-	@NotBlank(message = "{NotBlank.loja.senha}")
-	@Size(max = 50)
-	@Column(nullable = false, length = 50)
-	private String senha;
-	
-	//@UniqueCNPJ (message = "{Unique.loja.CNPJ}")
+	@UniqueCNPJ (message = "{Unique.loja.CNPJ}")
 	@NotBlank
 	@Size(min = 14, max = 18, message = "{Size.loja.CNPJ}")
 	@Column(nullable = false, unique = true, length = 60)
@@ -42,22 +32,6 @@ public class Loja extends AbstractEntity<Long>{
 	@Size(min = 1, max = 120 )
 	@Column(nullable = false, unique = false, length = 120)
 	private String descricao;
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String password) {
-		this.senha = password;
-	}
 
 	public String getNome() {
 		return nome;

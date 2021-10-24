@@ -6,24 +6,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-//import br.ufscar.dc.dsw.validation.UniqueCPF;
+import br.ufscar.dc.dsw.validation.UniqueCPF;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Cliente")
-public class Cliente extends AbstractEntity<Long>{
+public class Cliente extends Usuario{
 	
-	@NotBlank(message = "{NotBlank.cliente.email}")
-	@Size(max = 30)
-	@Column(nullable = false, unique = true, length = 30)
-	private String email;
-	
-	@NotBlank(message = "{NotBlank.cliente.senha}")
-	@Size(max = 50)
-	@Column(nullable = false, unique = false, length = 50)
-	private String senha;
-	
-	//@UniqueCPF (message = "{Unique.cliente.CPF}")
+	@UniqueCPF (message = "{Unique.cliente.CPF}")
 	@NotBlank
 	@Size(min = 11, max = 14, message = "{Size.cliente.CPF}")
 	@Column(nullable = false, unique = true, length = 14)
@@ -48,30 +38,6 @@ public class Cliente extends AbstractEntity<Long>{
 	@Size(min = 4, max = 10 )
 	@Column(nullable = false, unique = false, length = 10)
 	private String nascimento;
-
-	@NotBlank
-	@Size(min = 1, max = 10 )
-	@Column(nullable = false, unique = false, length = 10)
-	private String role;
-
-	@Column(nullable = false)
-    private boolean enabled;
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 	public String getNome() {
 		return nome;
@@ -113,19 +79,4 @@ public class Cliente extends AbstractEntity<Long>{
 		this.nascimento = nascimento;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-	
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
 }

@@ -18,4 +18,9 @@ public class IndexController {
         model.addAttribute("catalogo", service.buscarTodos());
         return "index";
     }
+    
+    @GetMapping("/login")
+    public String login() {
+    	return "login";
+    }
 }

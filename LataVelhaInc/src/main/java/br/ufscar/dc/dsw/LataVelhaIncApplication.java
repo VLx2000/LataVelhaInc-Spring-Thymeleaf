@@ -12,11 +12,12 @@ import br.ufscar.dc.dsw.dao.IClienteDAO;
 import br.ufscar.dc.dsw.dao.ILojaDAO;
 import br.ufscar.dc.dsw.dao.IVeiculoDAO;
 import br.ufscar.dc.dsw.dao.IPropostaDAO;
-
+import br.ufscar.dc.dsw.dao.IUsuarioDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.domain.Veiculo;
 import br.ufscar.dc.dsw.domain.Proposta;
+import br.ufscar.dc.dsw.domain.Usuario;
 
 @SpringBootApplication
 public class LataVelhaIncApplication {
@@ -28,26 +29,33 @@ public class LataVelhaIncApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IClienteDAO clienteDAO, ILojaDAO lojaDAO, IVeiculoDAO veiculoDAO, IPropostaDAO propostaDAO /*,BCryptPasswordEncoder encoder*/) {
+	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, IClienteDAO clienteDAO, ILojaDAO lojaDAO, IVeiculoDAO veiculoDAO, IPropostaDAO propostaDAO /*,BCryptPasswordEncoder encoder*/) {
 		return (args) -> {
 			
+			Usuario u1 = new Usuario();
+			u1.setUsername("admin");
+			u1.setPassword(/*encoder.encode*/("admin"));
+			u1.setRole("ROLE_ADMIN");
+			u1.setEnabled(true);
+			usuarioDAO.save(u1);
+			
 			Cliente c1 = new Cliente();
-			c1.setNome("admin");
-			c1.setSenha(/*encoder.encode*/("admin"));
+			c1.setUsername("jorjao@gmail.com");
+			c1.setPassword(/*encoder.encode*/("admin"));
+			c1.setNome("jorge");
 			c1.setCPF("012.345.678-90");
-			c1.setEmail("admin@gmail.com");
 			c1.setTelefone("8678-2462");
 			c1.setSexo("F");
 			c1.setNascimento("13/03/95");
-			c1.setRole("ROLE_ADMIN");
+			c1.setRole("ROLE_USER");
 			c1.setEnabled(true);
 			clienteDAO.save(c1);
 			
 			Cliente c2 = new Cliente();
+			c2.setUsername("cliente1@gmail.com");
+			c2.setPassword(/*encoder.encode*/("123"));
 			c2.setNome("Airto Cena");
-			c2.setSenha(/*encoder.encode*/("123"));
 			c2.setCPF("985.849.614-10");
-			c2.setEmail("cliente1@gmail.com");
 			c2.setTelefone("3566-6456");
 			c2.setSexo("M");
 			c2.setNascimento("23/08/01");
@@ -57,10 +65,10 @@ public class LataVelhaIncApplication {
 			
 			//SQL acha q todos os valores sao unicos!
 			Cliente c3 = new Cliente();
+			c3.setUsername("cliente2@gmail.com");
+			c3.setPassword(/*encoder.encode*/("123"));
 			c3.setNome("Michael Wazowski");
-			c3.setSenha(/*encoder.encode*/("123"));
 			c3.setCPF("367.318.380-04");
-			c3.setEmail("cliente2@gmail.com");
 			c3.setTelefone("7647-1354");
 			c3.setSexo("M");
 			c3.setNascimento("28/01/75");
@@ -69,27 +77,33 @@ public class LataVelhaIncApplication {
 			clienteDAO.save(c3);
 			
 			Loja l1 = new Loja();
+			l1.setUsername("loja1@gmail.com");
+			l1.setPassword(/*encoder.encode*/("123"));
 			l1.setCNPJ("55.789.390/0008-99");
 			l1.setNome("Carros e Ventiladores SA");
-			l1.setSenha(/*encoder.encode*/("123"));
-			l1.setEmail("loja1@gmail.com");
 			l1.setDescricao("Sim, carros e ventiladores");
+			l1.setRole("ROLE_LOJA");	
+			l1.setEnabled(true);
 			lojaDAO.save(l1);
 			
 			Loja l2 = new Loja();
+			l2.setUsername("loja2@gmail.com");
+			l2.setPassword(/*encoder.encode*/("123"));
 			l2.setCNPJ("71.150.470/0001-40");
 			l2.setNome("Ferro velho do Maicao");
-			l2.setSenha(/*encoder.encode*/("123"));
-			l2.setEmail("loja2@gmail.com");
 			l2.setDescricao("Desde 1934 fazendo história");
+			l2.setRole("ROLE_LOJA");	
+			l2.setEnabled(true);
 			lojaDAO.save(l2);
 			
 			Loja l3 = new Loja();
+			l3.setUsername("loja3@gmail.com");
+			l3.setPassword(/*encoder.encode*/("123"));
 			l3.setCNPJ("32.106.536/0001-82");
 			l3.setNome("Tesla saocarlense");
-			l3.setSenha(/*encoder.encode*/("123"));
-			l3.setEmail("loja3@gmail.com");
 			l3.setDescricao("Não vendemos carros elétricos nem foguetes");
+			l3.setRole("ROLE_LOJA");	
+			l3.setEnabled(true);
 			lojaDAO.save(l3);
 
 			Veiculo v[] = new Veiculo[TAM];
