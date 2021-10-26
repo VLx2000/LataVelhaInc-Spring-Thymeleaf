@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 //import br.ufscar.dc.dsw.domain.Cliente;
 //import br.ufscar.dc.dsw.domain.Veiculo;
 
-import br.ufscar.dc.dsw.domain.Cliente;
+//import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.service.spec.ILojaService;
 import br.ufscar.dc.dsw.service.spec.IVeiculoService;

@@ -19,11 +19,11 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
         Usuario user = dao.findByUsername(username);
         
         if (user == null) {
-        	
+        	//System.out.println(username);
         	System.out.println("user eh null");
             throw new UsernameNotFoundException("Could not find user");
         }
-         
+        //System.out.println(user.getId());
         return new UsuarioDetails(user);
     }
  
