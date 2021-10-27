@@ -3,6 +3,8 @@
 
 <head>
 	<meta charset="UTF-8" />
+	<title th:text="#{customer.register.title}"></title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" href="/css/global.css">
 	<link rel="stylesheet" href="/css/cadastro.css">
 </head>
@@ -43,8 +45,8 @@
 						</div>
 					</div>
 					<div class="form-group col-md-6">
-						<label th:text="#{customer.email}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Email" th:field="*{username}"
+						<label th:text="#{customer.email}" for="username"></label>
+						<input type="text" class="form-control" id="username" placeholder="Email" th:field="*{username}"
 							th:classappend="${#fields.hasErrors('username')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -52,8 +54,8 @@
 						</div>
 					</div>
 					<div class="form-group col-md-6">
-						<label th:text="#{customer.password}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Senha" th:field="*{password}"
+						<label th:text="#{customer.password}" for="password"></label>
+						<input type="text" class="form-control" id="password" placeholder="Senha" th:field="*{password}"
 							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -61,8 +63,9 @@
 						</div>
 					</div>
 					<div class="form-group col-md-6">
-						<label th:text="#{customer.ssn}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="CPF" th:field="*{CPF}"
+						<label th:text="#{customer.ssn}" for="CPF"></label>
+						<input type="text" class="form-control" id="CPF" placeholder="___.___.___-__" th:field="*{CPF}"
+							data-mask="000.000.000-00" data-mask-reverse="true"
 							th:classappend="${#fields.hasErrors('CPF')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -79,8 +82,8 @@
 						</div>
 					</div>
 					<div class="form-group col-md-6">
-						<label th:text="#{customer.gender}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Sexo" th:field="*{sexo}"
+						<label th:text="#{customer.gender}" for="sexo"></label>
+						<input type="text" class="form-control" id="Sexo" placeholder="Sexo" th:field="*{sexo}"
 							th:classappend="${#fields.hasErrors('sexo')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -88,17 +91,18 @@
 						</div>
 					</div>
 					<div class="form-group col-md-6">
-						<label th:text="#{customer.birth}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Data de Nascimento"
-							th:field="*{nascimento}" th:classappend="${#fields.hasErrors('nascimento')} ? is-invalid" />
+						<label th:text="#{customer.birth}" for="nascimento"></label>
+						<input type="text" class="form-control" id="nascimento" placeholder="__/__/____" th:field="*{nascimento}"
+							data-mask="00/00/0000" data-mask-reverse="true"
+							th:classappend="${#fields.hasErrors('nascimento')} ? is-invalid" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{nascimento}"></span>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
-						<label th:text="#{user.role}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Papel"
+						<label th:text="#{user.role}" for="role"></label>
+						<input type="text" class="form-control" id="role" placeholder="Papel"
 							th:field="*{role}" th:classappend="${#fields.hasErrors('role')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -113,5 +117,8 @@
 		</div>
 	</section>
 </body>
+	
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/jquery-mask-plugin/dist/jquery.mask.min.js}"></script>
 
 </html>
