@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,7 +22,13 @@
 			<li class="nomeTopoDireita">
 				<span th:text=#{user.welcome}>Teste</span>
 				<ul class="dropdown">
-					<li><a href="/logout/" th:text=#{user.logout}></a></li>
+					<li>
+            			<div sec:authorize="isAuthenticated()">
+							<form th:action="@{/logout}" method="post">
+								<input type="submit" name="login-submit" id="login-submit" value="Logout">
+							</form>
+						</div>
+            		</li>
 				</ul>
 			</li>
 			<li class="linkTopoDireita">

@@ -217,7 +217,7 @@ a {
 	transition: 0.5s all;
 }
 
-.botaoLogin:active {
+.botaoLogin:hover {
 	background: red;
 }
 

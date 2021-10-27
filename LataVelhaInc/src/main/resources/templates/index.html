@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
     <title>LataVelhaInc.</title>
@@ -16,7 +18,18 @@
                 <a href="/"><span id="titulo">LataVelhaInc.</span></a>
             </li>
             <li class="linkTopoDireita">
-                <a th:href="@{/login/}">Login</a>
+            	<div sec:authorize="!isAuthenticated()">
+            		<a th:href="@{/login/}">Login</a>
+            	</div>
+                
+            </li>
+            
+            <li class="linkTopoDireita">
+            	<div sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" method="post">
+						<input type="submit" name="login-submit" id="login-submit" value="Logout">
+					</form>
+				</div>
             </li>
             
             <li class="linkTopoDireita">
