@@ -34,13 +34,7 @@ public class IndexController {
         model.addAttribute("cliente", cliente);
         model.addAttribute("loja", loja);
 
-        if(username == "admin"){
-            return "admin/crudLinks";
-        }
-        else if(cliente != null){
-            model.addAttribute("catalogo", serviceVeiculo.buscarTodos());
-        }
-        else if(loja != null){
+        if(loja != null){
             model.addAttribute("catalogo", serviceVeiculo.buscarTodosPorLoja(loja));
         }
         else {

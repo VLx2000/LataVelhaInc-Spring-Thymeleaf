@@ -29,7 +29,7 @@ public class AdminController {
 	
     @GetMapping("/")
 	public String crud() {
-		return "admin/crudLinks";
+		return "index";
 	}
 
     @GetMapping("/listarClientes")
