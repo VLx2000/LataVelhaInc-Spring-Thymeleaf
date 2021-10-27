@@ -22,7 +22,7 @@
 			<li class="linkTopoDireita">
             	<div sec:authorize="isAuthenticated()">
 					<form th:action="@{/logout}" method="post">
-						<input type="submit" name="login-submit" id="login-submit" value="Logout">
+						<input type="submit" name="login-submit" class="botaoLogout" value="Logout">
 					</form>
 				</div>
             </li>

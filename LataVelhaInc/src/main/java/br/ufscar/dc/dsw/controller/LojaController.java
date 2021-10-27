@@ -34,6 +34,7 @@ public class LojaController {
 	public String inicio(@PathVariable("id") Long id, ModelMap model) {
     	Loja loja = service.buscarPorId(id);
     	model.addAttribute("catalogo", serviceVeiculo.buscarTodosPorLoja(loja));
+		model.addAttribute("loja", loja);
 		return "loja/inicio";
 	}
     
@@ -41,8 +42,7 @@ public class LojaController {
     public String propostas(@PathVariable("id") Long id, ModelMap model) {
     	Loja loja = service.buscarPorId(id);
     	model.addAttribute("propostas",serviceProposta.buscarPorLoja(loja));
+		model.addAttribute("loja", loja);
     	return "loja/listaPropostas";
     }
-   
-
 }

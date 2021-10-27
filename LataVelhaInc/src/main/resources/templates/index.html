@@ -7,7 +7,7 @@
     <title>LataVelhaInc.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/inicio.css">
 </head>
 
@@ -19,7 +19,7 @@
             </li>
             <li class="linkTopoDireita">
             	<div sec:authorize="!isAuthenticated()">
-            		<a th:href="@{/login/}">Login</a>
+            		<a th:href="@{/login/}" class="botaoLogin">Login</a>
             	</div>
                 
             </li>
@@ -27,7 +27,7 @@
             <li class="linkTopoDireita">
             	<div sec:authorize="isAuthenticated()">
 					<form th:action="@{/logout}" method="post">
-						<input type="submit" name="login-submit" id="login-submit" value="Logout">
+						<input type="submit" name="login-submit" class="botaoLogout" value="Logout">
 					</form>
 				</div>
             </li>

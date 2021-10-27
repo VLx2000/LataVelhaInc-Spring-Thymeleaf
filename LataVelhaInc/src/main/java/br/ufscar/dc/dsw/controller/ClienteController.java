@@ -17,27 +17,29 @@ import br.ufscar.dc.dsw.service.spec.IPropostaService;
 @Controller
 @RequestMapping("/cliente/*")
 public class ClienteController {
-/*
-    @Autowired
+
+	@Autowired
 	private IClienteService service;
-    */
-    @Autowired
+
+	@Autowired
 	private IVeiculoService serviceVeiculo;
+
     @Autowired
 	private IPropostaService serviceProposta;
-    @Autowired
-	private IClienteService service;
+
     @GetMapping("/{id}")
-	public String inicio(ModelMap model) {
+	public String inicio(@PathVariable("id") Long id, ModelMap model) {
+		Cliente cliente = service.buscarPorId(id);
     	model.addAttribute("catalogo", serviceVeiculo.buscarTodos());
+		model.addAttribute("cliente", cliente);
 		return "cliente/inicio";
 	}
+
     @GetMapping("/{id}/listaPropostas")
     public String propostas(@PathVariable("id") Long id, ModelMap model) {
     	Cliente cliente = service.buscarPorId(id);
     	model.addAttribute("propostas",serviceProposta.buscarPorCliente(cliente));
+		model.addAttribute("cliente", cliente);
     	return "cliente/listaPropostas";
     }
-   
-
 }
