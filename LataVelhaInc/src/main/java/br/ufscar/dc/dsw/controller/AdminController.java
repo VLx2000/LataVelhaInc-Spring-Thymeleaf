@@ -19,7 +19,7 @@ import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.service.spec.ILojaService;
 
 @Controller
-@RequestMapping("/admin/*")
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class AdminController {
 	
     @GetMapping("/")
 	public String crud() {
-		return "admin/crudLinks";
+		return "index";
 	}
 
     @GetMapping("/listarClientes")

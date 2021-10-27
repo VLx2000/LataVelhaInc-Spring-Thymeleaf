@@ -19,6 +19,10 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
 		return id;
 	}
 
+	public String getIdString() {
+		return "" + id;
+	}
+
 	public void setId(ID id) {
 		this.id = id;
 	}

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,73 +12,8 @@
 </head>
 
 <body>
-	<div class="topbar">
-		<ul id="links">
-			<li class="linkTopoEsquerda">
-				<a href="/">
-					<span id="titulo">LataVelhaInc.</span>
-				</a>
-			</li>
-			<li class="nomeTopoDireita">
-				<span th:text=#{user.welcome}>Teste</span>
-				<ul class="dropdown">
-					<li><a href="/logout/" th:text=#{user.logout}></a></li>
-				</ul>
-			</li>
-			<li class="linkTopoDireita">
-				<a href="listarPropostasCliente" th:text=#{customer.bids}></a>
-			</li>
-		</ul>
-	</div>
-	<div align="center">
-		<h1 class="label" th:text=#{bids.list}></h1>
-	</div>
-	<div align="center">
-		<section>
-			<table class="propostas">
-				<thead>
-					<tr>
-						<th th:text=#{bids.date}></th>
-						<th th:text=#{bids.photo}></th>
-						<th th:text=#{bids.vehicle}></th>
-						<th th:text=#{bids.vehicle.value}></th>
-						<th th:text=#{bids.installment.plan}></th>
-						<th th:text=#{store.entity}></th>
-						<th th:text=#{bids.value}></th>
-						<th th:text=#{bids.status}></th>
-						<th class="acao"></th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr th:each="proposta : ${propostas}">
-						<td th:text="${proposta.data}"></td>
-						<td>
-							<img th:src="@{${'/images/' + proposta.veiculo.id + '/1.jpg'}}" alt="Carro" height="80px"
-								width="120px">
-						</td>
-						<td th:text="${proposta.veiculo.modelo}"></td>
-						<td th:text="${proposta.veiculo.preco}"></td>
-						<td th:text="${proposta.parcelamento}"> </td>
-						<td th:text="${proposta.loja.nome}"></td>
-						<td th:text="${proposta.valor}"></td>
-						<td class="estado">
-							<div th:switch="${proposta.estado}">
-								<p th:case="'ACEITO'" th:text=#{bids.accepted}></p>
-								<p th:case="'ABERTO'" th:text=#{bids.open}></p>
-								<p th:case="*" th:text=#{bids.rejected}></p>
-							</div>
-						</td>
-						<td class="acao" th:if="${proposta.estado} == 'ABERTO'">
-							<a id="negar" th:href="@{/proposta/removerProposta/{id} (id=${proposta.id})}"
-								th:text=#{bids.cancel}></a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-	</div>
-	<script src="/js/cor.js"></script>
+	<div th:replace="fragments/topbarLinks"></div>
+	<div th:replace="fragments/tabela"></div>
 </body>
 
 </html>

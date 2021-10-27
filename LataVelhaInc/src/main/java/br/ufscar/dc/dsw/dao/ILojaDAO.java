@@ -18,4 +18,6 @@ public interface ILojaDAO extends CrudRepository<Loja, Long>{
 	Loja save(Loja loja);
 
 	void deleteById(Long id);
+
+	Loja getLojaByUsername(String username);
 }

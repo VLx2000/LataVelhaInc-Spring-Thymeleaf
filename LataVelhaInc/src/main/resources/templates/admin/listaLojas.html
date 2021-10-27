@@ -1,33 +1,23 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
-	<title th:text="#{store.title}"></title>
+	<title th:text="#{store.list.title}"></title>
 	<link rel="stylesheet" href="/css/lojas.css">
 	<link rel="stylesheet" href="/css/global.css">
 </head>
 
 <body>
 
-	<div class="topbar">
-		<ul>
-			<li class="linkTopoEsquerda">
-				<a href="/admin/">
-					<span id="titulo" th:text="#{topbar.title}"></span>
-					<span id="admin">admin</span>
-				</a>
-			</li>
-			<li class="linkTopoDireita">
-				<a href="/logout/" th:text="#{user.logout}"></a>
-			</li>
-		</ul>
-	</div>
+	<div th:replace="fragments/topbarLinks"></div>
 	<div align="center">
 		<h1 class="label" th:text="#{store.welcome}"></h1>
 	</div>
 
 	<div align="center">
-		<h3 th:text="#{store.title}"></h3>
+		<h3 th:text="#{store.list}"></h3>
 
 		<table>
 			<thead>
@@ -38,6 +28,7 @@
 					<th th:text="#{store.password}"></th>
 					<th th:text="#{store.cnpj}"></th>
 					<th th:text="#{store.description}"></th>
+					<th th:text="#{user.role}"></th>
 					<th th:text="#{object.actions}"></th>
 				</tr>
 			</thead>
@@ -47,10 +38,11 @@
 					<tr>
 						<td th:text="${loja.id}"></td>
 						<td th:text="${loja.nome}"></td>
-						<td th:text="${loja.email}"></td>
-						<td th:text="${loja.senha}"></td>
+						<td th:text="${loja.username}"></td>
+						<td th:text="${loja.password}"></td>
 						<td th:text="${loja.CNPJ}"></td>
 						<td th:text="${loja.descricao}"></td>
+						<td th:text="${loja.role}"></td>
 						<td><a th:href="@{/admin/editarLoja{id} (id=${loja.id})}" th:text="#{object.update}"></a>
 							&nbsp;&nbsp;&nbsp;&nbsp; 
 							<a th:href="@{${'/admin/removerLoja?id=' + loja.id}}" th:text="#{object.delete}">
@@ -62,7 +54,7 @@
 			</tbody>
 		</table>
 		<div class="adiciona">
-			<a href="/admin/cadastrarLoja" th:text="#{store.add}"></a>
+			<a th:href="@{/admin/cadastrarLoja}" th:text="#{store.add}"></a>
 		</div>
 	</div>
 </body>

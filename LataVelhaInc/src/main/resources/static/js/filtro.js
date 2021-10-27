@@ -22,6 +22,8 @@ function filtro() {
     //console.log('to rodando!')
 }
 
+document.getElementById('numero').textContent = document.querySelectorAll('.box').length
+
 var timer
 
 function comecar(){
