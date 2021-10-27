@@ -3,62 +3,18 @@
 	  xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title th:text=#{page.title}></title>
-	<link rel="stylesheet" href="/css/global.css">
-	<link rel="stylesheet" href="/css/inicio.css">
-</head>
+<head th:replace="fragments/header"></head>
 
 <body>
 	<div class="topbar">
 		<ul id="links">
-			<li class="linkTopoEsquerda">
-				<a href="/"><span id="titulo">LataVelhaInc.</span></a>
-			</li>
-			<li class="nomeTopoDireita">
-				<span th:inline="text">[[#{user.welcome}]]: <span th:text="${cliente.nome}" style="font-weight: bolder;"></span></span>
-				<ul class="dropdown">
-					<li>
-            			<div sec:authorize="isAuthenticated()">
-							<form th:action="@{/logout}" method="post">
-								<input type="submit" name="login-submit" class="botaoLogout" value="Logout">
-							</form>
-						</div>
-            		</li>
-				</ul>
-			</li>
+			<div th:replace="fragments/topbarLinks"></div>
 			<li class="linkTopoDireita">
 				<a th:href="@{/cliente/{id}/listaPropostas (id=${cliente.id})}" th:text=#{customer.bids}></a>
 			</li>
 		</ul>
 	</div>
-	<section id="carros">
-		<div id="divFiltro">
-			<input type="text" name="Filtro" placeholder="filtrar..." id="filtro" onfocus="comecar()" onblur="parar()">
-			<span id="legendaN" th:text=#{filter.count}></span>
-			<span id="numero">-</span>
-		</div>
-		<div th:each="veiculo: ${catalogo}">
-			<section class="box">
-				<a th:href="@{${'/comprar/' + veiculo.id}}" class="box-link">
-				<div class="card">
-					<div class="container">
-						<img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">
-					</div>
-					<ul class="dadosCarro">
-						<li class="modelo" th:text="${veiculo.modelo}"></li>
-						<li th:text="${veiculo.loja.nome}"></li>
-						<li th:text="${veiculo.quilometragem + 'km'}"></li>
-						<li class="oferta" th:text="${'R$' + veiculo.preco}"></li>
-					</ul>
-				</div>
-				</a>
-			</section>
-		</div>
-	</section>
-	<script src="/js/filtro.js"></script>
+	<section th:replace="fragments/catalogo"></section>
 </body>
 
 </html>

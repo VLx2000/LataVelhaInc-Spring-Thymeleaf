@@ -13,6 +13,8 @@ public interface ILojaService {
 	void salvar(Loja loja);
 
 	void excluir(Long id);
+
+	Loja buscarLojaPorUsername(String username);
 	
 	// Implementar depois
 	// boolean lojaTemPropostasAbertas(Long id);

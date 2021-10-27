@@ -1,0 +1,25 @@
+<section id="carros">
+    <div id="divFiltro">
+        <input type="text" name="Filtro" placeholder="filtrar..." id="filtro" onfocus="comecar()" onblur="parar()">
+        <span id="legendaN" th:text=#{filter.count}></span>
+        <span id="numero">-</span>
+    </div>
+    <div th:each="veiculo: ${catalogo}">
+        <section class="box">
+            <a th:href="@{${'/comprar/' + veiculo.id}}" class="box-link">
+                <div class="card">
+                    <div class="container">
+                        <img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">
+                    </div>
+                    <ul class="dadosCarro">
+                        <li class="modelo" th:text="${veiculo.modelo}"></li>
+                        <li th:text="${veiculo.loja.nome}"></li>
+                        <li th:text="${veiculo.quilometragem + 'km'}"></li>
+                        <li class="oferta" th:text="${'R$' + veiculo.preco}"></li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+    </div>
+</section>
+<script src="/js/filtro.js"></script>

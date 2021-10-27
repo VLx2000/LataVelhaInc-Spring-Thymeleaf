@@ -11,23 +11,7 @@
 
 <body>
 
-	<div class="topbar">
-		<ul>
-			<li class="linkTopoEsquerda">
-				<a href="/admin/">
-					<span id="titulo" th:text="#{topbar.title}"></span>
-					<span id="admin">admin</span>
-				</a>
-			</li>
-			<li class="linkTopoDireita">
-            	<div sec:authorize="isAuthenticated()">
-					<form th:action="@{/logout}" method="post">
-						<input type="submit" name="login-submit" class="botaoLogout" value="Logout">
-					</form>
-				</div>
-            </li>
-		</ul>
-	</div>
+	<div th:replace="fragments/topbarLinks"></div>
 	<div align="center">
 		<h1 class="label" th:text="#{store.welcome}"></h1>
 	</div>

@@ -1,0 +1,35 @@
+<div class="topbar">
+    <ul id="links">
+        <li class="linkTopoEsquerda">
+            <a href="/">
+                <span id="titulo">LataVelhaInc.</span>
+                <span id="admin" sec:authorize="hasRole('ROLE_ADMIN')">admin</span>
+            </a>
+        </li>
+
+        <li class="linkTopoDireita" sec:authorize="!isAuthenticated()">
+            <a th:href="@{/login/}" class="botaoLogin">Login</a>
+        </li>
+
+        <li class="nomeTopoDireita" sec:authorize="isAuthenticated()">
+            <span th:inline="text">[[#{user.welcome}]]: <span
+                    style="font-weight: bolder;">[[${#httpServletRequest.remoteUser}]]</span></span>
+            <ul class="dropdown">
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" name="login-submit" class="botaoLogout" value="Logout">
+                    </form>
+                </li>
+            </ul>
+        </li>
+
+        <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_LOJA')">
+            <a th:href="@{/loja/{id}/listaPropostas (id=${loja.id})}" th:text=#{customer.bids}></a>
+        </li>
+
+        <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER')">
+            <a th:href="@{/cliente/{id}/listaPropostas (id=${cliente.id})}" th:text=#{customer.bids}></a>
+        </li>
+
+    </ul>
+</div>

@@ -36,6 +36,11 @@ public class ClienteService implements IClienteService{
 		return dao.findAll();
 	}
 	
+	@Transactional(readOnly = true)
+	public Cliente buscarClientePorUsername(String username) {
+		return dao.getClienteByUsername(username);
+	}
+
 	/*
 	@Transactional(readOnly = true)
 	public boolean clienteTemPropostasAbertas(Long id) {

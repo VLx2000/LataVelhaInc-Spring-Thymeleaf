@@ -43,6 +43,11 @@ public class LojaService implements ILojaService{
 	public List<Loja> buscarTodos() {
 		return dao.findAll();
 	}
+
+	@Transactional(readOnly = true)
+	public Loja buscarLojaPorUsername(String username) {
+		return dao.getLojaByUsername(username);
+	}
 	
 	/*
 	@Transactional(readOnly = true)

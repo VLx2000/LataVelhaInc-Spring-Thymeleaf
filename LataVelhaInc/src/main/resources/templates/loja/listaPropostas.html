@@ -12,30 +12,7 @@
 </head>
 
 <body>
-	<div class="topbar">
-		<ul id="links">
-			<li class="linkTopoEsquerda">
-				<a href="/">
-					<span id="titulo">LataVelhaInc.</span>
-				</a>
-			</li>
-			<li class="nomeTopoDireita">
-				<span th:inline="text">[[#{user.welcome}]]: <span th:text="${loja.nome}" style="font-weight: bolder;"></span></span>
-				<ul class="dropdown">
-					<li>
-            			<div sec:authorize="isAuthenticated()">
-							<form th:action="@{/logout}" method="post">
-								<input type="submit" name="login-submit" class="botaoLogout" value="Logout">
-							</form>
-						</div>
-            		</li>
-				</ul>
-			</li>
-			<li class="linkTopoDireita">
-				<a th:href="@{/loja/{id}/listaPropostas (id=${loja.id})}" th:text=#{customer.bids}></a>
-			</li>
-		</ul>
-	</div>
+	<div th:replace="fragments/topbarLinks"></div>
 	<div align="center">
 		<h1 class="label" th:text=#{bids.list}></h1>
 	</div>

@@ -13,6 +13,8 @@ public interface IClienteService {
 	void salvar(Cliente Cliente);
 
 	void excluir(Long id);
+
+	Cliente buscarClientePorUsername(String username);
 	
 	// Implementar depois
 	// boolean ClienteTemPropostasAbertas(Long id);

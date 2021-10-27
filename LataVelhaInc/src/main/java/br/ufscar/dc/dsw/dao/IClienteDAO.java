@@ -19,5 +19,5 @@ public interface IClienteDAO extends CrudRepository<Cliente, Long>{
 
 	void deleteById(Long id);
 
-	Cliente getClienteByNome(String nome);
+	Cliente getClienteByUsername(String username);
 }

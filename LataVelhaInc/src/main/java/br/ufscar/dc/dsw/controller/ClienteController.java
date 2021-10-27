@@ -32,7 +32,7 @@ public class ClienteController {
 		Cliente cliente = service.buscarPorId(id);
     	model.addAttribute("catalogo", serviceVeiculo.buscarTodos());
 		model.addAttribute("cliente", cliente);
-		return "cliente/inicio";
+		return "index";
 	}
 
     @GetMapping("/{id}/listaPropostas")
