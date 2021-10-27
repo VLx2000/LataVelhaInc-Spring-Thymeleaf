@@ -35,7 +35,7 @@ public class Cliente extends Usuario{
 	private String sexo;
 	
 	@NotBlank
-	@Size(min = 4, max = 10 )
+	@Size(min = 10, max = 10, message = "{Size.cliente.nascimento}")
 	@Column(nullable = false, unique = false, length = 10)
 	private String nascimento;
 

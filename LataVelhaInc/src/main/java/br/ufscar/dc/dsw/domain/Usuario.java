@@ -6,6 +6,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
 @Entity
@@ -15,11 +16,13 @@ import javax.validation.constraints.NotBlank;
 	)
 public class Usuario extends AbstractEntity<Long> {
   
-	@NotBlank(message = "{NotBlank.user.email}")
+	@NotBlank
+	@Size(min = 3, max = 30)
 	@Column(nullable = false, unique = true, length = 30)
     private String username;
     
-	@NotBlank(message = "{NotBlank.user.senha}")
+	@NotBlank
+	@Size(min = 3, max = 64)
 	@Column(nullable = false, length = 64)
     private String password;
        
