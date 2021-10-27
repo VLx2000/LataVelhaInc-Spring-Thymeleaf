@@ -24,10 +24,10 @@
     </div>
     <section id="crudLinks">
         <div class="crud" id="crud1">
-            <a href="listarClientes" th:text="#{customer.crudname}"></a>
+            <a th:href="@{/admin/listarClientes}" th:text="#{customer.crudname}"></a>
         </div>
         <div class="crud" id="crud2">
-            <a href="listarLojas" th:text="#{store.crudname}"></a>
+            <a th:href="@{/admin/listarLojas}" th:text="#{store.crudname}"></a>
         </div>
     </section>
 </body>

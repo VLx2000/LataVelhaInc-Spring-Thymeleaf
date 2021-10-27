@@ -38,6 +38,7 @@
 					<th th:text="#{store.password}"></th>
 					<th th:text="#{store.cnpj}"></th>
 					<th th:text="#{store.description}"></th>
+					<th th:text="#{user.role}"></th>
 					<th th:text="#{object.actions}"></th>
 				</tr>
 			</thead>
@@ -47,10 +48,11 @@
 					<tr>
 						<td th:text="${loja.id}"></td>
 						<td th:text="${loja.nome}"></td>
-						<td th:text="${loja.email}"></td>
-						<td th:text="${loja.senha}"></td>
+						<td th:text="${loja.username}"></td>
+						<td th:text="${loja.password}"></td>
 						<td th:text="${loja.CNPJ}"></td>
 						<td th:text="${loja.descricao}"></td>
+						<td th:text="${loja.role}"></td>
 						<td><a th:href="@{/admin/editarLoja{id} (id=${loja.id})}" th:text="#{object.update}"></a>
 							&nbsp;&nbsp;&nbsp;&nbsp; 
 							<a th:href="@{${'/admin/removerLoja?id=' + loja.id}}" th:text="#{object.delete}">
@@ -62,7 +64,7 @@
 			</tbody>
 		</table>
 		<div class="adiciona">
-			<a href="/admin/cadastrarLoja" th:text="#{store.add}"></a>
+			<a th:href="@{/admin/cadastrarLoja}" th:text="#{store.add}"></a>
 		</div>
 	</div>
 </body>

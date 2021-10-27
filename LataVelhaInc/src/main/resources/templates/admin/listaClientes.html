@@ -40,7 +40,7 @@
 					<th th:text="#{customer.phone}"></th>
 					<th th:text="#{customer.gender}"></th>
 					<th th:text="#{customer.birth}"></th>
-					<th th:text="#{customer.paper}"></th>
+					<th th:text="#{user.role}"></th>
 					<th th:text="#{object.actions}"></th>
 				</tr>
 			</thead>
@@ -50,8 +50,8 @@
 					<tr>
 						<td th:text="${cliente.id}"></td>
 						<td th:text="${cliente.nome}"></td>
-						<td th:text="${cliente.email}"></td>
-						<td th:text="${cliente.senha}"></td>
+						<td th:text="${cliente.username}"></td>
+						<td th:text="${cliente.password}"></td>
 						<td th:text="${cliente.CPF}"></td>
 						<td th:text="${cliente.telefone}"></td>
 						<td th:text="${cliente.sexo}"></td>
@@ -68,7 +68,7 @@
 			</tbody>
 		</table>
 		<div class="adiciona">
-			<a href="/admin/cadastrarCliente" th:text="#{customer.add}"></a>
+			<a th:href="@{/admin/cadastrarCliente}" th:text="#{customer.add}"></a>
 		</div>
 	</div>
 </body>

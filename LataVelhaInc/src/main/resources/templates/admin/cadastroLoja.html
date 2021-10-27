@@ -44,20 +44,20 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{store.email}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Email" th:field="*{email}"
-							th:classappend="${#fields.hasErrors('email')} ? is-invalid" />
+						<input type="text" class="form-control" id="nome" placeholder="Email" th:field="*{username}"
+							th:classappend="${#fields.hasErrors('username')} ? is-invalid" />
 
 						<div class="invalid-feedback">
-							<span th:errors="*{email}"></span>
+							<span th:errors="*{username}"></span>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{store.password}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Senha" th:field="*{senha}"
-							th:classappend="${#fields.hasErrors('senha')} ? is-invalid" />
+						<input type="text" class="form-control" id="nome" placeholder="Senha" th:field="*{password}"
+							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
 
 						<div class="invalid-feedback">
-							<span th:errors="*{senha}"></span>
+							<span th:errors="*{password}"></span>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
@@ -76,6 +76,16 @@
 
 						<div class="invalid-feedback">
 							<span th:errors="*{descricao}"></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label th:text="#{user.role}" for="nome"></label>
+						<input type="text" class="form-control" id="nome" placeholder="Papel"
+							th:field="*{role}" th:classappend="${#fields.hasErrors('role')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{role}"></span>
 						</div>
 					</div>
 				</div>

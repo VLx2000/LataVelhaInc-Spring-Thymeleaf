@@ -19,7 +19,7 @@ import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.service.spec.ILojaService;
 
 @Controller
-@RequestMapping("/admin/*")
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired

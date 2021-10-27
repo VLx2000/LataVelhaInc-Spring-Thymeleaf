@@ -16,10 +16,9 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        Usuario user = dao.findByUsername(username);
+        Usuario user = dao.getUserByUsername(username);
         
         if (user == null) {
-        	//System.out.println(username);
         	System.out.println("user eh null");
             throw new UsernameNotFoundException("Could not find user");
         }

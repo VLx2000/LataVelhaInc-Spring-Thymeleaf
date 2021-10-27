@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
     <title>LataVelhaInc.</title>
@@ -16,22 +16,34 @@
                 <a href="/"><span id="titulo">LataVelhaInc.</span></a>
             </li>
             <li class="linkTopoDireita">
-                <a href="/login/">Login</a>
+                <a th:href="@{/login/}">Login</a>
+            </li>
+            
+            <li class="linkTopoDireita">
+            	<div sec:authorize="hasRole('ROLE_ADMIN')">
+            		<a th:href="@{/admin/}">Teste admin</a>
+            	</div>
+            </li>
+            
+            <li class="linkTopoDireita">
+                <div sec:authorize="hasRole('ROLE_USER')">
+            		<a th:href="@{/cliente/{id} (id=${2})}">Teste Cliente 1</a>	
+            	</div>
             </li>
             <li class="linkTopoDireita">
-                <a href="/admin/">Teste admin</a>
+            	<div sec:authorize="hasRole('ROLE_LOJA')">
+            		<a th:href="@{/loja/{id} (id=${5})}">Teste Loja 1</a>
+            	</div>
             </li>
             <li class="linkTopoDireita">
-                <a th:href="@{/cliente/{id} (id=${1})}">Teste Cliente 1</a>
+            	<div sec:authorize="hasRole('ROLE_LOJA')">
+                	<a th:href="@{/loja/{id} (id=${6})}">Teste Loja 2</a>
+            	</div>
             </li>
             <li class="linkTopoDireita">
-                <a th:href="@{/loja/{id} (id=${1})}">Teste Loja 1</a>
-            </li>
-            <li class="linkTopoDireita">
-                <a th:href="@{/loja/{id} (id=${2})}">Teste Loja 2</a>
-            </li>
-            <li class="linkTopoDireita">
-                <a th:href="@{/loja/{id} (id=${3})}">Teste Loja 3</a>
+                <div sec:authorize="hasRole('ROLE_LOJA')">
+                	<a th:href="@{/loja/{id} (id=${7})}">Teste Loja 3</a>
+            	</div>
             </li>
         </ul>
     </div>
