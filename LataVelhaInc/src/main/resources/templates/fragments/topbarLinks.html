@@ -34,5 +34,8 @@
             <a th:href="@{/cliente/{id}/listaPropostas (id=${cliente.id})}" th:text=#{customer.bids}></a>
         </li>
 
+        <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER') || hasRole('ROLE_LOJA')">
+            <a href="/" th:text=#{user.catalog}></a>
+        </li>
     </ul>
 </div>

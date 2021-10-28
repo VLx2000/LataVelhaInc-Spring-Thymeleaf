@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
 	<title th:text="#{store.list.title}"></title>
@@ -25,10 +24,8 @@
 					<th th:text="#{store.id}"></th>
 					<th th:text="#{store.name}"></th>
 					<th th:text="#{store.email}"></th>
-					<th th:text="#{store.password}"></th>
 					<th th:text="#{store.cnpj}"></th>
 					<th th:text="#{store.description}"></th>
-					<th th:text="#{user.role}"></th>
 					<th th:text="#{object.actions}"></th>
 				</tr>
 			</thead>
@@ -39,14 +36,12 @@
 						<td th:text="${loja.id}"></td>
 						<td th:text="${loja.nome}"></td>
 						<td th:text="${loja.username}"></td>
-						<td th:text="${loja.password}"></td>
 						<td th:text="${loja.CNPJ}"></td>
 						<td th:text="${loja.descricao}"></td>
-						<td th:text="${loja.role}"></td>
 						<td><a th:href="@{/admin/editarLoja{id} (id=${loja.id})}" th:text="#{object.update}"></a>
-							&nbsp;&nbsp;&nbsp;&nbsp; 
-							<a th:href="@{${'/admin/removerLoja?id=' + loja.id}}" th:text="#{object.delete}">
-							<!-- onclick="return confirm('th:text=@{#{confirm.message}}')-->
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a th:href="@{${'/admin/removerLoja?id=' + loja.id}}" th:text="#{object.delete}"
+								onclick="return confirm('Remover/Remove?')">
 							</a>
 						</td>
 					</tr>

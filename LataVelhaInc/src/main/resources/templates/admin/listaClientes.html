@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
 	<title th:text="#{customer.list.title}"></title>
@@ -18,19 +17,17 @@
 
 	<div align="center">
 		<h3 th:text="#{customer.list}"></h3>
-		
+
 		<table>
 			<thead>
 				<tr>
 					<th th:text="#{customer.id}"></th>
 					<th th:text="#{customer.name}"></th>
 					<th th:text="#{customer.email}"></th>
-					<th th:text="#{customer.password}"></th>
 					<th th:text="#{customer.ssn}"></th>
 					<th th:text="#{customer.phone}"></th>
 					<th th:text="#{customer.gender}"></th>
 					<th th:text="#{customer.birth}"></th>
-					<th th:text="#{user.role}"></th>
 					<th th:text="#{object.actions}"></th>
 				</tr>
 			</thead>
@@ -41,16 +38,14 @@
 						<td th:text="${cliente.id}"></td>
 						<td th:text="${cliente.nome}"></td>
 						<td th:text="${cliente.username}"></td>
-						<td th:text="${cliente.password}"></td>
 						<td th:text="${cliente.CPF}"></td>
 						<td th:text="${cliente.telefone}"></td>
 						<td th:text="${cliente.sexo}"></td>
 						<td th:text="${cliente.nascimento}"></td>
-						<td th:text="${cliente.role}"></td>
 						<td><a th:href="@{/admin/editarCliente{id} (id=${cliente.id})}" th:text="#{object.update}"></a>
-							&nbsp;&nbsp;&nbsp;&nbsp; 
-							<a th:href="@{${'/admin/removerCliente?id=' + cliente.id}}" th:text="#{object.delete}">
-							<!-- onclick="return confirm('th:text=@{#{confirm.message}}')-->
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a th:href="@{${'/admin/removerCliente?id=' + cliente.id}}" th:text="#{object.delete}"
+								onclick="return confirm('Remover/Remove?')">
 							</a>
 						</td>
 					</tr>
