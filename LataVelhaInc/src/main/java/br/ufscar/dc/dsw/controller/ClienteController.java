@@ -48,6 +48,7 @@ public class ClienteController {
     public String comprar(@PathVariable("id") Long id, ModelMap model) {
     	Veiculo veiculo = serviceVeiculo.buscarPorId(id);
     	Cliente cliente = service.buscarPorId(this.getUsuario().getId());
+    	model.addAttribute("cliente",cliente);
     	model.addAttribute("propostas",serviceProposta.buscarPorCliente(cliente));
     	model.addAttribute("veiculo",veiculo);
     	return "cliente/comprar";
