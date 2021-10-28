@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title th:text=#{bids.title}></title>
+	<link rel="stylesheet" href="/css/global.css">
+</head>
+
+<body>
+	
+	<section class = "carro">
+	<div class = "fotos">
+		<ul class = "slider">
+			<li>
+			 	<img src="../imagens/${veiculo.id}/$1.jpg" alt="Carro" />
+			</li>
+		</ul>
+	</div>
+	<div class = "info">
+		<ul class ="dadosCarro">
+			<li class="nomeModelo" th:text = "${veiculo.modelo} + ' '+  ${veiculo.ano} + ' - ' + ${veiculo.quilometragem} + 'km'"></li>
+			<li th:text = "${veiculo.loja.nome}"></li>
+			<li th:text =  "#{vehicle.license} + ': ' + ${veiculo.placa} "></li>
+			<li th:text = "#{vehicle.chassis} + ': ' + ${veiculo.chassi} " ></li>
+			<li id = "preco" th:text = "'R$' + ${veiculo.preco}"></li>
+		</ul>
+	<div th:each ="proposta : ${propostas}">
+		<div th:if="${proposta.estado == 'ABERTO' && proposta.veiculo.id == veiculo.id}">
+			<div th:with="block_proposta=True"></div>
+			<div th:with="proposta_aberta=${proposta}"></div>
+		</div>
+	</div>
+	
+
+	</div>
+	</section>
+</body>
+
+</html>

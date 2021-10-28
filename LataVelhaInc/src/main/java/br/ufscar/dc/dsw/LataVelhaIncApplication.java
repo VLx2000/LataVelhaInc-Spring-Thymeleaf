@@ -105,7 +105,9 @@ public class LataVelhaIncApplication {
 			l3.setRole("ROLE_LOJA");
 			l3.setEnabled(true);
 			lojaDAO.save(l3);
+			
 
+			
 			Veiculo v[] = new Veiculo[TAM];
 
 			String placa[] = { "SADF-5645", "JRGB-6246", "ERBB-8768", "WGBW-3525", "YMRM-7457", "SFDC-2466",

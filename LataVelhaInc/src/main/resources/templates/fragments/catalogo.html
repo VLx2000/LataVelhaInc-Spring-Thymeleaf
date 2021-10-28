@@ -6,7 +6,7 @@
     </div>
     <div th:each="veiculo: ${catalogo}">
         <section class="box">
-            <a th:href="@{${'/comprar/' + veiculo.id}}" class="box-link">
+            <a th:href="@{${'cliente/comprar/' + veiculo.id}}" class="box-link">
                 <div class="card">
                     <div class="container">
                         <img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">
