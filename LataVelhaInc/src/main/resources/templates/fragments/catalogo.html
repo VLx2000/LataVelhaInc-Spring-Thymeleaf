@@ -7,7 +7,7 @@
     </div>
     <div th:each="veiculo: ${catalogo}">
         <section class="box">
-            <a th:href="@{/cliente/comprar/{id} (id=${cliente.id})}" class="box-link" sec:authorize="hasRole('ROLE_USER')">
+            <a th:href="@{/cliente/comprar/{id} (id=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_USER')">
                 <div th:replace="fragments/cards"></div>
             </a>
             <a th:href="@{/loja/{id}/editar/{id_veiculo} (id=${loja.id},id_veiculo=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_LOJA')">
