@@ -70,8 +70,7 @@ public class ClienteController {
     	proposta.setVeiculo(veiculo);
     	proposta.setData(data);
     	proposta.setEstado("ABERTO");
-    	
-    	
+
     	model.addAttribute("cliente",cliente);
     	model.addAttribute("propostas",serviceProposta.buscarPorCliente(cliente));
     	model.addAttribute("veiculo",veiculo);
@@ -80,22 +79,20 @@ public class ClienteController {
 		for (int i = 1; i <= 10; i++)
 			lista.add("/images/" + id + "/" + i + ".jpg");
 		model.addAttribute("files", lista);
-		if (lista != null)
-			System.out.println(lista);
     	return "cliente/comprar";
     }
 	
 	@GetMapping("/comprar/salvarProposta")
     public String salvarProposta(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr) {
 
-    	
+    	System.out.println("ENTROU EM SALVAR");
 		if (result.hasErrors()) {
 			return "cliente/comprar";
 		}
     	
     	
 		serviceProposta.salvar(proposta);
-		attr.addFlashAttribute("sucess", "Proposta evniada com sucesso.");
+		attr.addFlashAttribute("sucess", "Proposta enviada com sucesso.");
 		return "redirect:/cliente/listaPropostas";
     	
     }
