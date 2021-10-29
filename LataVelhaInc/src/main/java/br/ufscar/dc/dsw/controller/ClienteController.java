@@ -1,5 +1,7 @@
 package br.ufscar.dc.dsw.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -73,7 +75,7 @@ public class ClienteController {
     	model.addAttribute("cliente",cliente);
     	model.addAttribute("propostas",serviceProposta.buscarPorCliente(cliente));
     	model.addAttribute("veiculo",veiculo);
-    	
+
 		ArrayList<String> lista = new ArrayList<>();
 		for (int i = 1; i <= 10; i++)
 			lista.add("/images/" + id + "/" + i + ".jpg");
