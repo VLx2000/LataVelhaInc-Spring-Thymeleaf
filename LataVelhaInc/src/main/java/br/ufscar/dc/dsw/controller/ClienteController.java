@@ -92,9 +92,10 @@ public class ClienteController {
 		if (result.hasErrors()) {
 			Cliente cliente = service.buscarPorId(this.getUsuario().getId());
 			model.addAttribute("cliente",cliente);
+
 			return "cliente/comprar";
 		}
-    	
+		    	
 		serviceProposta.salvar(proposta);
 		attr.addFlashAttribute("sucess", "Proposta enviada com sucesso.");
 		return "redirect:/cliente/listaPropostas";
@@ -108,6 +109,7 @@ public class ClienteController {
 			attr.addFlashAttribute("sucess", "proposta.delete.sucess");
 			return "redirect:/cliente/listaPropostas";
 		}
+		
 		Cliente cliente = service.buscarPorId(this.getUsuario().getId());
 		model.addAttribute("cliente",cliente);
 		return "cliente/comprar";

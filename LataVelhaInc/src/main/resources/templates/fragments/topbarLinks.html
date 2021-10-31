@@ -27,7 +27,7 @@
         </li>
 
         <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_LOJA')">
-            <a th:href="@{/loja/{id}/listaPropostas (id=${loja.id})}" th:text=#{customer.bids}></a>
+            <a th:href="@{/loja/listaPropostas}" th:text=#{customer.bids}></a>
         </li>
 
         <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER')">
