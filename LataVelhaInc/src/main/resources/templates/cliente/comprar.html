@@ -44,6 +44,7 @@
 				<li th:text="#{vehicle.chassis} + ': ' + ${veiculo.chassi} "></li>
 				<li id="preco" th:text="'R$' + ${veiculo.preco}"></li>
 			</ul>
+
 			<div th:switch="${proposta_aberta}">
 				<form th:case="null" id="form_proposta" th:action="@{/cliente/salvarProposta}" method="post" th:object="${proposta}">
 					<input id="pvalor" type="number" name="valor" th:placeholder="#{bids.value}" th:field="*{valor}" 
@@ -76,7 +77,7 @@
 								</td>
 								<td id="botao_cancelar">
 									<a id="remover"
-										href="../proposta/removerProposta?id=${pageScope.proposta_aberta.id}"
+										th:href="@{/cliente/cancelarProposta/{id}(id=${proposta_aberta.id})}"
 										th:text=#{bids.cancel} /></a>
 								</td>
 							</tr>

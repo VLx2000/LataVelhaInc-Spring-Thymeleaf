@@ -22,7 +22,6 @@ import br.ufscar.dc.dsw.security.UsuarioDetails;
 import br.ufscar.dc.dsw.service.spec.IClienteService;
 import br.ufscar.dc.dsw.service.spec.IVeiculoService;
 import br.ufscar.dc.dsw.service.spec.IPropostaService;
-import br.ufscar.dc.dsw.service.spec.ILojaService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -90,9 +89,6 @@ public class ClienteController {
 	
 	@PostMapping("/salvarProposta")
     public String salvarProposta(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr,ModelMap model) {
-		if(proposta.getCliente() == null) {
-			System.out.println("AQUIIIIIIIIIIiii\n");
-		}
 		if (result.hasErrors()) {
 			Cliente cliente = service.buscarPorId(this.getUsuario().getId());
 			model.addAttribute("cliente",cliente);
@@ -104,4 +100,16 @@ public class ClienteController {
 		return "redirect:/cliente/listaPropostas";
     	
     }
+	@GetMapping("/cancelarProposta/{id}")
+	public String cancelarProposta(@PathVariable("id") Long id, RedirectAttributes attr,ModelMap model) {
+		Proposta proposta = serviceProposta.buscarPorId(id);
+		if(proposta.getCliente().equals(this.getUsuario())) {
+			serviceProposta.excluir(id);
+			attr.addFlashAttribute("sucess", "proposta.delete.sucess");
+			return "redirect:/cliente/listaPropostas";
+		}
+		Cliente cliente = service.buscarPorId(this.getUsuario().getId());
+		model.addAttribute("cliente",cliente);
+		return "cliente/comprar";
+	}
 }
