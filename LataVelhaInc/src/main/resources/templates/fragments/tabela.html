@@ -38,7 +38,7 @@
                         </div>
                     </td>
                     <td class="acao" th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_USER')">
-                        <a id="negar" th:href="@{/proposta/removerProposta/{id} (id=${proposta.id})}"
+                        <a id="negar" th:href="@{/cliente/cancelarProposta/{id}(id=${proposta.id})}"
                             th:text=#{bids.cancel}></a>
                     </td>
                     <div th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_LOJA')">
