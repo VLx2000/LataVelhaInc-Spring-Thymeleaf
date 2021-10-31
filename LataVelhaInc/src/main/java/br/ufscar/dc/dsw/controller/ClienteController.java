@@ -103,7 +103,7 @@ public class ClienteController {
 	@GetMapping("/cancelarProposta/{id}")
 	public String cancelarProposta(@PathVariable("id") Long id, RedirectAttributes attr,ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id);
-		if(proposta.getCliente().equals(this.getUsuario())) {
+		if(proposta.getCliente().equals(this.getUsuario()) && proposta.getEstado().equals("ABERTO")) {
 			serviceProposta.excluir(id);
 			attr.addFlashAttribute("sucess", "proposta.delete.sucess");
 			return "redirect:/cliente/listaPropostas";
