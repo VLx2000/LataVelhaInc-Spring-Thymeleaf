@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,6 +27,7 @@ import br.ufscar.dc.dsw.service.spec.ILojaService;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -42,8 +44,6 @@ public class ClienteController {
     @Autowired
     private IVeiculoService serviceVeiculo;
     
-    @Autowired
-    private ILojaService serviceLoja;
  
 	private Usuario getUsuario() {
 		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -51,9 +51,9 @@ public class ClienteController {
 	}
     
     
-    @GetMapping("/{id}/listaPropostas")
-    public String propostas(@PathVariable("id") Long id, ModelMap model) {
-    	Cliente cliente = service.buscarPorId(id);
+    @GetMapping("/listaPropostas")
+    public String propostas(ModelMap model) {
+    	Cliente cliente = service.buscarPorId(this.getUsuario().getId());;
     	model.addAttribute("propostas",serviceProposta.buscarPorCliente(cliente));
 		model.addAttribute("cliente", cliente);
     	return "cliente/listaPropostas";
@@ -65,14 +65,20 @@ public class ClienteController {
     	Loja loja = veiculo.getLoja();
     	Cliente cliente = service.buscarPorId(this.getUsuario().getId());
     	String data = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+    	
     	proposta.setCliente(cliente);
     	proposta.setLoja(loja);
     	proposta.setVeiculo(veiculo);
     	proposta.setData(data);
     	proposta.setEstado("ABERTO");
 
+    	List<Proposta> lista_propostas = serviceProposta.buscarPorCliente(cliente);
+    	for(int i =0; i < lista_propostas.size();i++) {
+    		if(lista_propostas.get(i).getVeiculo().getId() == id) {
+    			model.addAttribute("proposta_aberta",lista_propostas.get(i));
+    		}
+    	}
     	model.addAttribute("cliente",cliente);
-    	model.addAttribute("propostas",serviceProposta.buscarPorCliente(cliente));
     	model.addAttribute("veiculo",veiculo);
 
 		ArrayList<String> lista = new ArrayList<>();
@@ -82,14 +88,16 @@ public class ClienteController {
     	return "cliente/comprar";
     }
 	
-	@GetMapping("/comprar/salvarProposta")
-    public String salvarProposta(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr) {
-
-    	System.out.println("ENTROU EM SALVAR");
+	@PostMapping("/salvarProposta")
+    public String salvarProposta(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr,ModelMap model) {
+		if(proposta.getCliente() == null) {
+			System.out.println("AQUIIIIIIIIIIiii\n");
+		}
 		if (result.hasErrors()) {
+			Cliente cliente = service.buscarPorId(this.getUsuario().getId());
+			model.addAttribute("cliente",cliente);
 			return "cliente/comprar";
 		}
-    	
     	
 		serviceProposta.salvar(proposta);
 		attr.addFlashAttribute("sucess", "Proposta enviada com sucesso.");

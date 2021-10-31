@@ -44,18 +44,18 @@
 				<li th:text="#{vehicle.chassis} + ': ' + ${veiculo.chassi} "></li>
 				<li id="preco" th:text="'R$' + ${veiculo.preco}"></li>
 			</ul>
-			<div th:each="pproposta : ${propostas}">
-				<div th:if="${proposta.estado == 'ABERTO' && proposta.veiculo.id == veiculo.id}">
-					<div th:with="block_proposta=True"></div>
-					<div th:with="proposta_aberta=${proposta}"></div>
-				</div>
-			</div>
-			<div th:switch="${block_proposta}">
-				<form th:case="null" id="form_proposta" action="salvarProposta" method="post" th:object = "${proposta}">
+			<div th:switch="${proposta_aberta}">
+				<form th:case="null" id="form_proposta" th:action="@{/cliente/salvarProposta}" method="post" th:object="${proposta}">
 					<input id="pvalor" type="number" name="valor" th:placeholder="#{bids.value}" th:field="*{valor}" 
 					th:classappend="${#fields.hasErrors('valor')} ? is-invalid"/>
 					<input id="pparcelas" type="number" name="parcelamento" th:placeholder="#{bids.number.installments}" th:field="*{parcelamento}"
 							th:classappend="${#fields.hasErrors('parcelamento')} ? is-invalid" />
+							
+					<input type="hidden" th:field="*{cliente}" id="cliente">
+					<input type="hidden" th:field="*{loja}" id="loja">
+					<input type="hidden" th:field="*{veiculo}" id="veiculo">
+					<input type="hidden" th:field="*{data}" id="data">
+					<input type="hidden" th:field="*{estado}" id="estado">
 					<input id="proposta" type="submit" name="Proposta" th:value="#{bids.make}" />
 				</form>
 				<div align="center" th:case="*">
