@@ -40,7 +40,7 @@ public class LojaController {
 		return usuarioDetails.getUsuario();
 	}
     
-    @GetMapping("/listaPropostas")
+    @GetMapping("/listarPropostas")
     public String propostas(ModelMap model) {
     	Loja loja = service.buscarPorId(this.getUsuario().getId());
     	model.addAttribute("propostas",serviceProposta.buscarPorLoja(loja));
@@ -76,8 +76,8 @@ public class LojaController {
 		return "redirect:/loja/listarLojas";
 	}
 
-	@GetMapping("/removerLoja")
-	public String remocaoLoja(ModelMap model, @RequestParam Long id, RedirectAttributes attr) {
+	@GetMapping("/removerLoja{id}")
+	public String remocaoLoja(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
         service.excluir(id);
         attr.addFlashAttribute("success", "store.delete.success");
 		return "redirect:/loja/listarLojas";

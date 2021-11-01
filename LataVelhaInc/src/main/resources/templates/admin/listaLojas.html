@@ -48,7 +48,7 @@
 								<span class="oi oi-brush" th:title="#{object.update}" aria-hidden="true"></span>
 								</a>
 								
-								<a class="btn btn-info btn-sm" id="botao-delete" th:href="@{${'/loja/removerLoja?id=' + loja.id}}" role="button"
+								<a class="btn btn-info btn-sm" id="botao-delete" th:href="@{/loja/removerLoja{id} (id=${loja.id})}" role="button"
 									onclick="return confirm('Remover/Remove?')">
 									<span class="oi oi-circle-x" th:title="#{object.delete}" aria-hidden="true"></span>
 								</a>
