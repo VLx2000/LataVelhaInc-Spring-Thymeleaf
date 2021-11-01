@@ -13,7 +13,7 @@ import br.ufscar.dc.dsw.validation.UniqueCPF;
 @Table(name = "Cliente")
 public class Cliente extends Usuario{
 	
-	@UniqueCPF (message = "{Unique.cliente.CPF}")
+	//@UniqueCPF (message = "{Unique.cliente.CPF}")
 	@NotBlank
 	@Size(min = 14, max = 14, message = "{Size.cliente.CPF}")
 	@Column(nullable = false, unique = true, length = 14)

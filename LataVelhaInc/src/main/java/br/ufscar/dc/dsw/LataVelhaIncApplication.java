@@ -53,7 +53,7 @@ public class LataVelhaIncApplication {
 			clienteDAO.save(c1);
 
 			Cliente c2 = new Cliente();
-			c2.setUsername("cliente1@gmail.com");
+			c2.setUsername("irto@gmail.com");
 			c2.setPassword(encoder.encode("123"));
 			c2.setNome("Airton Cena");
 			c2.setCPF("985.849.614-10");
@@ -65,7 +65,7 @@ public class LataVelhaIncApplication {
 			clienteDAO.save(c2);
 
 			Cliente c3 = new Cliente();
-			c3.setUsername("cliente2@gmail.com");
+			c3.setUsername("mw@gmail.com");
 			c3.setPassword(encoder.encode("123"));
 			c3.setNome("Michael Wazowski");
 			c3.setCPF("367.318.380-04");
@@ -77,7 +77,7 @@ public class LataVelhaIncApplication {
 			clienteDAO.save(c3);
 
 			Loja l1 = new Loja();
-			l1.setUsername("loja1@gmail.com");
+			l1.setUsername("carros@gmail.com");
 			l1.setPassword(encoder.encode("123"));
 			l1.setCNPJ("55.789.390/0008-99");
 			l1.setNome("Carros e Ventiladores SA");
@@ -87,7 +87,7 @@ public class LataVelhaIncApplication {
 			lojaDAO.save(l1);
 
 			Loja l2 = new Loja();
-			l2.setUsername("loja2@gmail.com");
+			l2.setUsername("ferro@gmail.com");
 			l2.setPassword(encoder.encode("123"));
 			l2.setCNPJ("71.150.470/0001-40");
 			l2.setNome("Ferro velho do Maicao");
@@ -97,7 +97,7 @@ public class LataVelhaIncApplication {
 			lojaDAO.save(l2);
 
 			Loja l3 = new Loja();
-			l3.setUsername("loja3@gmail.com");
+			l3.setUsername("teslabr@gmail.com");
 			l3.setPassword(encoder.encode("123"));
 			l3.setCNPJ("32.106.536/0001-82");
 			l3.setNome("Tesla saocarlense");
