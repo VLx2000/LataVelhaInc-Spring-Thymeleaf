@@ -56,14 +56,15 @@ public class AdminController {
 			return "admin/cadastroCliente";
 		}
 		serviceCliente.salvar(cliente);
-		attr.addFlashAttribute("sucess", "cliente.edit.sucess");
+		attr.addFlashAttribute("success", "customer.edit.success");
 		return "redirect:/admin/listarClientes";
 	}
 
 	@GetMapping("/removerCliente")
-	public String remocaoCliente(ModelMap model, @RequestParam Long id) {
+	public String remocaoCliente(ModelMap model, @RequestParam Long id, RedirectAttributes attr) {
         serviceCliente.excluir(id);
-		return "redirect:/admin/listarClientes";
+        attr.addFlashAttribute("success", "customer.delete.success");
+        return "redirect:/admin/listarClientes";
 	}
 
 	@PostMapping("/salvarCliente")
@@ -73,7 +74,7 @@ public class AdminController {
 			return "admin/cadastroCliente";
 		}
 		serviceCliente.salvar(cliente);
-		attr.addFlashAttribute("sucess", "cliente.create.sucess");
+		attr.addFlashAttribute("success", "customer.create.success");
 		return "redirect:/admin/listarClientes";
 	}
 
@@ -101,13 +102,14 @@ public class AdminController {
 			return "admin/cadastroLoja";
 		}
 		serviceLoja.salvar(loja);
-		attr.addFlashAttribute("sucess", "loja.edit.sucess");
+		attr.addFlashAttribute("success", "store.edit.success");
 		return "redirect:/admin/listarLojas";
 	}
 
 	@GetMapping("/removerLoja")
-	public String remocaoLoja(ModelMap model, @RequestParam Long id) {
+	public String remocaoLoja(ModelMap model, @RequestParam Long id, RedirectAttributes attr) {
         serviceLoja.excluir(id);
+        attr.addFlashAttribute("success", "store.delete.success");
 		return "redirect:/admin/listarLojas";
 	}
 
@@ -118,7 +120,7 @@ public class AdminController {
 			return "admin/cadastroLoja";
 		}
 		serviceLoja.salvar(loja);
-		attr.addFlashAttribute("sucess", "loja.create.sucess");
+		attr.addFlashAttribute("success", "store.create.success");
 		return "redirect:/admin/listarLojas";
 	}
 }
