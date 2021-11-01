@@ -38,7 +38,7 @@
                         </div>
                     </td>
                     <td class="acao" th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_USER')">
-                        <a id="negar" th:href="@{/proposta/cancelarProposta/{id}(id=${proposta.id})}"
+                        <a id="negar" th:href="@{/proposta/cancelar/{id}(id=${proposta.id})}"
                             th:text=#{bids.cancel}></a>
                     </td>
                     <div th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_LOJA')">
@@ -49,10 +49,10 @@
                         </td>
                         <td class="acao">
                             <a id="aceitar"
-                                href="aceitarProposta?id=${proposta.id}&id_cliente=${proposta.cliente.id}&msg="
+                                href="aceitar?id=${proposta.id}&id_cliente=${proposta.cliente.id}&msg="
                                 th:text=#{store.accept}></a>
                             &nbsp;
-                            <a id="negar" href="negarProposta?id=${proposta.id}&id_cliente=${proposta.cliente.id}&msg="
+                            <a id="negar" href="negar?id=${proposta.id}&id_cliente=${proposta.cliente.id}&msg="
                                 th:text=#{store.reject}></a>
                         </td>
                     </div>

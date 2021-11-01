@@ -48,11 +48,11 @@
 						<td th:text="${cliente.sexo}"></td>
 						<td th:text="${cliente.nascimento}"></td>
 						<td colspan="2">
-							<a class="btn btn-info btn-sm" th:href="@{/cliente/editarCliente{id} (id=${cliente.id})}" role="button">
+							<a class="btn btn-info btn-sm" th:href="@{/cliente/editar{id} (id=${cliente.id})}" role="button">
 							<span class="oi oi-brush" th:title="#{object.update}" aria-hidden="true"></span>
 							</a>
 							
-							<a class="btn btn-info btn-sm" id="botao-delete" th:href="@{${'/cliente/removerCliente?id=' + cliente.id}}" role="button" 
+							<a class="btn btn-info btn-sm" id="botao-delete" th:href="@{${'/cliente/remover?id=' + cliente.id}}" role="button" 
 								onclick="return confirm('Remover/Remove?')">
 								<span class="oi oi-circle-x" th:title="#{object.delete}" aria-hidden="true"></span>
 							</a>
@@ -62,7 +62,7 @@
 			</tbody>
 		</table>
 		<div class="adiciona">
-			<a th:href="@{/cliente/cadastrarCliente}" th:text="#{customer.add}"></a>
+			<a th:href="@{/cliente/cadastrar}" th:text="#{customer.add}"></a>
 		</div>
 	</div>
 </body>

@@ -33,7 +33,7 @@ public class VeiculoController {
 		return usuarioDetails.getUsuario();
 	}
     
-    @GetMapping("/editarVeiculo")
+    @GetMapping("/editar")
     public String editar(ModelMap model) {
     	Loja loja = service.buscarPorId(this.getUsuario().getId());
     	model.addAttribute("propostas",serviceProposta.buscarPorLoja(loja));
@@ -41,7 +41,7 @@ public class VeiculoController {
     	return "loja/listaPropostas";
     }
 
-    @GetMapping("/adicionarVeiculo")
+    @GetMapping("/adicionar")
     public String adicionar(ModelMap model) {
     	Loja loja = service.buscarPorId(this.getUsuario().getId());
     	model.addAttribute("propostas",serviceProposta.buscarPorLoja(loja));

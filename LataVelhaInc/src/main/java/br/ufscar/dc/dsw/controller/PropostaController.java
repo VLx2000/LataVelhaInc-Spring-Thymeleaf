@@ -96,7 +96,7 @@ public class PropostaController {
     	return "cliente/comprar";
     }
 	
-	@PostMapping("/salvarProposta")
+	@PostMapping("/salvar")
     public String salvarProposta(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr,ModelMap model) {
 		if (result.hasErrors()) {
 			Cliente cliente = serviceCliente.buscarPorId(this.getUsuario().getId());
@@ -111,7 +111,7 @@ public class PropostaController {
     	
     }
 
-	@GetMapping("/cancelarProposta/{id}")
+	@GetMapping("/cancelar/{id}")
 	public String cancelarProposta(@PathVariable("id") Long id, RedirectAttributes attr,ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id);
 		if(proposta.getCliente().equals(this.getUsuario()) && proposta.getEstado().equals("ABERTO")) {

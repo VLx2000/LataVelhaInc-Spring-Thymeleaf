@@ -23,24 +23,24 @@ public class LojaController {
     @Autowired
 	private ILojaService service;
 
-	@GetMapping("/listarLojas")
+	@GetMapping("/listar")
 	public String listarLojas(ModelMap model) {
 		model.addAttribute("listaLojas", service.buscarTodos());
 		return "admin/listaLojas";
 	}
 
-	@GetMapping("/cadastrarLoja")
+	@GetMapping("/cadastrar")
 	public String cadastroLoja(Loja loja) {
 		return "admin/cadastroLoja";
 	}
 
-	@GetMapping("/editarLoja{id}")
+	@GetMapping("/editar{id}")
 	public String preEdicaoLoja(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("loja", service.buscarPorId(id));
 		return "admin/cadastroLoja";
 	}
 
-	@PostMapping("/editarLoja")
+	@PostMapping("/editar")
 	public String EdicaoLoja(@Valid Loja loja, ModelMap model, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
@@ -48,17 +48,17 @@ public class LojaController {
 		}
 		service.salvar(loja);
 		attr.addFlashAttribute("success", "store.edit.success");
-		return "redirect:/loja/listarLojas";
+		return "redirect:/loja/listar";
 	}
 
-	@GetMapping("/removerLoja{id}")
+	@GetMapping("/remover{id}")
 	public String remocaoLoja(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
         service.excluir(id);
         attr.addFlashAttribute("success", "store.delete.success");
-		return "redirect:/loja/listarLojas";
+		return "redirect:/loja/listar";
 	}
 
-	@PostMapping("/salvarLoja")
+	@PostMapping("/salvar")
 	public String salvarLoja(@Valid Loja loja, BindingResult result, RedirectAttributes attr) {
 
 		if (result.hasErrors()) {
@@ -66,6 +66,6 @@ public class LojaController {
 		}
 		service.salvar(loja);
 		attr.addFlashAttribute("success", "store.create.success");
-		return "redirect:/loja/listarLojas";
+		return "redirect:/loja/listar";
 	}
 }

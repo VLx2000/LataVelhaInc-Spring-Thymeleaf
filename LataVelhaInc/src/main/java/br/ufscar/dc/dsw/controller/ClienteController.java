@@ -24,24 +24,24 @@ public class ClienteController {
 	@Autowired
 	private IClienteService service;
 
-	@GetMapping("/listarClientes")
+	@GetMapping("/listar")
 	public String listarClientes(ModelMap model) {
         model.addAttribute("listaClientes", service.buscarTodos());
 		return "admin/listaClientes";
 	}
 
-	@GetMapping("/cadastrarCliente")
+	@GetMapping("/cadastrar")
 	public String cadastroCliente(Cliente cliente) {
 		return "admin/cadastroCliente";
 	}
 
-	@GetMapping("/editarCliente{id}")
+	@GetMapping("/editar{id}")
 	public String preEdicaoCliente(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("cliente", service.buscarPorId(id));
 		return "admin/cadastroCliente";
 	}
 
-	@PostMapping("/editarCliente")
+	@PostMapping("/editar")
 	public String EdicaoCliente(@Valid Cliente cliente, ModelMap model, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
@@ -49,17 +49,17 @@ public class ClienteController {
 		}
 		service.salvar(cliente);
 		attr.addFlashAttribute("success", "customer.edit.success");
-		return "redirect:/cliente/listarClientes";
+		return "redirect:/cliente/listar";
 	}
 
-	@GetMapping("/removerCliente")
+	@GetMapping("/remover")
 	public String remocaoCliente(ModelMap model, @RequestParam Long id, RedirectAttributes attr) {
         service.excluir(id);
         attr.addFlashAttribute("success", "customer.delete.success");
-        return "redirect:/cliente/listarClientes";
+        return "redirect:/cliente/listar";
 	}
 
-	@PostMapping("/salvarCliente")
+	@PostMapping("/salvar")
 	public String salvarCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
 
 		if (result.hasErrors()) {
@@ -67,6 +67,6 @@ public class ClienteController {
 		}
 		service.salvar(cliente);
 		attr.addFlashAttribute("success", "customer.create.success");
-		return "redirect:/cliente/listarClientes";
+		return "redirect:/cliente/listar";
 	}
 }
