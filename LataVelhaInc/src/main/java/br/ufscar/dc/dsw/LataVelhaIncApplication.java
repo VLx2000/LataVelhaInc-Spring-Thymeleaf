@@ -105,19 +105,19 @@ public class LataVelhaIncApplication {
 			l3.setRole("ROLE_LOJA");
 			l3.setEnabled(true);
 			lojaDAO.save(l3);
-			
 
-			
 			Veiculo v[] = new Veiculo[TAM];
 
-			String placa[] = { "SADF-5645", "JRGB-6246", "ERBB-8768", "WGBW-3525", "YMRM-7457", "SFDC-2466",
-					"MTMT-8568", "WERG-4677", "QAVE-2656", "ITRY-2555", "23QF-2245", "MYRM-6567", "RBWT-7473" };
+			String placa[] = { "SADF5645", "JRGB6246", "ERBB8768", "WGBW3525", "YMRM7457", "SFDC2466",
+					"MTMT8568", "WERG4677", "QAVE2656", "ITRY2555", "23QF2245", "MYRM6567", "RBWT7473" };
 
 			String modelo[] = { "Corsa", "Fusca", "Uno", "Palio", "Monza", "Kombi", "Corolla", "Ka", "Focus", "F50",
 					"R8", "RX-7", "Camaro" };
 
-			String chassi[] = { "edtfnbed", "etfgjnfn", "rtgndrtgfnrd", "dnbetrnert", "etrhjnetgj", "etgjneftgjn",
-					"etjnjted", "agvedrhb", "mtrymy", "qawesdv", "hhbtnrb", "argbwsrb", "ntyretjn" };
+			String chassi[] = { "28187273484628616", "68909064904628616", "28735926214628616", "69545597444628616",
+								"98928467054628616", "46228703864628616", "73411000224628616", "85925899194628616",
+								"75151258384628616", "51098812944628616", "00064526462861645", "63462076624628616",
+								"96435284874628616", "93910031984628616", };
 
 			Integer ano[] = { 2005, 1997, 2007, 2006, 2001, 2000, 1988, 1987, 1999, 1999, 1996, 2007, 2006 };
 
