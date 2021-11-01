@@ -1,51 +1,65 @@
 package br.ufscar.dc.dsw.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-//import br.ufscar.dc.dsw.domain.Cliente;
-//import br.ufscar.dc.dsw.domain.Veiculo;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-//import br.ufscar.dc.dsw.domain.Cliente;
-import br.ufscar.dc.dsw.domain.Loja;
-import br.ufscar.dc.dsw.domain.Usuario;
-import br.ufscar.dc.dsw.security.UsuarioDetails;
-import br.ufscar.dc.dsw.service.spec.ILojaService;
-//import br.ufscar.dc.dsw.service.spec.IVeiculoService;
-import br.ufscar.dc.dsw.service.spec.IPropostaService;
-
+import br.ufscar.dc.dsw.domain.Veiculo;
+import br.ufscar.dc.dsw.service.spec.IVeiculoService;
 
 @Controller
 @RequestMapping("/veiculo/*")
 public class VeiculoController {
 
     @Autowired
-	private ILojaService service;
-    
-    @Autowired
-    private IPropostaService serviceProposta;
-    
-	private Usuario getUsuario() {
-		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return usuarioDetails.getUsuario();
-	}
-    
-    @GetMapping("/editar")
-    public String editar(ModelMap model) {
-    	Loja loja = service.buscarPorId(this.getUsuario().getId());
-    	model.addAttribute("propostas",serviceProposta.buscarPorLoja(loja));
-		model.addAttribute("loja", loja);
-    	return "loja/listaPropostas";
-    }
-
+	private IVeiculoService service;
+        
     @GetMapping("/adicionar")
-    public String adicionar(ModelMap model) {
-    	Loja loja = service.buscarPorId(this.getUsuario().getId());
-    	model.addAttribute("propostas",serviceProposta.buscarPorLoja(loja));
-		model.addAttribute("loja", loja);
-    	return "loja/listaPropostas";
-    }
+	public String cadastroVeiculo(Veiculo Veiculo) {
+		return "loja/cadastroVeiculo";
+	}
+
+	@GetMapping("/editar/{id}")
+	public String preEdicaoVeiculo(@PathVariable("id") Long id, ModelMap model) {
+        model.addAttribute("veiculo", service.buscarPorId(id));
+		return "loja/cadastroVeiculo";
+	}
+
+	@PostMapping("/editar")
+	public String EdicaoVeiculo(@Valid Veiculo Veiculo, ModelMap model, BindingResult result, RedirectAttributes attr) {
+		
+		if (result.hasErrors()) {
+			return "loja/cadastroVeiculo";
+		}
+		service.salvar(Veiculo);
+		attr.addFlashAttribute("success", "vehicle.edit.success");
+		return "redirect:/index";
+	}
+
+	@GetMapping("/remover")
+	public String remocaoVeiculo(ModelMap model, @RequestParam Long id, RedirectAttributes attr) {
+        service.excluir(id);
+        attr.addFlashAttribute("success", "vehicle.delete.success");
+        return "redirect:/index";
+	}
+
+	@PostMapping("/salvar")
+	public String salvarVeiculo(@Valid Veiculo Veiculo, BindingResult result, RedirectAttributes attr) {
+
+		if (result.hasErrors()) {
+			return "loja/cadastroVeiculo";
+		}
+		service.salvar(Veiculo);
+		attr.addFlashAttribute("success", "vehicle.create.success");
+		return "redirect:/index";
+	}
 }

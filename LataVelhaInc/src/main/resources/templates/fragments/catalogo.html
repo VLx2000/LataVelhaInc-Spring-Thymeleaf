@@ -1,5 +1,5 @@
-
 <section id="carros">
+    <a href="/veiculo/adicionar" sec:authorize="hasRole('ROLE_LOJA')" id="linkAdicionar">Adicionar novo veículo</a>
     <div id="divFiltro">
         <input type="text" name="Filtro" placeholder="filtrar..." id="filtro" onfocus="comecar()" onblur="parar()">
         <span id="legendaN" th:text=#{filter.count}></span>
@@ -10,7 +10,7 @@
             <a th:href="@{/proposta/comprar/{id} (id=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_USER')">
                 <div th:replace="fragments/cards"></div>
             </a>
-            <a th:href="@{/veiculo/editar/{id_veiculo} (id_veiculo=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_LOJA')">
+            <a th:href="@{/veiculo/editar/{id} (id=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_LOJA')">
                 <div th:replace="fragments/cards"></div>
             </a>
             <a th:href="@{/login}" class="box-link" sec:authorize="!isAuthenticated()">

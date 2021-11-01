@@ -122,3 +122,12 @@
 		width: 95%;
 	}
 }
+
+#linkAdicionar{
+	margin-top: 90px;
+    text-align: center;
+    color: red;
+    font-size: larger;
+    margin-bottom: 3px;
+    text-decoration: underline;
+}
