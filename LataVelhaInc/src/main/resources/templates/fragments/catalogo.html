@@ -1,4 +1,5 @@
 <section id="carros">
+    <div th:replace="fragments/alert"></div>
     <a href="/veiculo/adicionar" sec:authorize="hasRole('ROLE_LOJA')" id="linkAdicionar">Adicionar novo veículo</a>
     <div id="divFiltro">
         <input type="text" name="Filtro" placeholder="filtrar..." id="filtro" onfocus="comecar()" onblur="parar()">
