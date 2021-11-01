@@ -1,9 +1,6 @@
 package br.ufscar.dc.dsw.controller;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,19 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufscar.dc.dsw.domain.Cliente;
-import br.ufscar.dc.dsw.domain.Usuario;
-import br.ufscar.dc.dsw.domain.Veiculo;
-import br.ufscar.dc.dsw.domain.Loja;
-import br.ufscar.dc.dsw.domain.Proposta;
-import br.ufscar.dc.dsw.security.UsuarioDetails;
 import br.ufscar.dc.dsw.service.spec.IClienteService;
-import br.ufscar.dc.dsw.service.spec.IVeiculoService;
-import br.ufscar.dc.dsw.service.spec.IPropostaService;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -37,18 +23,6 @@ public class ClienteController {
 
 	@Autowired
 	private IClienteService service;
-
-    @Autowired
-	private IPropostaService serviceProposta;
-
-    @Autowired
-    private IVeiculoService serviceVeiculo;
-    
- 
-	private Usuario getUsuario() {
-		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return usuarioDetails.getUsuario();
-	}
 
 	@GetMapping("/listarClientes")
 	public String listarClientes(ModelMap model) {

@@ -9,15 +9,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import br.ufscar.dc.dsw.validation.UniqueCNPJ;
-
-
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Loja")
 public class Loja extends Usuario{
 	
-	//@UniqueCNPJ (message = "{Unique.loja.CNPJ}")
 	@NotBlank
 	@Size(min = 18, max = 18, message = "{Size.loja.CNPJ}")
 	@Column(nullable = false, unique = true, length = 60)
