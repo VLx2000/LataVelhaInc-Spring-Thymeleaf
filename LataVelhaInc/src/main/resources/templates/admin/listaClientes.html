@@ -4,8 +4,11 @@
 
 <head>
 	<title th:text="#{customer.list.title}"></title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+	<link th:href="@{/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css}" rel="stylesheet" />
 	<link rel="stylesheet" href="/css/lojas.css">
 	<link rel="stylesheet" href="/css/global.css">
+	<link rel="stylesheet" href="/css/lista.css">
 </head>
 
 <body>
@@ -15,11 +18,11 @@
 		<h1 class="label" th:text="#{customer.welcome}"></h1>
 	</div>
 
-	<div align="center">
+	<div align="center" class="list-container">
 		<h3 th:text="#{customer.list}"></h3>
 
-		<table>
-			<thead>
+		<table class="table">
+			<thead class="thead-dark">
 				<tr>
 					<th th:text="#{customer.id}"></th>
 					<th th:text="#{customer.name}"></th>
@@ -42,10 +45,14 @@
 						<td th:text="${cliente.telefone}"></td>
 						<td th:text="${cliente.sexo}"></td>
 						<td th:text="${cliente.nascimento}"></td>
-						<td><a th:href="@{/admin/editarCliente{id} (id=${cliente.id})}" th:text="#{object.update}"></a>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<a th:href="@{${'/admin/removerCliente?id=' + cliente.id}}" th:text="#{object.delete}"
+						<td colspan="2">
+							<a class="btn btn-info btn-sm" th:href="@{/admin/editarCliente{id} (id=${cliente.id})}" role="button">
+							<span class="oi oi-brush" th:title="#{object.update}" aria-hidden="true"></span>
+							</a>
+							
+							<a class="btn btn-info btn-sm" id="botao-delete" th:href="@{${'/admin/removerCliente?id=' + cliente.id}}" role="button" 
 								onclick="return confirm('Remover/Remove?')">
+								<span class="oi oi-circle-x" th:title="#{object.delete}" aria-hidden="true"></span>
 							</a>
 						</td>
 					</tr>

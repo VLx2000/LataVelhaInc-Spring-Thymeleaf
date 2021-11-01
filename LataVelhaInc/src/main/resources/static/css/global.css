@@ -30,6 +30,11 @@ a {
 	text-decoration: none;
 }
 
+a:hover {
+	text-decoration:none;
+	color: black;
+}
+
 /*TOPBAR E LOGO*/
 #titulo {
 	font-size: 1.6em;
@@ -192,7 +197,7 @@ a {
     margin: 0 auto 0 auto;
     padding: 12px;
     border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .camposLogin {

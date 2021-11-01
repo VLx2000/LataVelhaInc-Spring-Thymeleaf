@@ -4,8 +4,11 @@
 
 <head>
 	<title th:text="#{store.list.title}"></title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+	<link th:href="@{/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css}" rel="stylesheet" />
 	<link rel="stylesheet" href="/css/lojas.css">
 	<link rel="stylesheet" href="/css/global.css">
+	<link rel="stylesheet" href="/css/lista.css">
 </head>
 
 <body>
@@ -15,39 +18,42 @@
 		<h1 class="label" th:text="#{store.welcome}"></h1>
 	</div>
 
-	<div align="center">
-		<h3 th:text="#{store.list}"></h3>
-
-		<table>
-			<thead>
-				<tr>
-					<th th:text="#{store.id}"></th>
-					<th th:text="#{store.name}"></th>
-					<th th:text="#{store.email}"></th>
-					<th th:text="#{store.cnpj}"></th>
-					<th th:text="#{store.description}"></th>
-					<th th:text="#{object.actions}"></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<div th:each="loja : ${listaLojas}">
+	<div align="center" class="list-container">
+			<h3 th:text="#{store.list}"></h3>
+			<table class="table">
+				<thead class="thead-dark">
 					<tr>
-						<td th:text="${loja.id}"></td>
-						<td th:text="${loja.nome}"></td>
-						<td th:text="${loja.username}"></td>
-						<td th:text="${loja.CNPJ}"></td>
-						<td th:text="${loja.descricao}"></td>
-						<td><a th:href="@{/admin/editarLoja{id} (id=${loja.id})}" th:text="#{object.update}"></a>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<a th:href="@{${'/admin/removerLoja?id=' + loja.id}}" th:text="#{object.delete}"
-								onclick="return confirm('Remover/Remove?')">
-							</a>
-						</td>
+						<th th:text="#{store.id}"></th>
+						<th th:text="#{store.name}"></th>
+						<th th:text="#{store.email}"></th>
+						<th th:text="#{store.cnpj}"></th>
+						<th th:text="#{store.description}"></th>
+						<th th:text="#{object.actions}"></th>
 					</tr>
-				</div>
-			</tbody>
-		</table>
+				</thead>
+		
+				<tbody>
+					<div th:each="loja : ${listaLojas}">
+						<tr>
+							<td th:text="${loja.id}"></td>
+							<td th:text="${loja.nome}"></td>
+							<td th:text="${loja.username}"></td>
+							<td th:text="${loja.CNPJ}"></td>
+							<td th:text="${loja.descricao}"></td>
+							<td colspan="2">
+								<a class="btn btn-info btn-sm" th:href="@{/admin/editarLoja{id} (id=${loja.id})}" role="button">
+								<span class="oi oi-brush" th:title="#{object.update}" aria-hidden="true"></span>
+								</a>
+								
+								<a class="btn btn-info btn-sm" id="botao-delete" th:href="@{${'/admin/removerLoja?id=' + loja.id}}" role="button"
+									onclick="return confirm('Remover/Remove?')">
+									<span class="oi oi-circle-x" th:title="#{object.delete}" aria-hidden="true"></span>
+								</a>
+							</td>
+						</tr>
+					</div>
+				</tbody>
+			</table>
 		<div class="adiciona">
 			<a th:href="@{/admin/cadastrarLoja}" th:text="#{store.add}"></a>
 		</div>
