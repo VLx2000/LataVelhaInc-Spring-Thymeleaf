@@ -46,7 +46,7 @@
 			</ul>
 
 			<div th:switch="${proposta_aberta}">
-				<form th:case="null" id="form_proposta" th:action="@{/cliente/salvarProposta}" method="post" th:object="${proposta}">
+				<form th:case="null" id="form_proposta" th:action="@{/proposta/salvarProposta}" method="post" th:object="${proposta}">
 					<input id="pvalor" type="number" name="valor" th:placeholder="#{bids.value}" th:field="*{valor}" 
 					th:classappend="${#fields.hasErrors('valor')} ? is-invalid"/>
 					<input id="pparcelas" type="number" name="parcelamento" th:placeholder="#{bids.number.installments}" th:field="*{parcelamento}"
@@ -77,7 +77,7 @@
 								</td>
 								<td id="botao_cancelar">
 									<a id="remover"
-										th:href="@{/cliente/cancelarProposta/{id}(id=${proposta_aberta.id})}"
+										th:href="@{/proposta/cancelarProposta/{id}(id=${proposta_aberta.id})}"
 										th:text=#{bids.cancel} /></a>
 								</td>
 							</tr>

@@ -39,14 +39,6 @@ public class LojaController {
 		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return usuarioDetails.getUsuario();
 	}
-    
-    @GetMapping("/listarPropostas")
-    public String propostas(ModelMap model) {
-    	Loja loja = service.buscarPorId(this.getUsuario().getId());
-    	model.addAttribute("propostas",serviceProposta.buscarPorLoja(loja));
-		model.addAttribute("loja", loja);
-    	return "loja/listaPropostas";
-    }
 
 	@GetMapping("/listarLojas")
 	public String listarLojas(ModelMap model) {

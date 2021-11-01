@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 //import br.ufscar.dc.dsw.domain.Cliente;
 //import br.ufscar.dc.dsw.domain.Veiculo;
 

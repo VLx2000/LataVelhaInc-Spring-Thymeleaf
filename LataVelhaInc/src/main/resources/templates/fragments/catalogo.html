@@ -7,10 +7,10 @@
     </div>
     <div th:each="veiculo: ${catalogo}">
         <section class="box">
-            <a th:href="@{/cliente/comprar/{id} (id=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_USER')">
+            <a th:href="@{/proposta/comprar/{id} (id=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_USER')">
                 <div th:replace="fragments/cards"></div>
             </a>
-            <a th:href="@{/loja/editar/{id_veiculo} (id_veiculo=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_LOJA')">
+            <a th:href="@{/veiculo/editar/{id_veiculo} (id_veiculo=${veiculo.id})}" class="box-link" sec:authorize="hasRole('ROLE_LOJA')">
                 <div th:replace="fragments/cards"></div>
             </a>
             <a th:href="@{/login}" class="box-link" sec:authorize="!isAuthenticated()">

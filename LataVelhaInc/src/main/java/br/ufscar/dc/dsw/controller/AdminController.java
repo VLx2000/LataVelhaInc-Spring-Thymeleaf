@@ -32,49 +32,5 @@ public class AdminController {
 		return "index";
 	}
 
-    @GetMapping("/listarClientes")
-	public String listarClientes(ModelMap model) {
-        model.addAttribute("listaClientes", serviceCliente.buscarTodos());
-		return "admin/listaClientes";
-	}
-
-	@GetMapping("/cadastrarCliente")
-	public String cadastroCliente(Cliente cliente) {
-		return "admin/cadastroCliente";
-	}
-
-	@GetMapping("/editarCliente{id}")
-	public String preEdicaoCliente(@PathVariable("id") Long id, ModelMap model) {
-        model.addAttribute("cliente", serviceCliente.buscarPorId(id));
-		return "admin/cadastroCliente";
-	}
-
-	@PostMapping("/editarCliente")
-	public String EdicaoCliente(@Valid Cliente cliente, ModelMap model, BindingResult result, RedirectAttributes attr) {
-		
-		if (result.hasErrors()) {
-			return "admin/cadastroCliente";
-		}
-		serviceCliente.salvar(cliente);
-		attr.addFlashAttribute("success", "customer.edit.success");
-		return "redirect:/admin/listarClientes";
-	}
-
-	@GetMapping("/removerCliente")
-	public String remocaoCliente(ModelMap model, @RequestParam Long id, RedirectAttributes attr) {
-        serviceCliente.excluir(id);
-        attr.addFlashAttribute("success", "customer.delete.success");
-        return "redirect:/admin/listarClientes";
-	}
-
-	@PostMapping("/salvarCliente")
-	public String salvarCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
-
-		if (result.hasErrors()) {
-			return "admin/cadastroCliente";
-		}
-		serviceCliente.salvar(cliente);
-		attr.addFlashAttribute("success", "customer.create.success");
-		return "redirect:/admin/listarClientes";
-	}
+    
 }
