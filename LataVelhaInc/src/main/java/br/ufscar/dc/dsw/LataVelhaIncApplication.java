@@ -108,16 +108,16 @@ public class LataVelhaIncApplication {
 
 			Veiculo v[] = new Veiculo[TAM];
 
-			String placa[] = { "SADF5645", "JRGB6246", "ERBB8768", "WGBW3525", "YMRM7457", "SFDC2466",
-					"MTMT8568", "WERG4677", "QAVE2656", "ITRY2555", "23QF2245", "MYRM6567", "RBWT7473" };
+			String placa[] = { "SADF5645", "JRGB6246", "ERBB8768", "WGBW3525", "YMRM7457", "SFDC2466", "MTMT8568",
+					"WERG4677", "QAVE2656", "ITRY2555", "23QF2245", "MYRM6567", "RBWT7473" };
 
 			String modelo[] = { "Corsa", "Fusca", "Uno", "Palio", "Monza", "Kombi", "Corolla", "Ka", "Focus", "F50",
 					"R8", "RX-7", "Camaro" };
 
 			String chassi[] = { "28187273484628616", "68909064904628616", "28735926214628616", "69545597444628616",
-								"98928467054628616", "46228703864628616", "73411000224628616", "85925899194628616",
-								"75151258384628616", "51098812944628616", "00064526462861645", "63462076624628616",
-								"96435284874628616", "93910031984628616", };
+					"98928467054628616", "46228703864628616", "73411000224628616", "85925899194628616",
+					"75151258384628616", "51098812944628616", "00064526462861645", "63462076624628616",
+					"96435284874628616", "93910031984628616", };
 
 			Integer ano[] = { 2005, 1997, 2007, 2006, 2001, 2000, 1988, 1987, 1999, 1999, 1996, 2007, 2006 };
 
@@ -130,6 +130,8 @@ public class LataVelhaIncApplication {
 			Double preco[] = { 5999.99, 7999.99, 9999.99, 3999.99, 5999.99, 9999.99, 62999.99, 8999.99, 9999.99,
 					5999.99, 3999.99, 58999.99, 54999.99 };
 
+			Integer n_fotos[] = { 10, 3, 2, 2, 3, 2, 1, 1, 1, 1, 1, 1, 1 };
+
 			for (int i = 0; i < TAM; i++) {
 				v[i] = new Veiculo();
 				v[i].setPlaca(placa[i]);
@@ -139,6 +141,7 @@ public class LataVelhaIncApplication {
 				v[i].setDescricao(descricao[i]);
 				v[i].setQuilometragem(quilometragem[i]);
 				v[i].setPreco(BigDecimal.valueOf(preco[i]));
+				v[i].setN_fotos(n_fotos[i]);
 				if (i % 3 == 0)
 					v[i].setLoja(l3);
 				else if (i % 2 == 0)
