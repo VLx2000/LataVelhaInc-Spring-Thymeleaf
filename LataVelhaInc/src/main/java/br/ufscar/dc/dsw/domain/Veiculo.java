@@ -53,8 +53,7 @@ public class Veiculo extends AbstractEntity<Long>{
 	@JoinColumn(name = "id_loja")
     private Loja loja;
 
-    @NotNull(message = "{NotNull.veiculo.n_fotos}")
-	@Column(nullable = false, length = 4)
+	@Column(length = 4)
     private Integer n_fotos;
     
     public String getPlaca() {

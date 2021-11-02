@@ -97,7 +97,11 @@
                     <a id="deletar" th:href="@{/veiculo/remover/{id} (id=${id})}" th:text="#{object.delete}" class="btn btn-primary btn-sm" th:if="${veiculo.id != null}"></a>
                     <button id="salvar" type="submit" th:text="#{object.save}" class="btn btn-primary btn-sm"></button>
                 </div>
+                <!--Choose a file: <input type="file" name="file" />
             </form>
+            <ul th:each="file : ${files}">
+                <li><a th:href="@{/upload/{file} (file=${file}) }" th:text="${file}"></a></li>
+            </ul>-->
         </div>
     </section>
 </body>

@@ -1,5 +1,10 @@
 package br.ufscar.dc.dsw.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufscar.dc.dsw.domain.Loja;
@@ -20,22 +27,27 @@ import br.ufscar.dc.dsw.security.UsuarioDetails;
 import br.ufscar.dc.dsw.service.spec.ILojaService;
 import br.ufscar.dc.dsw.service.spec.IVeiculoService;
 
+import javax.servlet.ServletContext;
+
 @Controller
 @RequestMapping("/veiculo/*")
 public class VeiculoController {
 
-    @Autowired
+	@Autowired
 	private IVeiculoService service;
 
 	@Autowired
 	private ILojaService serviceLoja;
-
+/*
+	@Autowired
+	ServletContext context;
+*/
 	private Usuario getUsuario() {
 		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return usuarioDetails.getUsuario();
 	}
-        
-    @GetMapping("/adicionar")
+
+	@GetMapping("/adicionar")
 	public String cadastroVeiculo(Veiculo veiculo, ModelMap model) {
 		Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
 		model.addAttribute("loja", loja);
@@ -44,10 +56,27 @@ public class VeiculoController {
 	}
 
 	@GetMapping("/editar/{id}")
-	public String preEdicaoVeiculo(@PathVariable("id") Long id, ModelMap model) {
+	public String preEdicaoVeiculo(@PathVariable("id") Long id, ModelMap model) /*throws IOException */{
+
 		Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
 		model.addAttribute("loja", loja);
-        model.addAttribute("veiculo", service.buscarPorId(id));
+		model.addAttribute("veiculo", service.buscarPorId(id));
+/*
+		List<String> fileList = new ArrayList<String>();
+
+		String uploadPath = context.getRealPath("") + "images/" + id;
+		File uploadDir = new File(uploadPath);
+
+		File[] files = uploadDir.listFiles();
+
+		if (files != null) {
+			for (final File file : files) {
+				fileList.add(file.getName());
+			}
+		}
+		System.out.println(uploadPath);
+		model.addAttribute("files", fileList);
+*/
 		return "loja/cadastroVeiculo";
 	}
 
@@ -72,13 +101,28 @@ public class VeiculoController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvarVeiculo(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr, ModelMap model) {
+	public String salvarVeiculo(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr, ModelMap model)/*,
+		@RequestParam("file") MultipartFile file) throws IOException*/ {
 
 		if (result.hasErrors()) {
 			Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
 			model.addAttribute("loja", loja);
 			return "loja/cadastroVeiculo";
 		}
+/*
+		String fileName = file.getOriginalFilename();
+
+		String uploadPath = context.getRealPath("") + "images/" + veiculo.getId();
+		File uploadDir = new File(uploadPath);
+
+		if (!uploadDir.exists()) {
+			uploadDir.mkdir();
+		}
+
+		file.transferTo(new File(uploadDir, fileName));
+
+		attr.addFlashAttribute("sucess", "File " + fileName + " has uploaded successfully!");
+*/
 		service.salvar(veiculo);
 		attr.addFlashAttribute("success", "vehicle.create.success");
 		return "redirect:/";
