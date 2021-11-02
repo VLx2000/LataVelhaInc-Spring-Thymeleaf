@@ -43,8 +43,7 @@ a:hover {
 /*TOPBAR E LOGO*/
 #titulo {
 	font-size: 1.6em;
-	font-weight: bold;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-family: 'Gugi', cursive, Arial, sans-serif;
 	color: red;
 }
 
@@ -55,7 +54,7 @@ a:hover {
 	margin-left: 15%;
 	width: 70%;
 	overflow: visible;
-	height: 58px;
+	height: 60px;
 	font-size: 16px;
 }
 
@@ -64,7 +63,7 @@ a:hover {
 	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.24);
 	position: fixed;
 	top: 0;
-	height: 58px;
+	height: 60px;
 	width: 100%;
 	z-index: 10;
 }
@@ -94,7 +93,7 @@ a:hover {
 }
 
 .linkTopo a {
-	padding: 20px 16px;
+	padding: 21px 16px;
 }
 
 .linkTopo:hover a {
@@ -104,7 +103,7 @@ a:hover {
 .nomeTopoDireita {
 	float: right;
 	text-align: center;
-	padding: 20px 16px;
+	padding: 21px 16px;
 	position: relative;
 }
 
@@ -115,7 +114,7 @@ a:hover {
 .dropdown  {
 	display: none;
 	position: absolute;
-	top: 58px;
+	top: 60px;
 	right: 0;
 	background-color: rgb(43, 43, 43);
 	border-bottom-left-radius: 16px;
@@ -139,10 +138,11 @@ a:hover {
 .dropdown li {
 	float: right;
 	list-style-type: none;
+	width: inherit;
 }
 
 .dropdown li a {
-	padding: 20px 16px;
+	padding: 21px 16px;
 }
 
 .dropdown li:hover a, .nomeTopoDireita:hover span {
@@ -238,13 +238,13 @@ a:hover {
 .botaoLogout {
 	background: transparent;
 	color: #b6b6b6;
-	margin: 4px;
+	margin: 0;
 	padding: 10px;
 	border: none;
 	font-size: 1em;
 	font-weight: bolder;
 	text-align: center;
-	height: 50px;
+	width: inherit;
 	cursor: pointer;
 }
 
@@ -280,8 +280,8 @@ a:hover {
 @media (max-width: 1300px) {
 	.topbar {
 		width: 100%;
-		height: auto;
 		margin: 0;
+		height: fit-content;
 	}
 }
 

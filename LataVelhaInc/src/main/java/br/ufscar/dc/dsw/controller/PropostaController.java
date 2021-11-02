@@ -93,6 +93,7 @@ public class PropostaController {
 		for (int i = 1; i <= 10; i++)
 			lista.add("/images/" + id + "/" + i + ".jpg");
 		model.addAttribute("files", lista);
+		model.addAttribute("n_fotos", veiculo.getN_fotos());
     	return "cliente/comprar";
     }
 	
