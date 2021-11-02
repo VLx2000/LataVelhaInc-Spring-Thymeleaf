@@ -7,11 +7,12 @@
                     <span id="admin" sec:authorize="hasRole('ROLE_ADMIN')">admin</span>
                 </a>
             </li>
-
+			
             <li class="linkTopoDireita" sec:authorize="!isAuthenticated()">
                 <a th:href="@{/login/}" class="botaoLogin" th:text="#{user.login}"></a>
             </li>
-
+			
+			
             <li class="nomeTopoDireita" sec:authorize="isAuthenticated()">
                 <span th:inline="text">[[#{user.welcome}]]
                     <span sec:authorize="hasRole('ROLE_ADMIN')" style="font-weight: bolder;">admin</span>
@@ -34,6 +35,19 @@
 
             <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER')">
                 <a th:href="@{/proposta/listarPropostasCliente}" th:text=#{customer.bids}></a>
+            </li>
+            
+            <li class="nomeTopoDireita">
+				<span class="oi oi-globe"></span>
+				<ul class="dropdown" style="width:70px">
+					<li>
+						<a th:href="@{''(lang=pt)}">pt-br</a> 
+					</li>
+	           	
+	           		<li>
+						<a th:href="@{''(lang=en)}">en-us</a>
+					</li>				
+            	</ul>
             </li>
 
             <!--<li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER') || hasRole('ROLE_LOJA')">

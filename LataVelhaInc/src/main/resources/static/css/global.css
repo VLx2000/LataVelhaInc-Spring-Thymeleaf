@@ -186,20 +186,6 @@ a:hover {
 }
 
 /*PARTE DA PAGINA DE LOGIN*/
-.bodyLogin {
-	margin: auto auto;
-}
-
-.tituloLogin {
-	font-size: 35px;
-	font-weight: bold;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-	color: red;
-	text-align: center;
-	margin-top: 50px;
-	margin-bottom: 20px;
-}
-
 .boxLogin {
 	display:flex;
 	background: #c2c0c0;
@@ -208,7 +194,7 @@ a:hover {
 	width: 400px;
 	height: 450px;
     position: relative;
-    margin: 0 auto 0 auto;
+    margin: 150px auto 0 auto;
     padding: 12px;
     border: 2px solid black;
     border-radius: 10px;

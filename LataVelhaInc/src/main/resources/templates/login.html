@@ -4,11 +4,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title th:text="#{page.title}"></title>
         <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css}"/>
         <link rel="stylesheet" href="/css/global.css">
     	<link rel="stylesheet" href="/css/inicio.css">
     </head>
     <body>
-        <h1 class="tituloLogin">LataVelhaInc.</h1>
+    	<div th:replace="fragments/topbarLinks"></div>
         <div class="boxLogin">
         	<form method="post" th:action="@{/login}">
         		<div th:if="${param.error}">
