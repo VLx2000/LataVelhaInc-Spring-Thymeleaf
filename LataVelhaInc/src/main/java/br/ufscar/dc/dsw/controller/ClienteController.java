@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufscar.dc.dsw.domain.Cliente;
+import br.ufscar.dc.dsw.domain.Proposta;
 import br.ufscar.dc.dsw.service.spec.IClienteService;
+import br.ufscar.dc.dsw.service.spec.IPropostaService;
 
-
+import java.util.List;
 import javax.validation.Valid;
 
 @Controller
@@ -23,10 +25,28 @@ public class ClienteController {
 
 	@Autowired
 	private IClienteService service;
+	
+	@Autowired 
+	IPropostaService serviceProposta;
+	
 
 	@GetMapping("/listar")
 	public String listarClientes(ModelMap model) {
-        model.addAttribute("listaClientes", service.buscarTodos());
+		List<Cliente> clientes =  service.buscarTodos();
+		boolean[] tem = new boolean[clientes.size()];
+		for (int i =0;i<clientes.size();i++) {
+			List<Proposta> propostas = serviceProposta.buscarPorCliente(clientes.get(i));
+			tem[i] = false;
+			for(int j = 0;j<propostas.size();j++) {
+				if(propostas.get(j).getEstado().equals("ABERTO")) {
+					tem[i] = true;
+				}
+			}
+		}
+			
+		
+        model.addAttribute("listaClientes", clientes);
+        model.addAttribute("temPropostas", tem);
 		return "admin/listaClientes";
 	}
 

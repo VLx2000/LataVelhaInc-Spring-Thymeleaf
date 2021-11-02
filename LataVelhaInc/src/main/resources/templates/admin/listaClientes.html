@@ -38,7 +38,7 @@
 			</thead>
 
 			<tbody>
-				<div th:each="cliente : ${listaClientes}">
+				<div th:each="cliente, iter : ${listaClientes}">
 					<tr>
 						<td th:text="${cliente.id}"></td>
 						<td th:text="${cliente.nome}"></td>
@@ -52,7 +52,8 @@
 							<span class="oi oi-brush" th:title="#{object.update}" aria-hidden="true"></span>
 							</a>
 							
-							<a class="btn btn-info btn-sm" id="botao-delete" th:href="@{${'/cliente/remover?id=' + cliente.id}}" role="button" 
+							<a class="btn btn-info btn-sm" id="botao-delete" th:href="@{${'/cliente/remover?id=' + cliente.id}}" role="button"
+								th:if = "${!temPropostas[iter.index]}"
 								onclick="return confirm('Remover/Remove?')">
 								<span class="oi oi-circle-x" th:title="#{object.delete}" aria-hidden="true"></span>
 							</a>
