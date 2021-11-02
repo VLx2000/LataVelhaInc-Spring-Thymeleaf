@@ -1,41 +1,44 @@
-<div class="topbar">
-    <ul id="links">
-        <li class="linkTopoEsquerda">
-            <a href="/">
-                <span id="titulo">LataVelhaInc.</span>
-                <span id="admin" sec:authorize="hasRole('ROLE_ADMIN')">admin</span>
-            </a>
-        </li>
+<div class="topbar-support">
+    <div class="topbar">
+        <ul id="links">
+            <li class="linkTopoEsquerda">
+                <a href="/">
+                    <span id="titulo">LataVelhaInc.</span>
+                    <span id="admin" sec:authorize="hasRole('ROLE_ADMIN')">admin</span>
+                </a>
+            </li>
 
-        <li class="linkTopoDireita" sec:authorize="!isAuthenticated()">
-            <a th:href="@{/login/}" class="botaoLogin" th:text="#{user.login}"></a>
-        </li>
+            <li class="linkTopoDireita" sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login/}" class="botaoLogin" th:text="#{user.login}"></a>
+            </li>
 
-        <li class="nomeTopoDireita" sec:authorize="isAuthenticated()">
-            <span th:inline="text">[[#{user.welcome}]]:
-                <span sec:authorize="hasRole('ROLE_ADMIN')" style="font-weight: bolder;">admin</span>
-                <span sec:authorize="hasRole('ROLE_USER')" th:text=${cliente.nome} style="font-weight: bolder;"></span>
-                <span sec:authorize="hasRole('ROLE_LOJA')" th:text=${loja.nome} style="font-weight: bolder;"></span>
-            </span>
-            <ul class="dropdown">
-                <li>
-                    <form th:action="@{/logout}" method="post">
-                        <input type="submit" name="login-submit" class="botaoLogout" th:value="#{user.logout}">
-                    </form>
-                </li>
-            </ul>
-        </li>
+            <li class="nomeTopoDireita" sec:authorize="isAuthenticated()">
+                <span th:inline="text">[[#{user.welcome}]]
+                    <span sec:authorize="hasRole('ROLE_ADMIN')" style="font-weight: bolder;">admin</span>
+                    <span sec:authorize="hasRole('ROLE_USER')" th:text=${cliente.nome}
+                        style="font-weight: bolder;"></span>
+                    <span sec:authorize="hasRole('ROLE_LOJA')" th:text=${loja.nome} style="font-weight: bolder;"></span>
+                </span>
+                <ul class="dropdown">
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <input type="submit" name="login-submit" class="botaoLogout" th:value="#{user.logout}">
+                        </form>
+                    </li>
+                </ul>
+            </li>
 
-        <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_LOJA')">
-            <a th:href="@{/proposta/listarPropostasLoja}" th:text=#{customer.bids}></a>
-        </li>
+            <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_LOJA')">
+                <a th:href="@{/proposta/listarPropostasLoja}" th:text=#{customer.bids}></a>
+            </li>
 
-        <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER')">
-            <a th:href="@{/proposta/listarPropostasCliente}" th:text=#{customer.bids}></a>
-        </li>
+            <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER')">
+                <a th:href="@{/proposta/listarPropostasCliente}" th:text=#{customer.bids}></a>
+            </li>
 
-        <li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER') || hasRole('ROLE_LOJA')">
+            <!--<li class="linkTopoDireita" sec:authorize="hasRole('ROLE_USER') || hasRole('ROLE_LOJA')">
             <a href="/" th:text=#{user.catalog}></a>
-        </li>
-    </ul>
+        </li>-->
+        </ul>
+    </div>
 </div>
