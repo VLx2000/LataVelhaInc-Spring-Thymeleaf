@@ -74,9 +74,14 @@ a:hover {
 	color: whitesmoke;
 }
 
-.linkTopoEsquerda {
+.logo {
 	float: left;
 	padding: 14px 16px;
+}
+
+.linkTopoEsquerda {
+	float: left;
+	text-align: center;
 }
 
 .linkTopoDireita {
@@ -84,15 +89,15 @@ a:hover {
 	text-align: center;
 }
 
-.linkTopoDireita:hover {
+.linkTopo:hover {
 	background-color: rgba(175, 0, 0, 0.349);
 }
 
-.linkTopoDireita a {
+.linkTopo a {
 	padding: 20px 16px;
 }
 
-.linkTopoDireita:hover a {
+.linkTopo:hover a {
 	color: whitesmoke;
 }
 
@@ -275,6 +280,13 @@ a:hover {
 @media (max-width: 1300px) {
 	.topbar {
 		width: 100%;
+		height: auto;
 		margin: 0;
 	}
+}
+
+/* Icones do open icons*/
+
+.oi-caret-bottom {
+	font-size: 10px;
 }
