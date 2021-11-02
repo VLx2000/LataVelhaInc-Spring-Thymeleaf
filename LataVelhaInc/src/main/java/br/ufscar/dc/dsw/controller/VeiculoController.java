@@ -55,6 +55,8 @@ public class VeiculoController {
 	public String EdicaoVeiculo(@Valid Veiculo veiculo, ModelMap model, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
+			Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
+			model.addAttribute("loja", loja);
 			return "loja/cadastroVeiculo";
 		}
 		service.salvar(veiculo);
@@ -73,6 +75,8 @@ public class VeiculoController {
 	public String salvarVeiculo(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr, ModelMap model) {
 
 		if (result.hasErrors()) {
+			Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
+			model.addAttribute("loja", loja);
 			return "loja/cadastroVeiculo";
 		}
 		service.salvar(veiculo);
