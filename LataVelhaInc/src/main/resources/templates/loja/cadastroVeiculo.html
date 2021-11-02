@@ -13,19 +13,7 @@
 
     <section class="layout-content">
 
-        <nav class="navbar navbar-expand-md bg-light">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><i class="oi oi-caret-right"></i>
-                        <span th:text="#{veiculo.cadastrar.label}"></span>
-                    </li>
-                </ul>
-            </div>
-            <a class="btn btn-primary btn-md" th:href="@{/index}" role="button"> <span
-                    class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span> <span
-                    th:text="#{veiculo.listar.label}"></span>
-            </a>
-        </nav>
+        <div th:replace="fragments/topbarLinks"></div>
 
         <div class="container" id="cadastro">
 
@@ -37,7 +25,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label th:text="#{vehicle.model}" for="modelo"></label>
-                        <input type="text" class="form-control" id="nome" placeholder="Modelo" th:field="*{modelo}"
+                        <input type="text" class="form-control" id="nome" th:placeholder="#{vehicle.model.place}" th:field="*{modelo}"
                             th:classappend="${#fields.hasErrors('modelo')} ? is-invalid" />
 
                         <div class="invalid-feedback">
@@ -46,7 +34,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label th:text="#{vehicle.license}" for="placa"></label>
-                        <input type="text" class="form-control" id="nome" placeholder="placa" th:field="*{placa}"
+                        <input type="text" class="form-control" id="nome" th:placeholder="#{vehicle.license.place}" th:field="*{placa}"
                             th:classappend="${#fields.hasErrors('placa')} ? is-invalid" />
 
                         <div class="invalid-feedback">
@@ -55,8 +43,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label th:text="#{vehicle.chassis}" for="chassi"></label>
-                        <input type="text" class="form-control" id="nome" placeholder="chassi" th:field="*{chassi}"
-                            th:classappend="${#fields.hasErrors('chassi')} ? is-invalid" />
+                        <input type="text" class="form-control" id="nome" th:placeholder="#{vehicle.chassis.place}" th:field="*{chassi}"
+                            th:classappend="${#fields.hasErrors('chassi')} ? is-invalid" data-mask="000 00000 0 00 000000" data-mask-reverse="true" />
 
                         <div class="invalid-feedback">
                             <span th:errors="*{chassi}"></span>
@@ -64,7 +52,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label th:text="#{vehicle.mileage}" for="quilometragem"></label>
-                        <input type="text" class="form-control" id="nome" placeholder="quilometragem" th:field="*{quilometragem}"
+                        <input type="text" class="form-control" id="nome" th:placeholder="#{vehicle.mileage.place}" th:field="*{quilometragem}"
                             th:classappend="${#fields.hasErrors('quilometragem')} ? is-invalid" />
 
                         <div class="invalid-feedback">
@@ -73,8 +61,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label th:text="#{vehicle.year}" for="ano"></label>
-                        <input type="text" class="form-control" id="nome" placeholder="ano" th:field="*{ano}"
-                            th:classappend="${#fields.hasErrors('ano')} ? is-invalid" />
+                        <input type="text" class="form-control" id="nome" th:placeholder="#{vehicle.year.place}" th:field="*{ano}"
+                            th:classappend="${#fields.hasErrors('ano')} ? is-invalid" data-mask="0000" data-mask-reverse="false" />
 
                         <div class="invalid-feedback">
                             <span th:errors="*{ano}"></span>
@@ -82,7 +70,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label th:text="#{vehicle.value}" for="preco"></label>
-                        <input type="text" class="form-control" id="nome" placeholder="preco" th:field="*{preco}"
+                        <input type="text" class="form-control" id="nome" th:placeholder="#{vehicle.value.place}" th:field="*{preco}"
                             th:classappend="${#fields.hasErrors('preco')} ? is-invalid" />
 
                         <div class="invalid-feedback">
@@ -91,7 +79,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label th:text="#{vehicle.description}" for="descricao"></label>
-                        <input type="text" class="form-control" id="nome" placeholder="descricao" th:field="*{descricao}"
+                        <input type="text" class="form-control" id="nome" th:placeholder="#{vehicle.description.place}" th:field="*{descricao}"
                             th:classappend="${#fields.hasErrors('descricao')} ? is-invalid" />
 
                         <div class="invalid-feedback">
@@ -99,14 +87,14 @@
                         </div>                    
                     </div>
                     <div class="form-group col-md-6">
-                        <label th:text="#{vehicle.store}" for="loja.CNPJ"></label>
-                        <input type="text" class="form-control" id="nome" placeholder="cnpj loja" th:field="${veiculo.loja.CNPJ}" readonly/>                  
+                        <label th:text="#{vehicle.storeCNPJ}" for="loja.CNPJ"></label>
+                        <input type="text" class="form-control" id="nome" th:field="${veiculo.loja.CNPJ}" readonly/>                  
                     </div>
                 </div>
                 <input type="hidden" id="id" th:field="*{loja}" />
                 <input type="hidden" id="id" th:field="*{id}" />
                 <div class="divSalvar">
-                    <a id="deletar" th:href="@{/veiculo/remover/{id} (id=${id})}" th:text="#{object.delete}" class="btn btn-primary btn-sm"></a>
+                    <a id="deletar" th:href="@{/veiculo/remover/{id} (id=${id})}" th:text="#{object.delete}" class="btn btn-primary btn-sm" th:if="${veiculo.id != null}"></a>
                     <button id="salvar" type="submit" th:text="#{object.save}" class="btn btn-primary btn-sm"></button>
                 </div>
             </form>

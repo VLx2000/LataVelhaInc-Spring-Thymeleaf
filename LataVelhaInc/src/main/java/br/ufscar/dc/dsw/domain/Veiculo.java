@@ -27,8 +27,8 @@ public class Veiculo extends AbstractEntity<Long>{
     private String modelo;
 	
 	@NotBlank(message = "{NotBlank.veiculo.chassi}")
-	@Size(max = 17)
-	@Column(nullable = false, unique = true, length = 17)
+	@Size(max = 22)
+	@Column(nullable = false, unique = true, length = 22)
     private String chassi;
 	
 	@NotNull(message = "{NotNull.veiculo.ano}")
