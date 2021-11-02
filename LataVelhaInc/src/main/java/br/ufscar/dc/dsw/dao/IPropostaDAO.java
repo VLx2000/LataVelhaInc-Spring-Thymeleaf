@@ -23,6 +23,6 @@ public interface IPropostaDAO extends CrudRepository<Proposta, Long>{
 	List<Proposta> findAllByVeiculo(Veiculo veiculo);
 	
 	Proposta save(Proposta proposta);
-
+	
 	void deleteById(Long id);
 }

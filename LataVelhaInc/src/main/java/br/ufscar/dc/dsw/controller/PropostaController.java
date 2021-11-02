@@ -124,4 +124,28 @@ public class PropostaController {
 		model.addAttribute("cliente",cliente);
 		return "cliente/comprar";
 	}
+	@GetMapping("/aceitar/{id_proposta}")
+	public String aceitarProposta(@PathVariable("id_proposta") Long id_proposta,RedirectAttributes attr,ModelMap model) {
+		Proposta proposta = serviceProposta.buscarPorId(id_proposta);
+		if(proposta.getLoja().getId().equals(this.getUsuario().getId())) {
+			proposta.setEstado("ACEITO");
+			attr.addFlashAttribute("success", "proposta.acceptance.success");
+			serviceProposta.salvar(proposta);
+
+		}
+		
+		return "redirect:/proposta/listarPropostasLoja";
+	}
+	@GetMapping("/negar/{id_proposta}")
+	public String negarProposta(@PathVariable("id_proposta") Long id_proposta,RedirectAttributes attr,ModelMap model) {
+		Proposta proposta = serviceProposta.buscarPorId(id_proposta);
+		if(proposta.getLoja().getId().equals(this.getUsuario().getId())) {
+			proposta.setEstado("RECUSADO");
+			attr.addFlashAttribute("success", "proposta.acceptance.success");
+			serviceProposta.salvar(proposta);
+
+		}
+		
+		return "redirect:/proposta/listarPropostasLoja";
+	}
 }

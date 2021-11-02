@@ -49,10 +49,10 @@
                         </td>
                         <td class="acao">
                             <a id="aceitar"
-                                href="aceitar?id=${proposta.id}&id_cliente=${proposta.cliente.id}&msg="
+                            	th:href="@{/proposta/aceitar/{id_proposta}(id_proposta=${proposta.id})}"
                                 th:text=#{store.accept}></a>
-                            &nbsp;
-                            <a id="negar" href="negar?id=${proposta.id}&id_cliente=${proposta.cliente.id}&msg="
+                                
+                            <a id="negar" th:href="@{/proposta/negar/{id_proposta}(id_proposta=${proposta.id})}"
                                 th:text=#{store.reject}></a>
                         </td>
                     </div>
