@@ -11,25 +11,3 @@
 #botao-delete:hover {
 	background-color: rgb(202, 0, 0);
 }
-
-#botao-delete-inativo {
-    background-color: #5f5555;
-}
-
-#botao-delete-inativo #balao {
-	display: none;
-    position: relative;
-}
-
-#botao-delete-inativo:hover #balao {
-	display: block;
-    position: absolute;
-    margin-bottom: 40px;
-}
-
-#balao {
-    background-color: #2b2b2b;
-    border-radius: 20px;
-    margin-left: 30px;
-    padding: 10px;
-}

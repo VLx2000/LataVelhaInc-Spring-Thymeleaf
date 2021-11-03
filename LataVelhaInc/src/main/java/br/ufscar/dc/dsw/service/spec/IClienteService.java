@@ -16,7 +16,6 @@ public interface IClienteService {
 
 	Cliente buscarClientePorUsername(String username);
 	
-	// Implementar depois
-	// boolean ClienteTemPropostasAbertas(Long id);
+	boolean clienteTemPropostasAbertas(Long id);
 	
 }

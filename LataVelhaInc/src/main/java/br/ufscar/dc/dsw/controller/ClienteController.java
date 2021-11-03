@@ -31,22 +31,8 @@ public class ClienteController {
 	
 
 	@GetMapping("/listar")
-	public String listarClientes(ModelMap model) {
-		List<Cliente> clientes =  service.buscarTodos();
-		boolean[] tem = new boolean[clientes.size()];
-		for (int i =0;i<clientes.size();i++) {
-			List<Proposta> propostas = serviceProposta.buscarPorCliente(clientes.get(i));
-			tem[i] = false;
-			for(int j = 0;j<propostas.size();j++) {
-				if(propostas.get(j).getEstado().equals("ABERTO")) {
-					tem[i] = true;
-				}
-			}
-		}
-			
-		
-        model.addAttribute("listaClientes", clientes);
-        model.addAttribute("temPropostas", tem);
+	public String listarClientes(ModelMap model) {	
+        model.addAttribute("listaClientes", service.buscarTodos());
 		return "admin/listaClientes";
 	}
 
@@ -72,10 +58,17 @@ public class ClienteController {
 		return "redirect:/cliente/listar";
 	}
 
-	@GetMapping("/remover")
-	public String remocaoCliente(ModelMap model, @RequestParam Long id, RedirectAttributes attr) {
-        service.excluir(id);
-        attr.addFlashAttribute("success", "customer.delete.success");
+	@GetMapping("/remover{id}")
+	public String remocaoCliente(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
+        
+		if (service.clienteTemPropostasAbertas(id)) {
+			attr.addFlashAttribute("fail", "customer.delete.fail");
+		}
+		else {
+			service.excluir(id);
+	        attr.addFlashAttribute("success", "customer.delete.success");
+		}
+		
         return "redirect:/cliente/listar";
 	}
 

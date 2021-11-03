@@ -1,7 +1,10 @@
 package br.ufscar.dc.dsw.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -36,6 +39,9 @@ public class Cliente extends Usuario{
 	@Column(nullable = false, unique = false, length = 10)
 	private String nascimento;
 
+	@OneToMany(mappedBy = "cliente")
+	private List<Proposta> propostas;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -74,6 +80,14 @@ public class Cliente extends Usuario{
 
 	public void setNascimento(String nascimento) {
 		this.nascimento = nascimento;
+	}
+	
+	public List<Proposta> getPropostas() {
+		return propostas;
+	}
+	
+	public void setPropostas(List<Proposta> propostas) {
+		this.propostas = propostas;
 	}
 
 }

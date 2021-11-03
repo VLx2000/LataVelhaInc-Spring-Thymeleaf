@@ -25,7 +25,8 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name = "Proposta")
 public class Proposta extends AbstractEntity<Long>{
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Cliente cliente;
 	

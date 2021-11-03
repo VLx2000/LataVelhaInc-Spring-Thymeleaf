@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.ufscar.dc.dsw.dao.IClienteDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
+import br.ufscar.dc.dsw.domain.Proposta;
 import br.ufscar.dc.dsw.service.spec.IClienteService;
 
 
@@ -41,10 +42,21 @@ public class ClienteService implements IClienteService{
 		return dao.getClienteByUsername(username);
 	}
 
-	/*
 	@Transactional(readOnly = true)
 	public boolean clienteTemPropostasAbertas(Long id) {
-		return !dao.findById(id.longValue()).getPropostas().isEmpty(); 
+		List<Proposta> listaPropostas = dao.findById(id.longValue()).getPropostas();
+		
+		int i = 0;
+		boolean temPropostasAbertas = false;
+		
+		while (i < listaPropostas.size() && !temPropostasAbertas) {
+			if (listaPropostas.get(i).getEstado().equals("ABERTO")) {
+				temPropostasAbertas = true;
+			}
+
+			i++;
+		}
+		return temPropostasAbertas; 
 	}
-	*/
+	
 }
