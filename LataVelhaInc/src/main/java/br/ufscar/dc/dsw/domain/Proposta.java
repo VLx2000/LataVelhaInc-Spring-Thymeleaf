@@ -28,11 +28,11 @@ public class Proposta extends AbstractEntity<Long>{
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Cliente cliente;
 	
-	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@OneToOne
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Loja loja;
 	
-	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@OneToOne
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Veiculo veiculo;
 	
