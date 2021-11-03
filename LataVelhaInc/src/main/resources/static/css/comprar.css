@@ -3,35 +3,29 @@
     margin-top: 100px;
     margin-bottom: 80px;
     width: 70%;
-    height: 1250px;
     background-color:#fafafa;
     border-radius: 10px;
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.205);
 }
 
 .fotos {
-    padding: 30px;
-    padding-bottom: 100px;
     float: left;
-    width: 630px;
-    height: 460px;
+    width: 680px;
     overflow: hidden;
 }
 
 .info {
     margin: 30px;
-    height: 300px;
 }
 
 .dadosCarro {
     text-align: end;
-    margin-top: 30px;
-    font-size: 1.1em;
+    font-size: 1.4em;
     list-style-type: none;
 }
 
 .dadosCarro > li {
-    padding-right: 30px;
+    margin-inline: 30px;
 }
 
 .descricao {
@@ -42,7 +36,8 @@
 
 #preco {
     padding-top: 30px;
-    font-size: 2em;
+    font-size: 1.8em;
+    font-weight: bold;
     color: red;
 }
 
@@ -54,7 +49,7 @@
 }
 
 input {
-    margin-bottom: 50px;
+    margin-top: 20px;
     padding: 14px;
     border-radius: 16px;
     font-size: 1.1em;
@@ -85,7 +80,10 @@ li img {
     color: #e74c3c;
     cursor: pointer;
     -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;        
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    display: block;
+    margin-inline: auto;
+    width: 304px;
 }
 
 #proposta:hover {
@@ -94,8 +92,11 @@ li img {
 }
 
 td, th {
-    width: 200px;
     border: none;
+}
+
+table {
+    margin-top: 2px;
 }
 
 #botao_cancelar {
@@ -105,17 +106,23 @@ td, th {
 }
 
 #form_proposta {
-    margin-top: 150px;
+    margin-top: 10px;
     text-align: center;
 }
 
 .carousel-inner {
-    border-radius: 6px;
+    border-top-left-radius: 10px;
 }
 
-@media (min-width: 901px) and (max-width: 1400px) {
+.label {
+    margin-top: 50px;
+    padding: 0;
+    font-weight: bold;
+}
+
+@media (min-width: 901px) and (max-width: 1600px) {
 	.carro {
-		width: 75%;
+		width: 80%;
 	}
     .descricao {
         clear: both;

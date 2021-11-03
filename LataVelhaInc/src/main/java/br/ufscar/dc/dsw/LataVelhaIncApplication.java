@@ -124,8 +124,7 @@ public class LataVelhaIncApplication {
 			Integer quilometragem[] = { 546762456, 7254727, 2457724, 25472475, 2547457, 2547457, 8586, 2575247, 856858,
 					1346164, 89598, 24575, 9856789 };
 
-			String descricao[] = { "teste", "teste", "teste", "teste", "teste", "teste", "teste", "teste", "teste",
-					"teste", "teste", "teste", "teste" };
+			String descricao = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quas est, nesciunt sit nisi non repudiandae nostrum provident maxime itaque dignissimos nihil saepe temporibus consequuntur rerum laudantium sint praesentium ullam.";
 
 			Double preco[] = { 5999.99, 7999.99, 9999.99, 3999.99, 5999.99, 9999.99, 62999.99, 8999.99, 9999.99,
 					5999.99, 3999.99, 58999.99, 54999.99 };
@@ -138,7 +137,7 @@ public class LataVelhaIncApplication {
 				v[i].setModelo(modelo[i]);
 				v[i].setChassi(chassi[i]);
 				v[i].setAno(ano[i]);
-				v[i].setDescricao(descricao[i]);
+				v[i].setDescricao(descricao);
 				v[i].setQuilometragem(quilometragem[i]);
 				v[i].setPreco(BigDecimal.valueOf(preco[i]));
 				v[i].setN_fotos(n_fotos[i]);

@@ -39,9 +39,8 @@ public class Veiculo extends AbstractEntity<Long>{
 	@Column(nullable = false, length = 10)
     private Integer quilometragem;
 	
-	@NotBlank(message = "{NotBlank.veiculo.descricao}")
-	@Size(max = 120)
-	@Column(nullable = false, length = 120)
+	@Size(max = 300)
+	@Column(nullable = false, length = 300)
     private String descricao;
 	
 	@NotNull(message = "{NotNull.veiculo.preco}")
