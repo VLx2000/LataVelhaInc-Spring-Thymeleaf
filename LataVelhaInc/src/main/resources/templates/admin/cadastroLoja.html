@@ -26,7 +26,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label th:text="#{store.name}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Nome" th:field="*{nome}"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{store.name}" th:field="*{nome}"
 							th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -35,7 +35,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{store.email}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Email" th:field="*{username}"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{store.email}" th:field="*{username}"
 							th:classappend="${#fields.hasErrors('username')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -44,7 +44,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{store.password}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Senha" th:field="*{password}"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{store.password}" th:field="*{password}"
 							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -63,7 +63,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{store.description}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Descricao"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{store.description}"
 							th:field="*{descricao}" th:classappend="${#fields.hasErrors('descricao')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -73,7 +73,7 @@
 					
 					<div class="form-group col-md-6">
 						<label th:text="#{user.role}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Papel"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{user.role}"
 							th:field="*{role}" th:classappend="${#fields.hasErrors('role')} ? is-invalid" />
 
 						<div class="invalid-feedback">

@@ -26,7 +26,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label th:text="#{customer.name}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Nome" th:field="*{nome}"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{customer.name}" th:field="*{nome}"
 							th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -35,7 +35,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{customer.email}" for="username"></label>
-						<input type="text" class="form-control" id="username" placeholder="Email" th:field="*{username}"
+						<input type="text" class="form-control" id="username" th:placeholder="#{customer.email}" th:field="*{username}"
 							th:classappend="${#fields.hasErrors('username')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -44,7 +44,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{customer.password}" for="password"></label>
-						<input type="text" class="form-control" id="password" placeholder="Senha" th:field="*{password}"
+						<input type="text" class="form-control" id="password" th:placeholder="#{customer.password}" th:field="*{password}"
 							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -63,7 +63,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{customer.phone}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Telefone" th:field="*{telefone}"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{customer.phone}" th:field="*{telefone}"
 							th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -72,7 +72,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{customer.gender}" for="sexo"></label>
-						<input type="text" class="form-control" id="Sexo" placeholder="Sexo" th:field="*{sexo}"
+						<input type="text" class="form-control" id="Sexo" th:placeholder="#{customer.gender}" th:field="*{sexo}"
 							th:classappend="${#fields.hasErrors('sexo')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -91,7 +91,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{user.role}" for="role"></label>
-						<input type="text" class="form-control" id="role" placeholder="Papel" th:field="*{role}"
+						<input type="text" class="form-control" id="role" th:placeholder="#{user.role}" th:field="*{role}"
 							th:classappend="${#fields.hasErrors('role')} ? is-invalid" />
 
 						<div class="invalid-feedback">
