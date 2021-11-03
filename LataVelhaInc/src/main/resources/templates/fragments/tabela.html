@@ -6,6 +6,7 @@
         <table class="propostas">
             <thead>
                 <tr>
+                    <th th:text=#{bids.customer}> </th>
                     <th th:text=#{bids.date}> </th>
                     <th th:text=#{bids.photo}> </th>
                     <th th:text=#{bids.vehicle}></th>
@@ -14,12 +15,12 @@
                     <th th:text=#{store.entity}></th>
                     <th th:text=#{bids.value}></th>
                     <th th:text=#{bids.status}></th>
-                    <th class="acao"></th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr th:each="proposta : ${propostas}">
+                    <td th:text="${proposta.cliente.username}"></td>
                     <td th:text="${proposta.data}"></td>
                     <td>
                         <img th:src="@{${'/images/' + proposta.veiculo.id + '/1.jpg'}}" alt="Carro" height="80px"
@@ -35,27 +36,25 @@
                             <p th:case="'ACEITO'" th:text=#{bids.accepted}></p>
                             <p th:case="'ABERTO'" th:text=#{bids.open}></p>
                             <p th:case="*" th:text=#{bids.rejected}></p>
+                            <span th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_USER')">
+                                <a id="negar" th:href="@{/proposta/cancelar/{id}(id=${proposta.id})}"
+                                    th:text=#{bids.cancel}></a>
+                            </span>
+                            <span th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_LOJA')">
+                                <a id="aceitar" th:href="@{/proposta/aceitar/{id_proposta}(id_proposta=${proposta.id})}"
+                                    th:text=#{store.accept} onclick="msg_email()"></a>
+                                <a id="negar" th:href="@{/proposta/negar/{id_proposta}(id_proposta=${proposta.id})}"
+                                    th:text=#{store.reject} onclick="msg_email()"></a>
+                            </span>
                         </div>
                     </td>
-                    <td class="acao" th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_USER')">
-                        <a id="negar" th:href="@{/proposta/cancelar/{id}(id=${proposta.id})}"
-                            th:text=#{bids.cancel}></a>
-                    </td>
-                    <div th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_LOJA')">
+                    <!--<div th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_LOJA')">
                         <td class="box_mensagem">
                             <h5 th:text=#{store.send.message}></h5>
                             <textarea name="mensagem" id="mensagem" cols="40" rows="5"></textarea>
                             <input th:value="@{#{bids.save}}" type="button" id="salvar_mensagem" onclick="msg_email()">
                         </td>
-                        <td class="acao">
-                            <a id="aceitar"
-                            	th:href="@{/proposta/aceitar/{id_proposta}(id_proposta=${proposta.id})}"
-                                th:text=#{store.accept}></a>
-                                
-                            <a id="negar" th:href="@{/proposta/negar/{id_proposta}(id_proposta=${proposta.id})}"
-                                th:text=#{store.reject}></a>
-                        </td>
-                    </div>
+                    </div>-->
                 </tr>
             </tbody>
         </table>

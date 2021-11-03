@@ -8,11 +8,12 @@
 }
 
 #aceitar, #negar {
-    width: 100%;
+    width: 100px;
     border-radius: 4px;
     font-weight: bold;
     font-size: 0.8em;
-    margin: 2px;
+    display: inline-block;
+    margin-inline: 10px;
     padding: 12px;
     background-color: transparent;
     cursor: pointer;
@@ -46,6 +47,10 @@
 
 .box_mensagem {
     border: none;
+}
+
+.estado {
+    width: 300px;
 }
 
 td {

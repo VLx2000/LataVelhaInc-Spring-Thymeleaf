@@ -2,7 +2,7 @@
     margin: auto;
     margin-top: 100px;
     margin-bottom: 80px;
-    width: 65%;
+    width: 70%;
     height: 1250px;
     background-color:#fafafa;
     border-radius: 10px;
@@ -109,6 +109,10 @@ td, th {
     text-align: center;
 }
 
+.carousel-inner {
+    border-radius: 6px;
+}
+
 @media (min-width: 901px) and (max-width: 1400px) {
 	.carro {
 		width: 75%;
@@ -124,6 +128,8 @@ td, th {
     }
     .fotos {
         clear: both;
+        float: none;
+        margin: auto;
     }
     .dadosCarro {
         text-align: center;
@@ -145,6 +151,9 @@ td, th {
     }
     .fotos {
         clear: both;
+        float: none;
+        margin: auto;
+        width: fit-content;
     }
     .dadosCarro {
         text-align: center;
