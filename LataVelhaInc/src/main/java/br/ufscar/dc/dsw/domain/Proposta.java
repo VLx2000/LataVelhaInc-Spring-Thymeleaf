@@ -2,7 +2,7 @@ package br.ufscar.dc.dsw.domain;
 
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 
 //import java.util.List;
 
