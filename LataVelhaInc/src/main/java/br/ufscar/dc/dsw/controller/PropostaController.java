@@ -79,13 +79,14 @@ public class PropostaController {
     	proposta.setVeiculo(veiculo);
     	proposta.setData(data);
     	proposta.setEstado("ABERTO");
-
+    	
     	List<Proposta> lista_propostas = serviceProposta.buscarPorCliente(cliente);
     	for(int i =0; i < lista_propostas.size();i++) {
-    		if(lista_propostas.get(i).getVeiculo().getId() == id) {
+    		if(lista_propostas.get(i).getVeiculo().getId() == id && lista_propostas.get(i).getEstado().equals("ABERTO")) {
     			model.addAttribute("proposta_aberta",lista_propostas.get(i));
     		}
     	}
+
     	model.addAttribute("cliente",cliente);
     	model.addAttribute("veiculo",veiculo);
 
@@ -128,7 +129,7 @@ public class PropostaController {
 	@GetMapping("/aceitar/{id_proposta}")
 	public String aceitarProposta(@PathVariable("id_proposta") Long id_proposta,RedirectAttributes attr,ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id_proposta);
-		if(proposta.getLoja().getId().equals(this.getUsuario().getId())) {
+		if(proposta.getLoja().equals(this.getUsuario()) && proposta.getEstado().equals("ABERTO")) {
 			proposta.setEstado("ACEITO");
 			attr.addFlashAttribute("success", "proposta.acceptance.success");
 			serviceProposta.salvar(proposta);
