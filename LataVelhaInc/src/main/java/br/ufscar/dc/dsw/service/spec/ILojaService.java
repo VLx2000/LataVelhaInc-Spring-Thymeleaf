@@ -16,7 +16,6 @@ public interface ILojaService {
 
 	Loja buscarLojaPorUsername(String username);
 	
-	// Implementar depois
-	// boolean lojaTemPropostasAbertas(Long id);
+	boolean lojaTemPropostasAbertas(Long id);
 	
 }

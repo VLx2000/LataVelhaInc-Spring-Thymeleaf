@@ -53,8 +53,14 @@ public class LojaController {
 
 	@GetMapping("/remover{id}")
 	public String remocaoLoja(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
-        service.excluir(id);
-        attr.addFlashAttribute("success", "store.delete.success");
+		
+		if (service.lojaTemPropostasAbertas(id)) {
+			attr.addFlashAttribute("fail", "store.delete.fail");
+		}
+		else {
+			service.excluir(id);
+	        attr.addFlashAttribute("success", "store.delete.success");
+		}
 		return "redirect:/loja/listar";
 	}
 

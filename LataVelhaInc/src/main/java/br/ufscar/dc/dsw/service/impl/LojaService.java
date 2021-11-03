@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.ufscar.dc.dsw.dao.ILojaDAO;
 import br.ufscar.dc.dsw.domain.Loja;
+import br.ufscar.dc.dsw.domain.Proposta;
 import br.ufscar.dc.dsw.service.spec.ILojaService;
 import br.ufscar.dc.dsw.domain.Veiculo;
 import br.ufscar.dc.dsw.service.spec.IVeiculoService;
@@ -49,10 +50,22 @@ public class LojaService implements ILojaService{
 		return dao.getLojaByUsername(username);
 	}
 	
-	/*
+
 	@Transactional(readOnly = true)
 	public boolean lojaTemPropostasAbertas(Long id) {
-		return !dao.findById(id.longValue()).getPropostas().isEmpty(); 
+		
+		List<Proposta> listaPropostas = dao.findById(id.longValue()).getPropostas();
+		
+		int i = 0;
+		boolean temPropostasAbertas = false;
+		
+		while (i < listaPropostas.size() && !temPropostasAbertas) {
+			if (listaPropostas.get(i).getEstado().equals("ABERTO")) {
+				temPropostasAbertas = true;
+			}
+
+			i++;
+		}
+		return temPropostasAbertas;
 	}
-	*/
 }

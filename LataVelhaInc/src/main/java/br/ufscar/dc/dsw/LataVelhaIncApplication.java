@@ -46,7 +46,7 @@ public class LataVelhaIncApplication {
 			c1.setNome("jorge");
 			c1.setCPF("012.345.678-90");
 			c1.setTelefone("8678-2462");
-			c1.setSexo("F");
+			c1.setSexo("M");
 			c1.setNascimento("13/03/1995");
 			c1.setRole("ROLE_USER");
 			c1.setEnabled(true);
