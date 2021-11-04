@@ -58,9 +58,15 @@
 					<div th:case="null">
 						<input id="pvalor" type="number" name="valor" th:placeholder="#{bids.value}" th:field="*{valor}"
 							th:classappend="${#fields.hasErrors('valor')} ? is-invalid" />
+							<div class="invalid-feedback">
+								<span th:errors="*{valor}"></span>
+							</div>
 						<input id="pparcelas" type="number" name="parcelamento"
 							th:placeholder="#{bids.number.installments}" th:field="*{parcelamento}"
 							th:classappend="${#fields.hasErrors('parcelamento')} ? is-invalid" />
+							<div class="invalid-feedback">
+								<span th:errors="*{parcelamento}"></span>
+							</div>
 						<input id="proposta" type="submit" name="Proposta" th:value="#{bids.make}" />
 					</div>
 

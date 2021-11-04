@@ -108,8 +108,27 @@ public class PropostaController {
 	public String salvarProposta(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr,
 			ModelMap model) {
 		if (result.hasErrors()) {
+			Long id = proposta.getVeiculo().getId();
+			Veiculo veiculo = serviceVeiculo.buscarPorId(id);
 			Cliente cliente = serviceCliente.buscarPorId(this.getUsuario().getId());
+			List<Proposta> lista_propostas = serviceProposta.buscarPorCliente(cliente);
+			for (int i = 0; i < lista_propostas.size(); i++) {
+				if (lista_propostas.get(i).getVeiculo().getId() == id
+						&& lista_propostas.get(i).getEstado().equals("ABERTO")) {
+					model.addAttribute("proposta_aberta", lista_propostas.get(i));
+				}
+			}
+
 			model.addAttribute("cliente", cliente);
+			model.addAttribute("veiculo", veiculo);
+
+			ArrayList<String> lista = new ArrayList<>();
+			for (int i = 1; i <= 10; i++)
+				lista.add("/images/" + id + "/" + i + ".jpg");
+			model.addAttribute("files", lista);
+			model.addAttribute("n_fotos", veiculo.getN_fotos());
+			
+			
 
 			return "cliente/comprar";
 		}

@@ -16,26 +16,26 @@ import javax.validation.constraints.Size;
 @Table(name = "Veiculo")
 public class Veiculo extends AbstractEntity<Long>{
 
-	@NotBlank(message = "{NotBlank.veiculo.placa}")
+	@NotBlank
 	@Size(max = 20)
 	@Column(nullable = false, unique = true, length = 20)
 	private String placa;
 	
-	@NotBlank(message = "{NotBlank.veiculo.modelo}")
+	@NotBlank
 	@Size(max = 20)
 	@Column(nullable = false, length = 20)
     private String modelo;
 	
-	@NotBlank(message = "{NotBlank.veiculo.chassi}")
+	@NotBlank
 	@Size(max = 22)
 	@Column(nullable = false, unique = true, length = 22)
     private String chassi;
 	
-	@NotNull(message = "{NotNull.veiculo.ano}")
+	@NotNull(message = "{javax.validation.constraints.NotNull.message}")
 	@Column(nullable = false, length = 5)
     private Integer ano;
 	
-	@NotNull(message = "{NotNull.veiculo.quilometragem}")
+	@NotNull(message = "{javax.validation.constraints.NotNull.message}")
 	@Column(nullable = false, length = 10)
     private Integer quilometragem;
 	
@@ -43,11 +43,11 @@ public class Veiculo extends AbstractEntity<Long>{
 	@Column(nullable = false, length = 300)
     private String descricao;
 	
-	@NotNull(message = "{NotNull.veiculo.preco}")
+	@NotNull(message = "{javax.validation.constraints.NotNull.message}")
 	@Column(nullable = false, columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
     private BigDecimal preco;
     
-    @NotNull(message = "{NotNull.veiculo.loja}")
+    @NotNull(message = "{javax.validation.constraints.NotNull.message}")
 	@ManyToOne
 	@JoinColumn(name = "id_loja")
     private Loja loja;

@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 
 //import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 //import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,20 +27,23 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "Proposta")
 public class Proposta extends AbstractEntity<Long>{
 	@ManyToOne
+	@NotNull
 	@JoinColumn(name = "cliente_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Cliente cliente;
 	
 	@ManyToOne
+	@NotNull
 	@JoinColumn(name = "loja_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Loja loja;
 	
 	@OneToOne
+	@NotNull
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Veiculo veiculo;
 	
-	@NotNull(message = "{NotNull.proposta.valor}")
+	@NotNull(message = "{javax.validation.constraints.NotNull.message}")
 	@Column(nullable = false, columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
     private BigDecimal valor;
 	
@@ -53,7 +57,7 @@ public class Proposta extends AbstractEntity<Long>{
 	@Column(nullable = false, length = 11)
     private String estado;
 
-	@NotNull(message = "{NotNull.proposta.parcelamento")
+	@NotBlank
 	@Size(max = 20)
 	@Column(nullable = false, length = 20)
     private String parcelamento;
