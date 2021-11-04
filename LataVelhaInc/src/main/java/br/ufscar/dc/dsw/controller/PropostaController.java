@@ -157,8 +157,16 @@ public class PropostaController {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
+			
 */
+
 			proposta.setEstado("ACEITO");
+			List<Proposta> propostas_veiculo = serviceProposta.buscarPorVeiculo(proposta.getVeiculo());
+			for(int i = 0;i<propostas_veiculo.size();i++) {
+				if(propostas_veiculo.get(i).getEstado().equals("ABERTO")) {
+					propostas_veiculo.get(i).setEstado("RECUSADO");
+				}
+			}
 			attr.addFlashAttribute("success", "proposta.acceptance.success");
 			serviceProposta.salvar(proposta);
 		}
