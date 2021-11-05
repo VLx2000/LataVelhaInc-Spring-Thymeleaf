@@ -46,7 +46,7 @@ public class ClienteController {
 	}
 
 	@PostMapping("/editar")
-	public String EdicaoCliente(@Valid Cliente cliente, ModelMap model, BindingResult result, RedirectAttributes attr) {
+	public String EdicaoCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
 			return "admin/cadastroCliente";

@@ -22,10 +22,10 @@
 		<div id="carouselExampleControls" class="carousel slide fotos" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="d-block w-100" th:src="${files[0]}" alt="Carro" height="410px">
+					<img class="d-block w-100" th:src="${files[0]}" alt="Carro" height="440px">
 				</div>
 				<div class="carousel-item" th:each="i: ${#numbers.sequence(1,n_fotos-1,1)}">
-					<img class="d-block w-100" th:src="${files[i]}" alt="Carro" height="410px">
+					<img class="d-block w-100" th:src="${files[i]}" alt="Carro" height="440px">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -56,17 +56,21 @@
 					<input type="hidden" th:field="*{estado}" id="estado">
 
 					<div th:case="null">
-						<input id="pvalor" type="number" name="valor" th:placeholder="#{bids.value}" th:field="*{valor}"
-							th:classappend="${#fields.hasErrors('valor')} ? is-invalid" />
+						<div style="display: inline-block;">
+							<input id="pvalor" type="number" name="valor" th:placeholder="#{bids.value}"
+								th:field="*{valor}" th:classappend="${#fields.hasErrors('valor')} ? is-invalid" />
 							<div class="invalid-feedback">
 								<span th:errors="*{valor}"></span>
 							</div>
-						<input id="pparcelas" type="number" name="parcelamento"
-							th:placeholder="#{bids.number.installments}" th:field="*{parcelamento}"
-							th:classappend="${#fields.hasErrors('parcelamento')} ? is-invalid" />
+						</div>
+						<div style="display: inline-block;">
+							<input id="pparcelas" type="number" name="parcelamento"
+								th:placeholder="#{bids.number.installments}" th:field="*{parcelamento}"
+								th:classappend="${#fields.hasErrors('parcelamento')} ? is-invalid" />
 							<div class="invalid-feedback">
 								<span th:errors="*{parcelamento}"></span>
 							</div>
+						</div>
 						<input id="proposta" type="submit" name="Proposta" th:value="#{bids.make}" />
 					</div>
 

@@ -41,7 +41,7 @@ public class LojaController {
 	}
 
 	@PostMapping("/editar")
-	public String EdicaoLoja(@Valid Loja loja, ModelMap model, BindingResult result, RedirectAttributes attr) {
+	public String EdicaoLoja(@Valid Loja loja, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
 			return "admin/cadastroLoja";

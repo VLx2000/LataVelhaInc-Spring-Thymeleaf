@@ -81,7 +81,7 @@ public class VeiculoController {
 	}
 
 	@PostMapping("/editar")
-	public String EdicaoVeiculo(@Valid Veiculo veiculo, ModelMap model, BindingResult result, RedirectAttributes attr) {
+	public String EdicaoVeiculo(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr, ModelMap model) {
 		
 		if (result.hasErrors()) {
 			Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
