@@ -95,7 +95,7 @@
                 <input type="hidden" id="id" th:field="*{loja}" />
                 <input type="hidden" id="id" th:field="*{id}" />
                 <div class="divSalvar">
-                    <a id="deletar" th:href="@{/veiculo/remover/{id} (id=${id})}" th:text="#{object.delete}" class="btn btn-primary btn-sm" th:if="${veiculo.id != null}"></a>
+                    <!--<a id="deletar" th:href="@{/veiculo/remover/{id} (id=${id})}" th:text="#{object.delete}" class="btn btn-primary btn-sm" th:if="${veiculo.id != null}"></a>-->
                     <button id="salvar" type="submit" th:text="#{object.save}" class="btn btn-primary btn-sm"></button>
                 </div>
                 <!--Choose a file: <input type="file" name="file" />
