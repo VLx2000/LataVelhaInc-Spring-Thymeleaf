@@ -1,5 +1,7 @@
 package br.ufscar.dc.dsw.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,23 +12,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.ufscar.dc.dsw.dao.IClienteDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
-
 import br.ufscar.dc.dsw.service.spec.IClienteService;
-import br.ufscar.dc.dsw.service.spec.IPropostaService;
 
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/cliente/*")
 public class ClienteController {
 
 	@Autowired
+	private IClienteDAO dao;
+
+	@Autowired
 	private IClienteService service;
 	
-	@Autowired 
-	IPropostaService serviceProposta;
-	
+	public boolean isValid(String CPF) {
+		if (dao != null) {
+			Cliente cliente = dao.findByCPF(CPF);
+			return cliente == null;
+		} else {
+			// Durante a execução da classe LataVelhaIncApplication
+			// não há injeção de dependência
+			return true;
+		}
+	}	
 
 	@GetMapping("/listar")
 	public String listarClientes(ModelMap model) {	
@@ -36,6 +46,7 @@ public class ClienteController {
 
 	@GetMapping("/cadastrar")
 	public String cadastroCliente(Cliente cliente) {
+		cliente.setRole("ROLE_USER");
 		return "admin/cadastroCliente";
 	}
 
@@ -73,7 +84,7 @@ public class ClienteController {
 	@PostMapping("/salvar")
 	public String salvarCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
 
-		if (result.hasErrors()) {
+		if (result.hasErrors() || !isValid(cliente.getCPF())) {
 			return "admin/cadastroCliente";
 		}
 		service.salvar(cliente);

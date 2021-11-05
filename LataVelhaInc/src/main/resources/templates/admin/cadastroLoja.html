@@ -51,11 +51,21 @@
 							<span th:errors="*{password}"></span>
 						</div>
 					</div>
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-6" th:if="${loja.id == null}">
 						<label th:text="#{store.cnpj}" for="CNPJ"></label>
 						<input type="text" class="form-control" id="CNPJ" placeholder="__.___.___/____-__" th:field="*{CNPJ}"
 							data-mask="00.000.000/0000-00" data-mask-reverse="true" 
 							th:classappend="${#fields.hasErrors('CNPJ')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{CNPJ}"></span>
+						</div>
+					</div>
+					<div class="form-group col-md-6" th:if="${loja.id != null}">
+						<label th:text="#{store.cnpj}" for="CNPJ"></label>
+						<input type="text" class="form-control" id="CNPJ" placeholder="__.___.___/____-__" th:field="${loja.CNPJ}"
+							data-mask="00.000.000/0000-00" data-mask-reverse="true" 
+							th:classappend="${#fields.hasErrors('CNPJ')} ? is-invalid" readonly/>
 
 						<div class="invalid-feedback">
 							<span th:errors="*{CNPJ}"></span>
@@ -73,8 +83,7 @@
 					
 					<div class="form-group col-md-6">
 						<label th:text="#{user.role}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" th:placeholder="#{user.role}"
-							th:field="*{role}" th:classappend="${#fields.hasErrors('role')} ? is-invalid" />
+						<input type="text" class="form-control" id="nome" th:field="${loja.role}" readonly/>
 
 						<div class="invalid-feedback">
 							<span th:errors="*{role}"></span>

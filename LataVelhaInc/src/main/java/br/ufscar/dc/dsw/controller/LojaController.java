@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.ufscar.dc.dsw.dao.ILojaDAO;
 import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.service.spec.ILojaService;
 
@@ -20,8 +21,22 @@ import br.ufscar.dc.dsw.service.spec.ILojaService;
 @RequestMapping("/loja/*")
 public class LojaController {
 
+	@Autowired
+	private ILojaDAO dao;
+
     @Autowired
 	private ILojaService service;
+
+	public boolean isValid(String CPF) {
+		if (dao != null) {
+			Loja cliente = dao.findByCNPJ(CPF);
+			return cliente == null;
+		} else {
+			// Durante a execução da classe LataVelhaIncApplication
+			// não há injeção de dependência
+			return true;
+		}
+	}	
 
 	@GetMapping("/listar")
 	public String listarLojas(ModelMap model) {
@@ -31,6 +46,7 @@ public class LojaController {
 
 	@GetMapping("/cadastrar")
 	public String cadastroLoja(Loja loja) {
+		loja.setRole("ROLE_LOJA");
 		return "admin/cadastroLoja";
 	}
 
@@ -67,7 +83,7 @@ public class LojaController {
 	@PostMapping("/salvar")
 	public String salvarLoja(@Valid Loja loja, BindingResult result, RedirectAttributes attr) {
 
-		if (result.hasErrors()) {
+		if (result.hasErrors() || !isValid(loja.getCNPJ())) {
 			return "admin/cadastroLoja";
 		}
 		service.salvar(loja);
