@@ -96,9 +96,14 @@ public class ClienteController {
 	@PostMapping("/salvar")
 	public String salvarCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 
-		if (result.hasErrors() || !isValidCPF(cliente.getCPF()) || !isValidEmail(cliente.getUsername())) {
+		if (result.hasErrors()){
 			return "admin/cadastroCliente";
 		}
+		else if (!isValidCPF(cliente.getCPF()) || !isValidEmail(cliente.getUsername())) {
+			attr.addFlashAttribute("fail", "customer.create.fail");
+			return "redirect:/cliente/listar";
+		}
+
 		cliente.setPassword(encoder.encode(cliente.getPassword()));
 		service.salvar(cliente);
 		attr.addFlashAttribute("success", "customer.create.success");

@@ -95,9 +95,14 @@ public class LojaController {
 	@PostMapping("/salvar")
 	public String salvarLoja(@Valid Loja loja, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 
-		if (result.hasErrors() || !isValidCNPJ(loja.getCNPJ()) || !isValidEmail(loja.getUsername())) {
+		if (result.hasErrors()) {
 			return "admin/cadastroLoja";
 		}
+		else if (!isValidCNPJ(loja.getCNPJ()) || !isValidEmail(loja.getUsername())) {
+			attr.addFlashAttribute("fail", "store.create.fail");
+			return "redirect:/loja/listar";
+		}
+		
 		loja.setPassword(encoder.encode(loja.getPassword()));
 		service.salvar(loja);
 		attr.addFlashAttribute("success", "store.create.success");
