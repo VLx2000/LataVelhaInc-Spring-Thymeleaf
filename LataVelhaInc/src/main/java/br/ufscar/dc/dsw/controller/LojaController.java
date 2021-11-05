@@ -74,7 +74,6 @@ public class LojaController {
 		if (result.hasErrors()) {
 			return "admin/cadastroLoja";
 		}
-		loja.setPassword(encoder.encode(loja.getPassword()));
 		service.salvar(loja);
 		attr.addFlashAttribute("success", "store.edit.success");
 		return "redirect:/loja/listar";
