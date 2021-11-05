@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -27,9 +28,20 @@ public class ClienteController {
 	@Autowired
 	private IClienteService service;
 	
-	public boolean isValid(String CPF) {
+	public boolean isValidCPF(String CPF) {
 		if (dao != null) {
 			Cliente cliente = dao.findByCPF(CPF);
+			return cliente == null;
+		} else {
+			// Durante a execução da classe LataVelhaIncApplication
+			// não há injeção de dependência
+			return true;
+		}
+	}
+
+	public boolean isValidEmail(String email) {
+		if (dao != null) {
+			Cliente cliente = dao.getClienteByUsername(email);
 			return cliente == null;
 		} else {
 			// Durante a execução da classe LataVelhaIncApplication
@@ -82,11 +94,12 @@ public class ClienteController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvarCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
+	public String salvarCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 
-		if (result.hasErrors() || !isValid(cliente.getCPF())) {
+		if (result.hasErrors() || !isValidCPF(cliente.getCPF()) || !isValidEmail(cliente.getUsername())) {
 			return "admin/cadastroCliente";
 		}
+		cliente.setPassword(encoder.encode(cliente.getPassword()));
 		service.salvar(cliente);
 		attr.addFlashAttribute("success", "customer.create.success");
 		return "redirect:/cliente/listar";
