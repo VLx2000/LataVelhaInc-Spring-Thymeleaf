@@ -2,7 +2,7 @@
     <h1 class="label" th:text=#{bids.list}></h1>
 </div>
 <div align="center">
-    <section>
+    <section th:with="msg='teste'">
         <table class="propostas">
             <thead>
                 <tr>
@@ -42,9 +42,9 @@
                             </span>
                             <span th:if="${proposta.estado} == 'ABERTO'" sec:authorize="hasRole('ROLE_LOJA')">
                                 <a id="aceitar" th:href="@{/proposta/aceitar/{id_proposta}(id_proposta=${proposta.id})}"
-                                    th:text=#{store.accept} onclick="msg_email()"></a>
+                                    th:text=#{store.accept}></a>
                                 <a id="negar" th:href="@{/proposta/negar/{id_proposta}(id_proposta=${proposta.id})}"
-                                    th:text=#{store.reject} onclick="msg_email()"></a>
+                                    th:text=#{store.reject}></a>
                             </span>
                         </div>
                     </td>
@@ -52,7 +52,7 @@
                         <td class="box_mensagem">
                             <h5 th:text=#{store.send.message}></h5>
                             <textarea name="mensagem" id="mensagem" cols="40" rows="5"></textarea>
-                            <!--<input th:value="@{#{bids.save}}" type="button" id="salvar_mensagem">-->
+                            <input th:value="@{#{bids.save}}" type="button" id="salvar_mensagem" onclick="msg_email()"/>
                         </td>
                     </div>
                 </tr>
@@ -61,3 +61,4 @@
     </section>
 </div>
 <script src="/js/cor.js"></script>
+<script src="/js/msg_email.js"></script>

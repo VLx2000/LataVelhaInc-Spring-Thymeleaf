@@ -7,50 +7,50 @@ Integrantes:
 
 ### R1:
 
-#### ( ) Implementado
-Divisão na implementação da funcionalidade: Lucas (30%), Rafael (30%) e Victor (40%)
+#### Implementado
+Divisão na implementação da funcionalidade: Lucas (15%), Rafael (15%) e Victor (70%)
 
 ### R2:
 
-#### ( ) Implementado
+#### Implementado
 Divisão na implementação da funcionalidade: Lucas (10%), Rafael (80%) e Victor (10%)
 
 ### R3:
 
-#### ( ) Implementado
-Divisão na implementação da funcionalidade: Lucas (60%), Rafael (20%) e Victor (20%)
+#### Parcialmente Implementado (falta upload de fotos)
+Divisão na implementação da funcionalidade: Lucas (33%), Rafael (33%) e Victor (33%)
 
 ### R4:
 
-#### ( ) Implementado
+#### Implementado
 Divisão na implementação da funcionalidade: Lucas (5%), Rafael (5%) e Victor (90%)
 
 ### R5:
 
-#### ( ) Implementado
-Divisão na implementação da funcionalidade: Lucas (33%), Rafael (33%) e Victor (33%)
+#### Implementado
+Divisão na implementação da funcionalidade: Lucas (80%), Rafael (10%) e Victor (10%)
 
 ### R6:
 
-#### ( ) Implementado
-Divisão na implementação da funcionalidade: Lucas (33%), Rafael (33%) e Victor (33%)
+#### Implementado
+Divisão na implementação da funcionalidade: Lucas (20%), Rafael (20%) e Victor (60%)
 
 ### R7:
 
-#### ( ) Implementado
+#### Implementado
 Divisão na implementação da funcionalidade: Lucas (55%), Rafael (20%) e Victor (25%)
 
 ### R8:
 
-#### ( ) Implementado
+#### Implementado
 Divisão na implementação da funcionalidade: Lucas (70%), Rafael (10%) e Victor (20%)
 
 ### R9:
 
-#### ( ) Implementado
-Divisão na implementação da funcionalidade: Lucas (5%), Rafael (90%) e Victor (5%)
+#### Implementado
+Divisão na implementação da funcionalidade: Lucas (5%), Rafael (95%) e Victor (0%)
 
 ### R10:
 
-#### ( ) Implementado
+#### Implementado
 Divisão na implementação da funcionalidade: Lucas (5%), Rafael (90%) e Victor (5%)
