@@ -57,6 +57,7 @@ E então execute:
 ```
 source LataVelhaInc/db/MySQL/create.sql;quit;
 ```
+É recomendado copiar a pasta ```/images``` para ```/tmp/ultima-pasta-criada-pelo-tomcat``` para o bom funcionamento das operações.
 
 ## Para executar ##
 1) Acesse a pasta **LataVelhaInc** 

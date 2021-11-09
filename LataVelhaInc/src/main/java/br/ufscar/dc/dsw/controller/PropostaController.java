@@ -65,6 +65,23 @@ public class PropostaController {
 		return usuarioDetails.getUsuario();
 	}
 
+	public List<String> fileList(Long id) {
+		List<String> fileList = new ArrayList<String>();
+
+		String uploadPath = context.getRealPath("") + File.separator + "images/" + id;
+		File uploadDir = new File(uploadPath);
+
+		File[] files = uploadDir.listFiles();
+
+		if (files != null) {
+			for (final File file : files) {
+				fileList.add(file.getName());
+			}
+		}
+		System.out.println(fileList);
+		return fileList;
+	}
+
 	@GetMapping("/listarPropostasLoja")
 	public String propostasLoja(ModelMap model) {
 		Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
@@ -105,21 +122,7 @@ public class PropostaController {
 
 		model.addAttribute("cliente", cliente);
 		model.addAttribute("veiculo", veiculo);
-
-		List<String> fileList = new ArrayList<String>();
-
-		String uploadPath = context.getRealPath("") + File.separator + "images/" + id;
-		File uploadDir = new File(uploadPath);
-
-		File[] files = uploadDir.listFiles();
-
-		if (files != null) {
-			for (final File file : files) {
-				fileList.add(file.getName());
-			}
-			model.addAttribute("files", fileList);
-		}
-		System.out.println(fileList);
+		model.addAttribute("files", fileList(id));
 		return "cliente/comprar";
 	}
 
@@ -140,11 +143,7 @@ public class PropostaController {
 
 			model.addAttribute("cliente", cliente);
 			model.addAttribute("veiculo", veiculo);
-
-			ArrayList<String> lista = new ArrayList<>();
-			for (int i = 1; i <= 10; i++)
-				lista.add("/images/" + id + "/" + i + ".jpg");
-			model.addAttribute("files", lista);
+			model.addAttribute("files", fileList(id));
 			return "cliente/comprar";
 		}
 

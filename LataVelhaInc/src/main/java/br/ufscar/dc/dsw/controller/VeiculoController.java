@@ -135,10 +135,13 @@ public class VeiculoController {
 			uploadDirCar.mkdir();
 			fileName = "1.jpg";
 		}
-		
-		file.transferTo(new File(uploadDirCar, fileName));
-		
-		attr.addFlashAttribute("sucess", "File " + fileName + " has uploaded successfully!");
+		if (uploadDirCar.listFiles().length < 10){
+			file.transferTo(new File(uploadDirCar, fileName));
+			attr.addFlashAttribute("sucess", "File " + fileName + " has uploaded successfully!");
+		}
+		else {
+			attr.addFlashAttribute("fail", "Limite de 10 arquivos atingido!");
+		}
 		return "redirect:/";
 	}
 }
