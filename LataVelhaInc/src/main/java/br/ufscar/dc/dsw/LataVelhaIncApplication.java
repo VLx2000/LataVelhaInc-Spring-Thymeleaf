@@ -129,8 +129,6 @@ public class LataVelhaIncApplication {
 			Double preco[] = { 5999.99, 7999.99, 9999.99, 3999.99, 5999.99, 9999.99, 62999.99, 8999.99, 9999.99,
 					5999.99, 3999.99, 58999.99, 54999.99 };
 
-			Integer n_fotos[] = { 10, 3, 2, 2, 3, 2, 1, 1, 1, 1, 1, 1, 1 };
-
 			for (int i = 0; i < TAM; i++) {
 				v[i] = new Veiculo();
 				v[i].setPlaca(placa[i]);
@@ -140,7 +138,6 @@ public class LataVelhaIncApplication {
 				v[i].setDescricao(descricao);
 				v[i].setQuilometragem(quilometragem[i]);
 				v[i].setPreco(BigDecimal.valueOf(preco[i]));
-				v[i].setN_fotos(n_fotos[i]);
 				if (i % 3 == 0)
 					v[i].setLoja(l3);
 				else if (i % 2 == 0)

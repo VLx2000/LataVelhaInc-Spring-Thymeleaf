@@ -117,10 +117,9 @@ public class PropostaController {
 			for (final File file : files) {
 				fileList.add(file.getName());
 			}
+			model.addAttribute("files", fileList);
 		}
 		System.out.println(fileList);
-		model.addAttribute("files", fileList);
-		//model.addAttribute("n_fotos", veiculo.getN_fotos());
 		return "cliente/comprar";
 	}
 
@@ -146,8 +145,6 @@ public class PropostaController {
 			for (int i = 1; i <= 10; i++)
 				lista.add("/images/" + id + "/" + i + ".jpg");
 			model.addAttribute("files", lista);
-			model.addAttribute("n_fotos", veiculo.getN_fotos());
-
 			return "cliente/comprar";
 		}
 

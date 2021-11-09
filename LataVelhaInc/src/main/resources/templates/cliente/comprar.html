@@ -22,7 +22,7 @@
 		<div id="carouselExampleControls" class="carousel slide fotos" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="d-block w-100" th:src="@{http://localhost:8080/images/{id}/{file} (id=${veiculo.id},file=${files[0]})}" alt="Carro" height="440px">
+					<img class="d-block w-100" th:src="@{http://localhost:8080/images/{id}/{file} (id=${veiculo.id},file='1.jpg')}" alt="Carro" height="440px">
 				</div>
 				<div class="carousel-item" th:each="file: ${files}">
 					<img class="d-block w-100" th:src="@{http://localhost:8080/images/{id}/{file} (id=${veiculo.id},file=${file})}" alt="Carro" height="440px">
