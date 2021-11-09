@@ -1,6 +1,7 @@
 <div class="card">
     <div class="container">
-        <img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">
+        <!--<img th:src="@{${'/images/' + veiculo.id + '/1.jpg'}}" alt="Carro">-->
+        <img th:src="@{http://localhost:8080/images/{id}/{file} (id=${veiculo.id},file='1.jpg')}" alt="Carro">
     </div>
     <ul class="dadosCarro">
         <li class="modelo" th:text="${veiculo.modelo}"></li>

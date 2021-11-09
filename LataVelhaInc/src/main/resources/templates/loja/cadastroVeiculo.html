@@ -98,11 +98,21 @@
                     <!--<a id="deletar" th:href="@{/veiculo/remover/{id} (id=${id})}" th:text="#{object.delete}" class="btn btn-primary btn-sm" th:if="${veiculo.id != null}"></a>-->
                     <button id="salvar" type="submit" th:text="#{object.save}" class="btn btn-primary btn-sm"></button>
                 </div>
-                <!--Choose a file: <input type="file" name="file" />
             </form>
-            <ul th:each="file : ${files}">
-                <li><a th:href="@{/upload/{file} (file=${file}) }" th:text="${file}"></a></li>
-            </ul>-->
+            <div id="crudLinks" th:if="${veiculo.id != null}">
+                <form method="POST" th:action="@{/veiculo/uploadFile/{id} (id=${veiculo.id})}" enctype="multipart/form-data">
+                    Choose a file: <input type="file" name="file" style="font-size: 14px;"/><input type="submit" value="Upload" style="font-size: 14px;"/>
+                </form>
+                <br/>
+                <div th:if="${sucess} != null">
+                    <span> <strong th:text="${sucess}"></strong></span>
+                </div>
+            
+                <h4>Files</h4>
+                <ul th:each="file : ${files}">
+                    <li><a th:href="@{/images/{id}/{file} (id=${veiculo.id},file=${file})}" th:text="${file}"></a></li>
+                </ul>
+            </div>
         </div>
     </section>
 </body>

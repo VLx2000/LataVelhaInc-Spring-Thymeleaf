@@ -26,6 +26,7 @@ import br.ufscar.dc.dsw.service.spec.ILojaService;
 import br.ufscar.dc.dsw.service.spec.IVeiculoService;
 import br.ufscar.dc.dsw.service.spec.IPropostaService;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -33,6 +34,8 @@ import java.util.List;
 
 import javax.mail.internet.InternetAddress;
 import javax.validation.Valid;
+
+import javax.servlet.ServletContext;
 
 @Controller
 @RequestMapping("/proposta/*")
@@ -52,6 +55,9 @@ public class PropostaController {
 
 	@Autowired
 	private EmailService service;
+
+	@Autowired
+	ServletContext context;
 
 	private Usuario getUsuario() {
 		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication()
@@ -100,11 +106,21 @@ public class PropostaController {
 		model.addAttribute("cliente", cliente);
 		model.addAttribute("veiculo", veiculo);
 
-		ArrayList<String> lista = new ArrayList<>();
-		for (int i = 1; i <= 10; i++)
-			lista.add("/images/" + id + "/" + i + ".jpg");
-		model.addAttribute("files", lista);
-		model.addAttribute("n_fotos", veiculo.getN_fotos());
+		List<String> fileList = new ArrayList<String>();
+
+		String uploadPath = context.getRealPath("") + File.separator + "images/" + id;
+		File uploadDir = new File(uploadPath);
+
+		File[] files = uploadDir.listFiles();
+
+		if (files != null) {
+			for (final File file : files) {
+				fileList.add(file.getName());
+			}
+		}
+		System.out.println(fileList);
+		model.addAttribute("files", fileList);
+		//model.addAttribute("n_fotos", veiculo.getN_fotos());
 		return "cliente/comprar";
 	}
 
