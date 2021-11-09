@@ -293,3 +293,26 @@ a:hover {
 .oi-caret-bottom {
 	font-size: 10px;
 }
+
+#fotos {
+	margin: auto;
+	border-radius: 10px;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding: 20px;
+}
+
+#fotos a {
+	color: red;
+	text-decoration: underline;
+}
+
+#fotos li {
+	display: inline-grid;
+	margin: 10px;
+}
+
+#fotos ul {
+	display: contents;
+}

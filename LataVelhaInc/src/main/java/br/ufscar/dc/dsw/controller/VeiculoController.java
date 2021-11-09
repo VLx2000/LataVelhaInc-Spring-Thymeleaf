@@ -142,6 +142,6 @@ public class VeiculoController {
 		else {
 			attr.addFlashAttribute("fail", "Limite de 10 arquivos atingido!");
 		}
-		return "redirect:/";
+		return "redirect:/veiculo/editar/" + id;
 	}
 }
