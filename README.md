@@ -25,11 +25,16 @@ sudo apt install mysql-server openjdk-11-jdk
 ```
 
 ## Antes de executar ##
+Clone ou baixe o repositório
+```
+git clone https://github.com/VLx2000/LataVelhaInc-Spring-Thymeleaf.git
+```
 Acesse o arquivo application.properties localizado em:
 ```
 LataVelhaInc/src/main/resources/application.properties
 ```
-e nas linhas 3 e 4, coloque seu usuário e senha do MySQL, respectivamente.
+- Nas linhas 3 e 4, coloque seu usuário e senha do MySQL;
+- Nas linhas 22 e 23, adicione seu usuário e senha do https://mailtrap.io/ para uso da função de email.
 
 Para correto funcionamento, o site foi previamente povoado com alguns exemplos de clientes e lojas, sendo eles:
 
@@ -52,27 +57,15 @@ E então execute:
 ```
 source LataVelhaInc/db/MySQL/create.sql;quit;
 ```
-Configurando envio de email:
-
-Acesse o arquivo application.properties localizado em
-```
-LataVelhaInc/src/main/resources/application.properties
-```
-e adicione seu usuário e senha do https://mailtrap.io/ nas linhas 22 e 23, respectivamente.
-Então, se logue como loja e envie uma mensagem para alguma proposta em aberto.
 
 ## Para executar ##
-1. Clone ou baixe o repositório
-```
-git clone https://github.com/VLx2000/LataVelhaInc-Spring-Thymeleaf.git
-```
-2. Acesse a pasta **LataVelhaInc** 
+1) Acesse a pasta **LataVelhaInc** 
 ```
 cd LataVelhaInc/
 ```
-3. Execute
+2) Execute
 ```
 ./mvnw spring-boot:run
 ```
-4. Em um navegador acesse http://localhost:8080/
-5. E, por fim, compre seu Corsa turbinado ou Uno com escada!
+3) Em um navegador acesse http://localhost:8080/
+4) E, por fim, compre seu Corsa turbinado ou Uno com escada!
