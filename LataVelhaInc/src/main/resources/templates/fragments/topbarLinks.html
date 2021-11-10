@@ -20,7 +20,7 @@
             </li>
 
             <li class="linkTopoDireita linkTopo" sec:authorize="!isAuthenticated()">
-                <a th:href="@{/login/}" class="botaoLogin" th:text="#{user.login}"></a>
+                <a th:href="@{/login}" class="botaoLogin" th:text="#{user.login}"></a>
             </li>
             <li class="nomeTopoDireita" sec:authorize="isAuthenticated()">
                 <span th:inline="text">[[#{user.welcome}]]
