@@ -65,7 +65,7 @@ public class VeiculoController {
 	}
 
 	@GetMapping("/adicionar")
-	public String cadastroVeiculo(Veiculo veiculo, ModelMap model) {
+	public String cadastro(Veiculo veiculo, ModelMap model) {
 		Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
 		model.addAttribute("loja", loja);
 		veiculo.setLoja(loja);
@@ -73,7 +73,7 @@ public class VeiculoController {
 	}
 
 	@GetMapping("/editar/{id}")
-	public String preEdicaoVeiculo(@PathVariable("id") Long id, ModelMap model) {
+	public String preEdicao(@PathVariable("id") Long id, ModelMap model) {
 
 		Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
 		model.addAttribute("loja", loja);
@@ -84,7 +84,7 @@ public class VeiculoController {
 	}
 
 	@PostMapping("/editar")
-	public String EdicaoVeiculo(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr, ModelMap model) {
+	public String editar(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr, ModelMap model) {
 		
 		if (result.hasErrors()) {
 			Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
@@ -97,14 +97,14 @@ public class VeiculoController {
 	}
 
 	@GetMapping("/remover/{id}")
-	public String remocaoVeiculo(ModelMap model, @PathVariable("id") Long id, RedirectAttributes attr) {
+	public String remover(ModelMap model, @PathVariable("id") Long id, RedirectAttributes attr) {
         service.excluir(id);
         attr.addFlashAttribute("success", "vehicle.delete.success");
         return "redirect:/";
 	}
 
 	@PostMapping("/salvar")
-	public String salvarVeiculo(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr, ModelMap model) {
+	public String salvar(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr, ModelMap model) {
 
 		if (result.hasErrors()) {
 			Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());

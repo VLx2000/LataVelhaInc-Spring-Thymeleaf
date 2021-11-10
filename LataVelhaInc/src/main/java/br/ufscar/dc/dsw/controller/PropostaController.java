@@ -83,7 +83,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/listarPropostasLoja")
-	public String propostasLoja(ModelMap model) {
+	public String listarPropostasLoja(ModelMap model) {
 		Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
 		model.addAttribute("propostas", serviceProposta.buscarPorLoja(loja));
 		model.addAttribute("loja", loja);
@@ -91,7 +91,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/listarPropostasCliente")
-	public String propostasCliente(ModelMap model) {
+	public String listarPropostasCliente(ModelMap model) {
 		Cliente cliente = serviceCliente.buscarPorId(this.getUsuario().getId());
 
 		model.addAttribute("propostas", serviceProposta.buscarPorCliente(cliente));
@@ -127,7 +127,7 @@ public class PropostaController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvarProposta(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr,
+	public String salvar(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr,
 			ModelMap model) {
 		if (result.hasErrors()) {
 			Long id = proposta.getVeiculo().getId();
@@ -154,7 +154,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/cancelar/{id}")
-	public String cancelarProposta(@PathVariable("id") Long id, RedirectAttributes attr, ModelMap model) {
+	public String cancelar(@PathVariable("id") Long id, RedirectAttributes attr, ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id);
 		if (proposta.getCliente().equals(this.getUsuario()) && proposta.getEstado().equals("ABERTO")) {
 			serviceProposta.excluir(id);
@@ -168,7 +168,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/aceitar/{id_proposta}")
-	public String aceitarProposta(@PathVariable("id_proposta") Long id_proposta,
+	public String aceitar(@PathVariable("id_proposta") Long id_proposta,
 			@RequestParam(value = "mensagem", required = false) String mensagem, RedirectAttributes attr,
 			ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id_proposta);
@@ -209,7 +209,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/negar/{id_proposta}")
-	public String negarProposta(@PathVariable("id_proposta") Long id_proposta,
+	public String negar(@PathVariable("id_proposta") Long id_proposta,
 			@RequestParam(value = "mensagem", required = false) String mensagem, RedirectAttributes attr,
 			ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id_proposta);

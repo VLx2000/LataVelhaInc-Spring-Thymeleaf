@@ -51,25 +51,25 @@ public class LojaController {
 	}	
 
 	@GetMapping("/listar")
-	public String listarLojas(ModelMap model) {
+	public String listar(ModelMap model) {
 		model.addAttribute("listaLojas", service.buscarTodos());
 		return "admin/listaLojas";
 	}
 
 	@GetMapping("/cadastrar")
-	public String cadastroLoja(Loja loja) {
+	public String cadastro(Loja loja) {
 		loja.setRole("ROLE_LOJA");
 		return "admin/cadastroLoja";
 	}
 
-	@GetMapping("/editar{id}")
-	public String preEdicaoLoja(@PathVariable("id") Long id, ModelMap model) {
+	@GetMapping("/editar/{id}")
+	public String preEdicao(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("loja", service.buscarPorId(id));
 		return "admin/cadastroLoja";
 	}
 
 	@PostMapping("/editar")
-	public String EdicaoLoja(@Valid Loja loja, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
+	public String editar(@Valid Loja loja, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 		
 		if (result.hasErrors()) {
 			return "admin/cadastroLoja";
@@ -79,8 +79,8 @@ public class LojaController {
 		return "redirect:/loja/listar";
 	}
 
-	@GetMapping("/remover{id}")
-	public String remocaoLoja(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
+	@GetMapping("/remover/{id}")
+	public String remover(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
 		
 		if (service.lojaTemPropostasAbertas(id)) {
 			attr.addFlashAttribute("fail", "store.delete.fail");
@@ -93,7 +93,7 @@ public class LojaController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvarLoja(@Valid Loja loja, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
+	public String salvar(@Valid Loja loja, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 
 		if (result.hasErrors()) {
 			return "admin/cadastroLoja";

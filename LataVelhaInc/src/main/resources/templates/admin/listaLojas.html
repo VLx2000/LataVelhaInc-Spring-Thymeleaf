@@ -44,11 +44,11 @@
 							<td th:text="${loja.CNPJ}"></td>
 							<td th:text="${loja.descricao}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="@{/loja/editar{id} (id=${loja.id})}" role="button">
+								<a class="btn btn-info btn-sm" th:href="@{/loja/editar/{id} (id=${loja.id})}" role="button">
 								<span class="oi oi-brush" th:title="#{object.update}" aria-hidden="true"></span>
 								</a>
 								
-								<button th:id="${'btn_loja/remover' + loja.id}" class="btn btn-danger btn-sm" id="botao-delete" type="button"
+								<button th:id="${'btn_loja/remover/' + loja.id}" class="btn btn-danger btn-sm" id="botao-delete" type="button"
 									data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" th:title="#{object.delete}" aria-hidden="true"></span>
 								</button>
