@@ -57,10 +57,10 @@ E então execute:
 ```
 source LataVelhaInc/db/MySQL/create.sql;quit;
 ```
-É recomendado copiar a pasta ```/images``` para ```/tmp/ultima-pasta-criada-pelo-tomcat``` para o bom funcionamento do upload de arquivos e do carrossel de fotos.
+É recomendado copiar a pasta ```LataVelhaInc/src/main/resources/static/images``` para ```/tmp/ultima-pasta-criada-pelo-tomcat``` para o bom funcionamento do upload de arquivos e do carrossel de fotos.
 
 ## Para executar ##
-1) Acesse a pasta **LataVelhaInc** 
+1) Acesse a pasta ***LataVelhaInc*** 
 ```
 cd LataVelhaInc/
 ```
@@ -68,5 +68,9 @@ cd LataVelhaInc/
 ```
 ./mvnw spring-boot:run
 ```
-3) Em um navegador acesse http://localhost:8080/
-4) E, por fim, compre seu Corsa turbinado ou Uno com escada!
+3) Copie a pasta ***/images*** para o último diretório criado pelo tomcat dentro de ***/tmp/***. Em outro terminal na raiz do projeto execute:
+```
+cp -ru LataVelhaInc/src/main/resources/static/images "`ls -dtr1 /tmp/tomcat-docbase* | tail -1`"
+```
+4) Em um navegador acesse http://localhost:8080/
+5) E, por fim, compre seu Corsa turbinado ou Uno com escada!
