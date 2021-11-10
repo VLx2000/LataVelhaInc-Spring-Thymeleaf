@@ -98,8 +98,15 @@ public class VeiculoController {
 
 	@GetMapping("/remover/{id}")
 	public String remover(ModelMap model, @PathVariable("id") Long id, RedirectAttributes attr) {
-        service.excluir(id);
-        attr.addFlashAttribute("success", "vehicle.delete.success");
+        
+		if (service.veiculoTemPropostasAbertas(id)) {
+			attr.addFlashAttribute("fail", "vehicle.delete.fail");
+		}
+		else {
+			service.excluir(id);
+	        attr.addFlashAttribute("success", "vehicle.delete.success");
+		}
+		
         return "redirect:/";
 	}
 

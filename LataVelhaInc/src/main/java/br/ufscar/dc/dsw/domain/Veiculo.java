@@ -1,11 +1,13 @@
 package br.ufscar.dc.dsw.domain;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -51,6 +53,9 @@ public class Veiculo extends AbstractEntity<Long>{
 	@ManyToOne
 	@JoinColumn(name = "id_loja")
     private Loja loja;
+    
+    @OneToMany(mappedBy = "veiculo")
+	private List<Proposta> propostas;
     
     public String getPlaca() {
         return placa;
@@ -116,6 +121,14 @@ public class Veiculo extends AbstractEntity<Long>{
         this.loja = loja;
     }
 
+    public List<Proposta> getPropostas() {
+		return propostas;
+	}
+    
+    public void setPropostas(List<Proposta> propostas) {
+		this.propostas = propostas;
+	}
+    
     @Override
     public String toString() {
     	return modelo + ", " + chassi + "(" + quilometragem + ")"; 

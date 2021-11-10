@@ -17,4 +17,5 @@ public interface IVeiculoService {
 
 	void excluir(Long id);
 	
+	boolean veiculoTemPropostasAbertas(Long id);
 }
