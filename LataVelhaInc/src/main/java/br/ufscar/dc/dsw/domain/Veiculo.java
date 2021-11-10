@@ -51,9 +51,6 @@ public class Veiculo extends AbstractEntity<Long>{
 	@ManyToOne
 	@JoinColumn(name = "id_loja")
     private Loja loja;
-
-	@Column(length = 4)
-    private Integer n_fotos;
     
     public String getPlaca() {
         return placa;
@@ -123,12 +120,4 @@ public class Veiculo extends AbstractEntity<Long>{
     public String toString() {
     	return modelo + ", " + chassi + "(" + quilometragem + ")"; 
     }
-    
-    public Integer getN_fotos() {
-        return n_fotos;
-    }
-
-    public void setN_fotos(Integer n_fotos) {
-        this.n_fotos = n_fotos;
-    }	
 }

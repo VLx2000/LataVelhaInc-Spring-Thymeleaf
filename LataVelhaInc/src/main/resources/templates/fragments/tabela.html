@@ -23,7 +23,7 @@
                     <td th:text="${proposta.cliente.username}"></td>
                     <td th:text="${proposta.data}"></td>
                     <td>
-                        <img th:src="@{${'/images/' + proposta.veiculo.id + '/1.jpg'}}" alt="Carro" height="80px"
+                        <img th:src="@{http://localhost:8080/images/{id}/{file} (id=${proposta.veiculo.id},file='1.jpg')}" alt="Carro" height="80px"
                             width="120px">
                     </td>
                     <td th:text="${proposta.veiculo.modelo}"></td>

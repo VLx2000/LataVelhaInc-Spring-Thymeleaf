@@ -51,25 +51,25 @@ public class ClienteController {
 	}	
 
 	@GetMapping("/listar")
-	public String listarClientes(ModelMap model) {	
+	public String listar(ModelMap model) {	
         model.addAttribute("listaClientes", service.buscarTodos());
 		return "admin/listaClientes";
 	}
 
 	@GetMapping("/cadastrar")
-	public String cadastroCliente(Cliente cliente) {
+	public String cadastro(Cliente cliente) {
 		cliente.setRole("ROLE_USER");
 		return "admin/cadastroCliente";
 	}
 
-	@GetMapping("/editar{id}")
-	public String preEdicaoCliente(@PathVariable("id") Long id, ModelMap model) {
+	@GetMapping("/editar/{id}")
+	public String preEdicao(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("cliente", service.buscarPorId(id));
 		return "admin/cadastroCliente";
 	}
 
 	@PostMapping("/editar")
-	public String EdicaoCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
+	public String editar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
 			return "admin/cadastroCliente";
@@ -79,8 +79,8 @@ public class ClienteController {
 		return "redirect:/cliente/listar";
 	}
 
-	@GetMapping("/remover{id}")
-	public String remocaoCliente(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
+	@GetMapping("/remover/{id}")
+	public String remover(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
         
 		if (service.clienteTemPropostasAbertas(id)) {
 			attr.addFlashAttribute("fail", "customer.delete.fail");
@@ -94,7 +94,7 @@ public class ClienteController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvarCliente(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
+	public String salvar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 
 		if (result.hasErrors()){
 			return "admin/cadastroCliente";

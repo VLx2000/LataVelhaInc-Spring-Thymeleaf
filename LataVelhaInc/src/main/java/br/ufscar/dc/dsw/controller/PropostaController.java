@@ -26,6 +26,7 @@ import br.ufscar.dc.dsw.service.spec.ILojaService;
 import br.ufscar.dc.dsw.service.spec.IVeiculoService;
 import br.ufscar.dc.dsw.service.spec.IPropostaService;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -33,6 +34,8 @@ import java.util.List;
 
 import javax.mail.internet.InternetAddress;
 import javax.validation.Valid;
+
+import javax.servlet.ServletContext;
 
 @Controller
 @RequestMapping("/proposta/*")
@@ -53,14 +56,34 @@ public class PropostaController {
 	@Autowired
 	private EmailService service;
 
+	@Autowired
+	ServletContext context;
+
 	private Usuario getUsuario() {
 		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 		return usuarioDetails.getUsuario();
 	}
 
+	public List<String> fileList(Long id) {
+		List<String> fileList = new ArrayList<String>();
+
+		String uploadPath = context.getRealPath("") + File.separator + "images/" + id;
+		File uploadDir = new File(uploadPath);
+
+		File[] files = uploadDir.listFiles();
+
+		if (files != null) {
+			for (final File file : files) {
+				fileList.add(file.getName());
+			}
+		}
+		System.out.println(fileList);
+		return fileList;
+	}
+
 	@GetMapping("/listarPropostasLoja")
-	public String propostasLoja(ModelMap model) {
+	public String listarPropostasLoja(ModelMap model) {
 		Loja loja = serviceLoja.buscarPorId(this.getUsuario().getId());
 		model.addAttribute("propostas", serviceProposta.buscarPorLoja(loja));
 		model.addAttribute("loja", loja);
@@ -68,7 +91,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/listarPropostasCliente")
-	public String propostasCliente(ModelMap model) {
+	public String listarPropostasCliente(ModelMap model) {
 		Cliente cliente = serviceCliente.buscarPorId(this.getUsuario().getId());
 
 		model.addAttribute("propostas", serviceProposta.buscarPorCliente(cliente));
@@ -99,17 +122,12 @@ public class PropostaController {
 
 		model.addAttribute("cliente", cliente);
 		model.addAttribute("veiculo", veiculo);
-
-		ArrayList<String> lista = new ArrayList<>();
-		for (int i = 1; i <= 10; i++)
-			lista.add("/images/" + id + "/" + i + ".jpg");
-		model.addAttribute("files", lista);
-		model.addAttribute("n_fotos", veiculo.getN_fotos());
+		model.addAttribute("files", fileList(id));
 		return "cliente/comprar";
 	}
 
 	@PostMapping("/salvar")
-	public String salvarProposta(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr,
+	public String salvar(@Valid Proposta proposta, BindingResult result, RedirectAttributes attr,
 			ModelMap model) {
 		if (result.hasErrors()) {
 			Long id = proposta.getVeiculo().getId();
@@ -125,13 +143,7 @@ public class PropostaController {
 
 			model.addAttribute("cliente", cliente);
 			model.addAttribute("veiculo", veiculo);
-
-			ArrayList<String> lista = new ArrayList<>();
-			for (int i = 1; i <= 10; i++)
-				lista.add("/images/" + id + "/" + i + ".jpg");
-			model.addAttribute("files", lista);
-			model.addAttribute("n_fotos", veiculo.getN_fotos());
-
+			model.addAttribute("files", fileList(id));
 			return "cliente/comprar";
 		}
 
@@ -142,7 +154,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/cancelar/{id}")
-	public String cancelarProposta(@PathVariable("id") Long id, RedirectAttributes attr, ModelMap model) {
+	public String cancelar(@PathVariable("id") Long id, RedirectAttributes attr, ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id);
 		if (proposta.getCliente().equals(this.getUsuario()) && proposta.getEstado().equals("ABERTO")) {
 			serviceProposta.excluir(id);
@@ -156,7 +168,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/aceitar/{id_proposta}")
-	public String aceitarProposta(@PathVariable("id_proposta") Long id_proposta,
+	public String aceitar(@PathVariable("id_proposta") Long id_proposta,
 			@RequestParam(value = "mensagem", required = false) String mensagem, RedirectAttributes attr,
 			ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id_proposta);
@@ -197,7 +209,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/negar/{id_proposta}")
-	public String negarProposta(@PathVariable("id_proposta") Long id_proposta,
+	public String negar(@PathVariable("id_proposta") Long id_proposta,
 			@RequestParam(value = "mensagem", required = false) String mensagem, RedirectAttributes attr,
 			ModelMap model) {
 		Proposta proposta = serviceProposta.buscarPorId(id_proposta);

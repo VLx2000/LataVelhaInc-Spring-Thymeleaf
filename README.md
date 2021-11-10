@@ -57,6 +57,7 @@ E então execute:
 ```
 source LataVelhaInc/db/MySQL/create.sql;quit;
 ```
+É recomendado copiar a pasta ```/images``` para ```/tmp/ultima-pasta-criada-pelo-tomcat``` para o bom funcionamento do upload de arquivos e do carrossel de fotos.
 
 ## Para executar ##
 1) Acesse a pasta **LataVelhaInc** 
