@@ -68,9 +68,9 @@ cd LataVelhaInc/
 ```
 ./mvnw spring-boot:run
 ```
-3) Copie a pasta ***/images*** para o último diretório criado pelo tomcat dentro de ***/tmp/***. Em outro terminal na raiz do projeto execute:
+3) Copie a pasta ***/images*** para o último diretório criado pelo tomcat dentro de ***/tmp***, ou, em outro terminal, na raiz do projeto execute:
 ```
-cp -ru LataVelhaInc/src/main/resources/static/images "`ls -dtr1 /tmp/tomcat-docbase* | tail -1`"
+chmod +x ./copiar_fotos.sh && ./copiar_fotos.sh
 ```
 4) Em um navegador acesse http://localhost:8080/
 5) E, por fim, compre seu Corsa turbinado ou Uno com escada!
