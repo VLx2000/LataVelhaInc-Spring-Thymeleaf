@@ -17,7 +17,7 @@ Divisão na implementação da funcionalidade: Lucas (10%), Rafael (80%) e Victo
 
 ### R3:
 
-#### Parcialmente Implementado (falta upload de fotos)
+#### Implementado
 Divisão na implementação da funcionalidade: Lucas (33%), Rafael (33%) e Victor (33%)
 
 ### R4:

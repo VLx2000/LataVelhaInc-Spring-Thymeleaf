@@ -113,10 +113,21 @@ public class PropostaController {
 		proposta.setEstado("ABERTO");
 
 		List<Proposta> lista_propostas = serviceProposta.buscarPorCliente(cliente);
+		List<Proposta> lista_todas_propostas = serviceProposta.buscarPorVeiculo(veiculo);
 		for (int i = 0; i < lista_propostas.size(); i++) {
 			if (lista_propostas.get(i).getVeiculo().getId() == id
 					&& lista_propostas.get(i).getEstado().equals("ABERTO")) {
 				model.addAttribute("proposta_aberta", lista_propostas.get(i));
+			}
+			if (lista_propostas.get(i).getVeiculo().getId() == id
+					&& lista_propostas.get(i).getEstado().equals("ACEITO")) {
+				model.addAttribute("proposta_aceita", lista_propostas.get(i));
+			}
+		}
+		for (int i = 0; i < lista_todas_propostas.size(); i++) {
+			if (lista_todas_propostas.get(i).getEstado().equals("ACEITO") 
+					&& lista_todas_propostas.get(i).getCliente().getId() != cliente.getId()){
+				model.addAttribute("ja_vendido", lista_todas_propostas.get(i));
 			}
 		}
 

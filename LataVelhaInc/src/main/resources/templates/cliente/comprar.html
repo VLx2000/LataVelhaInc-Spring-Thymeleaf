@@ -47,7 +47,7 @@
 				<li id="preco" th:text="'R$' + ${veiculo.preco}"></li>
 			</ul>
 
-			<div th:switch="${proposta_aberta}">
+			<div th:with="aberta=${proposta_aberta},aceita=${proposta_aceita},vendido=${ja_vendido}">
 				<form id="form_proposta" th:action="@{/proposta/salvar}" method="post" th:object="${proposta}">
 					<input type="hidden" th:field="*{cliente}" id="cliente">
 					<input type="hidden" th:field="*{loja}" id="loja">
@@ -55,7 +55,7 @@
 					<input type="hidden" th:field="*{data}" id="data">
 					<input type="hidden" th:field="*{estado}" id="estado">
 
-					<div th:case="null">
+					<div th:if="${aceita == null && aberta == null && vendido == null}">
 						<div style="display: inline-block;">
 							<input id="pvalor" type="number" name="valor" th:placeholder="#{bids.value}"
 								th:field="*{valor}" th:classappend="${#fields.hasErrors('valor')} ? is-invalid" />
@@ -73,8 +73,8 @@
 						</div>
 						<input id="proposta" type="submit" name="Proposta" th:value="#{bids.make}" />
 					</div>
-
-					<div th:case="*">
+					
+					<div th:if="${aberta != null}">
 						<h5 class="label" th:text=#{customer.open.bid}></h5>
 						<table class="propostas">
 							<thead>
@@ -98,6 +98,14 @@
 							</tbody>
 						</table>
 					</div>
+
+					<div th:if="${aceita != null}">
+						<h5 class="label" th:text=#{bids.accepted}></h5>
+					</div>
+
+					<div th:if="${vendido != null}">
+						<h5 class="label" th:text=#{bids.sold}></h5>
+					</div>				
 				</form>
 			</div>
 			<div class="descricao">
