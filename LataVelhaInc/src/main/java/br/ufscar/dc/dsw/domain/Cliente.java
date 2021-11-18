@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Cliente")
@@ -39,6 +41,7 @@ public class Cliente extends Usuario{
 	@Column(nullable = false, unique = false, length = 10)
 	private String nascimento;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Proposta> propostas;
 	
