@@ -2,7 +2,6 @@ package br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +35,9 @@ public class ClienteRestController {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private void parse(Cliente cliente, JSONObject json) {
 
-        Map<String, Object> map = (Map<String, Object>) json.get("cliente");
-
-        Object id = map.get("id");
+        Object id = json.get("id");
         if (id != null) {
             if (id instanceof Integer) {
                 cliente.setId(((Integer) id).longValue());
@@ -50,15 +46,15 @@ public class ClienteRestController {
             }
         }
 
-        cliente.setUsername((String) map.get("email"));
-        cliente.setPassword((String) map.get("senha"));
-        cliente.setNome((String) map.get("nome"));
-        cliente.setCPF((String) map.get("CPF"));
-        cliente.setTelefone((String) map.get("telefone"));
-        cliente.setSexo((String) map.get("sexo"));
-        cliente.setNascimento((String) map.get("nascimento"));
-        cliente.setRole((String) map.get("role"));
-        cliente.setEnabled((boolean) map.get("enabled"));
+        cliente.setUsername((String) json.get("username"));
+        cliente.setPassword((String) json.get("password"));
+        cliente.setNome((String) json.get("nome"));
+        cliente.setCPF((String) json.get("cpf"));
+        cliente.setTelefone((String) json.get("telefone"));
+        cliente.setSexo((String) json.get("sexo"));
+        cliente.setNascimento((String) json.get("nascimento"));
+        cliente.setRole((String) json.get("role"));
+        cliente.setEnabled((boolean) json.get("enabled"));
     }
 
     @GetMapping(path = "/clientes")

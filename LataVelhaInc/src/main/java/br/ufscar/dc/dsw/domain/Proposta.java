@@ -12,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -25,6 +27,7 @@ public class Proposta extends AbstractEntity<Long> {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Cliente cliente;
 
+	@JsonIgnore
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "loja_id")

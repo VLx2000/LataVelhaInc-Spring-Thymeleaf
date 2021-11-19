@@ -2,7 +2,6 @@ package br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +35,9 @@ public class LojaRestController {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private void parse(Loja loja, JSONObject json) {
 
-        Map<String, Object> map = (Map<String, Object>) json.get("cliente");
-
-        Object id = map.get("id");
+        Object id = json.get("id");
         if (id != null) {
             if (id instanceof Integer) {
                 loja.setId(((Integer) id).longValue());
@@ -50,13 +46,13 @@ public class LojaRestController {
             }
         }
 
-        loja.setUsername((String) map.get("email"));
-        loja.setPassword((String) map.get("senha"));
-        loja.setNome((String) map.get("nome"));
-        loja.setCNPJ((String) map.get("CNPJ"));
-        loja.setDescricao((String) map.get("descricao"));
-        loja.setRole((String) map.get("role"));
-        loja.setEnabled((boolean) map.get("enabled"));
+        loja.setUsername((String) json.get("username"));
+        loja.setPassword((String) json.get("password"));
+        loja.setNome((String) json.get("nome"));
+        loja.setCNPJ((String) json.get("cnpj"));
+        loja.setDescricao((String) json.get("descricao"));
+        loja.setRole((String) json.get("role"));
+        loja.setEnabled((boolean) json.get("enabled"));
     }
 
     @GetMapping(path = "/lojas")

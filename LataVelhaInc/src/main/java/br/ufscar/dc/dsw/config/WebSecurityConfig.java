@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+				http.csrf().disable().authorizeRequests()
 				// Controladores REST
 				.antMatchers("/clientes", "/lojas").permitAll()
 				.antMatchers("/clientes/{\\d+}", "/lojas/{\\d+}").permitAll()
