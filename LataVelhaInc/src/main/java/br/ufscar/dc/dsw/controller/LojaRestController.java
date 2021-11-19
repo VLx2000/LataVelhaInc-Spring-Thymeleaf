@@ -20,12 +20,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.service.spec.ILojaService;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @CrossOrigin
 @RestController
 public class LojaRestController {
 
     @Autowired
     private ILojaService service;
+
+    @Autowired
+    BCryptPasswordEncoder encoder;
 
     private boolean isJSONValid(String jsonInString) {
         try {
@@ -47,7 +52,7 @@ public class LojaRestController {
         }
 
         loja.setUsername((String) json.get("username"));
-        loja.setPassword((String) json.get("password"));
+        loja.setPassword(encoder.encode((String) json.get("password")));
         loja.setNome((String) json.get("nome"));
         loja.setCNPJ((String) json.get("cnpj"));
         loja.setDescricao((String) json.get("descricao"));
@@ -80,6 +85,7 @@ public class LojaRestController {
             if (isJSONValid(json.toString())) {
                 Loja loja = new Loja();
                 parse(loja, json);
+                loja.setId(null);
                 service.salvar(loja);
                 return ResponseEntity.ok(loja);
             } else {

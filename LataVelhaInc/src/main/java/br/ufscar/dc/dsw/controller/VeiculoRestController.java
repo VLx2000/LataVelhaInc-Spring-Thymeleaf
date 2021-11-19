@@ -100,37 +100,4 @@ public class VeiculoRestController {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
 		}
 	}
-/*
-	@PutMapping(path = "/veiculos/{id}")
-	public ResponseEntity<Veiculo> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
-		try {
-			if (isJSONValid(json.toString())) {
-				Veiculo veiculo = service.buscarPorId(id);
-				if (veiculo == null) {
-					return ResponseEntity.notFound().build();
-				} else {
-					parse(veiculo, json);
-					service.salvar(veiculo);
-					return ResponseEntity.ok(veiculo);
-				}
-			} else {
-				return ResponseEntity.badRequest().body(null);
-			}
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
-		}
-	}
-
-	@DeleteMapping(path = "/veiculos/{id}")
-	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
-
-		Veiculo veiculo = service.buscarPorId(id);
-		if (veiculo == null) {
-			return ResponseEntity.notFound().build();
-		} else {
-			service.excluir(id);
-			return ResponseEntity.noContent().build();
-		}
-	}
-*/
 }

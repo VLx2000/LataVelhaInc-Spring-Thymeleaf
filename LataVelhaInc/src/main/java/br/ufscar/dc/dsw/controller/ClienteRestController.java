@@ -20,12 +20,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.service.spec.IClienteService;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @CrossOrigin
 @RestController
 public class ClienteRestController {
 
     @Autowired
     private IClienteService service;
+
+    @Autowired
+    BCryptPasswordEncoder encoder;
 
     private boolean isJSONValid(String jsonInString) {
         try {
@@ -47,7 +52,7 @@ public class ClienteRestController {
         }
 
         cliente.setUsername((String) json.get("username"));
-        cliente.setPassword((String) json.get("password"));
+        cliente.setPassword(encoder.encode((String) json.get("password")));
         cliente.setNome((String) json.get("nome"));
         cliente.setCPF((String) json.get("cpf"));
         cliente.setTelefone((String) json.get("telefone"));
@@ -82,6 +87,7 @@ public class ClienteRestController {
             if (isJSONValid(json.toString())) {
                 Cliente cliente = new Cliente();
                 parse(cliente, json);
+                cliente.setId(null);
                 service.salvar(cliente);
                 return ResponseEntity.ok(cliente);
             } else {
