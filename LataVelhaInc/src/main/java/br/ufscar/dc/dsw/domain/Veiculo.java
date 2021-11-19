@@ -13,6 +13,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Veiculo")
@@ -49,11 +52,13 @@ public class Veiculo extends AbstractEntity<Long>{
 	@Column(nullable = false, columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
     private BigDecimal preco;
     
+    @JsonBackReference
     @NotNull(message = "{javax.validation.constraints.NotNull.message}")
 	@ManyToOne
 	@JoinColumn(name = "id_loja")
     private Loja loja;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "veiculo")
 	private List<Proposta> propostas;
     
