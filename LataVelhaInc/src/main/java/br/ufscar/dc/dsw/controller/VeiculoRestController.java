@@ -3,22 +3,20 @@ package br.ufscar.dc.dsw.controller;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import br.ufscar.dc.dsw.domain.Veiculo;
+import br.ufscar.dc.dsw.service.spec.ILojaService;
 import br.ufscar.dc.dsw.service.spec.IVeiculoService;
 
 import br.ufscar.dc.dsw.domain.Loja;
@@ -27,7 +25,10 @@ import br.ufscar.dc.dsw.domain.Loja;
 public class VeiculoRestController {
 
 	@Autowired
-	private IVeiculoService service;
+	private IVeiculoService serviceVeiculo;
+
+	@Autowired
+	private ILojaService serviceLoja;
 
 	private boolean isJSONValid(String jsonInString) {
 		try {
@@ -37,30 +38,7 @@ public class VeiculoRestController {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	private void parse(Loja loja, JSONObject json) {
-
-		Map<String, Object> map = (Map<String, Object>) json.get("loja");
-
-		Object id = map.get("id");
-		if (id instanceof Integer) {
-			loja.setId(((Integer) id).longValue());
-		} else {
-			loja.setId(((Long) id));
-		}
-
-		
-        loja.setUsername((String) map.get("username"));
-        loja.setPassword((String) map.get("password"));
-        loja.setNome((String) map.get("nome"));
-        loja.setCNPJ((String) map.get("cnpj"));
-        loja.setDescricao((String) map.get("descricao"));
-        loja.setRole((String) map.get("role"));
-        loja.setEnabled((boolean) map.get("enabled"));
-        
-	}
-
-	private void parse(Veiculo veiculo, JSONObject json) {
+	private void parse(Veiculo veiculo, Loja loja, JSONObject json) {
 
 		Object id = json.get("id");
 		if (id != null) {
@@ -78,39 +56,41 @@ public class VeiculoRestController {
 		veiculo.setChassi((String) json.get("chassi"));
 		veiculo.setAno((Integer) json.get("ano"));
 		veiculo.setPlaca((String) json.get("placa"));
+		veiculo.setQuilometragem((Integer) json.get("quilometragem"));
 
-
-		Loja loja = new Loja();
-		parse(loja, json);
 		veiculo.setLoja(loja);
 	}
 
-	@GetMapping(path = "/veiculos")
-	public ResponseEntity<List<Veiculo>> lista() {
-		List<Veiculo> lista = service.buscarTodos();
+	@GetMapping(path = "/veiculos/lojas/{id}")
+	public ResponseEntity<List<Veiculo>> lista(@PathVariable("id") Long id) {
+		Loja loja = serviceLoja.buscarPorId(id);
+		List<Veiculo> lista = serviceVeiculo.buscarTodosPorLoja(loja);
 		if (lista.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(lista);
 	}
 
-	@GetMapping(path = "/veliculos/{id}")
-	public ResponseEntity<Veiculo> lista(@PathVariable("id") long id) {
-		Veiculo veiculo = service.buscarPorId(id);
-		if (veiculo == null) {
+	@GetMapping(path = "/veiculos/modelos/{nome}")
+	public ResponseEntity<List<Veiculo>> lista(@PathVariable("nome") String modelo) {
+		List<Veiculo> lista = serviceVeiculo.buscarTodosPorModelo(modelo);
+		if (lista == null) {
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(veiculo);
+		return ResponseEntity.ok(lista);
 	}
 
-	@PostMapping(path = "/veiculos")
+	@PostMapping(path = "/veiculos/lojas/{id}")
 	@ResponseBody
-	public ResponseEntity<Veiculo> cria(@RequestBody JSONObject json) {
+	public ResponseEntity<Veiculo> cria(@PathVariable("id") long id, @RequestBody JSONObject json) {
 		try {
 			if (isJSONValid(json.toString())) {
+				Loja loja = serviceLoja.buscarPorId(id);
+				if (loja == null)
+					return ResponseEntity.badRequest().body(null);
 				Veiculo veiculo = new Veiculo();
-				parse(veiculo, json);
-				service.salvar(veiculo);
+				parse(veiculo, loja, json);
+				serviceVeiculo.salvar(veiculo);
 				return ResponseEntity.ok(veiculo);
 			} else {
 				return ResponseEntity.badRequest().body(null);
@@ -120,7 +100,7 @@ public class VeiculoRestController {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
 		}
 	}
-
+/*
 	@PutMapping(path = "/veiculos/{id}")
 	public ResponseEntity<Veiculo> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
 		try {
@@ -152,4 +132,5 @@ public class VeiculoRestController {
 			return ResponseEntity.noContent().build();
 		}
 	}
+*/
 }

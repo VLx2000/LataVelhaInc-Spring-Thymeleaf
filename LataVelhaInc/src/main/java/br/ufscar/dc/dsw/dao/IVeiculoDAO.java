@@ -12,7 +12,7 @@ public interface IVeiculoDAO extends CrudRepository<Veiculo, Long>{
 
 	Veiculo findById(long id);
 	
-	Veiculo findByChassi (String chassi);
+	List<Veiculo> findAllByModelo (String modelo);
 
 	List<Veiculo> findAllByLoja (Loja loja);
 
