@@ -20,7 +20,6 @@ Para rodar os testes de operações REST via Postman:
 ```
 doc/T3-DSW.postman_collection
 ```
-ou utilizando o link: https://www.getpostman.com/collections/d807ba6207c154683288
 - É recomendado, a fim de evitar possíveis problemas, seguir os testes de acordo com a seguinte ordem dos diretórios: 
 ```
 Clientes > Lojas > Propostas > Veículos
