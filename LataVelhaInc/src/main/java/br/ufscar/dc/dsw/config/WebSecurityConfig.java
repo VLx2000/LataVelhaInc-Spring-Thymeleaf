@@ -41,20 +41,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+				http.csrf().disable().authorizeRequests()
+				// Controladores REST
+				.antMatchers("/clientes", "/lojas").permitAll()
+				.antMatchers("/clientes/{\\d+}", "/lojas/{\\d+}").permitAll()
+				.antMatchers("/propostas/veiculos/{\\d+}").permitAll()
+				.antMatchers("/propostas/clientes/{\\d+}").permitAll()
+				.antMatchers("/veiculos/lojas/{\\d+}").permitAll()
+				.antMatchers("/veiculos/modelos/{\\w+}").permitAll()
+				//
 				.antMatchers("/", "/index", "/error").permitAll()
 				.antMatchers("/login/**", "/js/**", "/css/**", "/images/**", "/webjars/**").permitAll()
-				.antMatchers("/proposta/listarPropostasLoja","/proposta/aceitar/**","/proposta/negar/**", "/veiculo/").hasRole("LOJA")
+				.antMatchers("/proposta/listarPropostasLoja", "/proposta/aceitar/**", "/proposta/negar/**", "/veiculo/").hasRole("LOJA")
 				.antMatchers("/proposta/**").hasRole("USER")
 				.antMatchers("/admin/**", "/loja/**", "/cliente/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
-			.and()
-				.formLogin()
-				.loginPage("/login")
-				.permitAll()
-			.and()
-				.logout()
-				.logoutSuccessUrl("/")
-				.permitAll();
+					.and()
+						.formLogin().loginPage("/login").permitAll()
+					.and()
+						.logout().logoutSuccessUrl("/").permitAll();
 	}
 }

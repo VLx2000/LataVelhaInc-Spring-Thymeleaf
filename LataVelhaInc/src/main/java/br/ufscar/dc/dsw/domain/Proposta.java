@@ -12,6 +12,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -19,18 +22,22 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name = "Proposta")
 public class Proposta extends AbstractEntity<Long> {
+
+	@JsonIgnore
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "cliente_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Cliente cliente;
 
+	@JsonIgnore
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "loja_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Loja loja;
 
+	@JsonManagedReference
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "veiculo_id")

@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Loja")
@@ -32,6 +34,7 @@ public class Loja extends Usuario{
 	@Column(nullable = false, unique = false, length = 120)
 	private String descricao;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "loja")
 	private List<Proposta> propostas;
 
