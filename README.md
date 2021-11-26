@@ -15,9 +15,28 @@ Documento de requisitos:
 Configuração Spring:
 [Initializr](doc/spring-initializr.png)
 
+Para rodar os testes de operações REST via Postman:
+- No aplicativo Postman, vá em File > Import > File e faça o upload do arquivo localizado em:
+```
+doc/T3-DSW.postman_collection
+```
+ou utilizando o link: https://www.getpostman.com/collections/d807ba6207c154683288
+- É recomendado, a fim de evitar possíveis problemas, seguir os testes de acordo com a seguinte ordem dos diretórios: 
+```
+Clientes > Lojas > Propostas > Veículos
+```
+- Também é recomendado executar os testes dos diretórios de cima para baixo, pois algumas requisições utilizam os novos objetos criados
+- Ex: Cliente -> executar na seguinte ordem:
+```
+Cria > Lista > Retorna Cliente por ID > Atualiza > Delete
+```
+- Fique à vontade para realizar quaisquer outras requisições utilizando outros objetos também.  
+
+
 ## Dependências ###
 - MySQL (https://www.mysql.com/downloads/)
 - Java 11 (https://www.oracle.com/java/technologies/downloads/#java11)
+- Postman (https://www.postman.com/downloads/)
 
 ### Ubuntu ###
 ```
